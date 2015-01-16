@@ -25,7 +25,6 @@ import org.usfirst.frc190.FRC2k15.subsystems.*;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-//testing with comment
 public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
