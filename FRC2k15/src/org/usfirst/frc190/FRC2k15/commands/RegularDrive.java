@@ -36,10 +36,41 @@ public class  RegularDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	double xSpeed = Robot.oi.driveJoystick.getX();
-    	double ySpeed = Robot.oi.driveJoystick.getY();
-    	double rSpeed = Robot.oi.driveJoystick.getZ();
+    	double xSpeed;
+    	double ySpeed;
+    	double rSpeed;
     	double heading = Robot.drivetrain.getHeading();
+    	
+    	switch (Robot.drivetrain.getDrivingMode()) {
+        case 0: xSpeed = Robot.oi.driveJoystick.getX();
+    			ySpeed = Robot.oi.driveJoystick.getY();
+    			rSpeed = Robot.oi.driveJoystick.getZ();
+                break;
+                
+        case 1: xSpeed = Robot.oi.driveJoystick.getX();
+				ySpeed = Robot.oi.driveJoystick.getY();
+				rSpeed = Robot.oi.secondaryJoystick.getX();
+				break;
+        
+        case 2: xSpeed = Robot.oi.driveJoystick.getX();
+				ySpeed = Robot.oi.driveJoystick.getY();
+				rSpeed = Robot.oi.secondaryJoystick.getY();
+				break;
+        
+        case 3: xSpeed = Robot.oi.driveJoystick.getX();
+				ySpeed = Robot.oi.driveJoystick.getY();
+				rSpeed = Robot.oi.secondaryJoystick.getZ();
+				break;
+                 
+                 
+        
+        default: xSpeed = Robot.oi.driveJoystick.getX();
+				 ySpeed = Robot.oi.driveJoystick.getY();
+				 rSpeed = Robot.oi.driveJoystick.getZ();
+				 break;
+    	}
+    	
+    	
     	
     	if(Robot.drivetrain.isSquaredInputs()){
     		xSpeed = Math.pow(Math.abs(xSpeed), 2)*Math.signum(xSpeed);
@@ -48,12 +79,11 @@ public class  RegularDrive extends Command {
     	}
     	
     	if(Robot.drivetrain.isFieldOriented()){
-    		Robot.drivetrain.MecanumDrive(xSpeed, ySpeed, rSpeed, heading);
-//    		Robot.drivetrain.MecanumDrive(xSpeed, ySpeed, 0, heading);
-    	} else {
-    		Robot.drivetrain.MecanumDrive(xSpeed, ySpeed, rSpeed, 0);
-//    		Robot.drivetrain.MecanumDrive(xSpeed, ySpeed, 0, 0);
+    		heading = 0;
     	}
+
+    	Robot.drivetrain.MecanumDrive(xSpeed, ySpeed, rSpeed, heading);
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
