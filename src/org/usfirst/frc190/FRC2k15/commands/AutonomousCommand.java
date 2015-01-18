@@ -34,5 +34,21 @@ public class AutonomousCommand extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	// Timeouts on everything to avoid running out of time.
+    	double timeout = 10.00;
+    	addSequential(new GetIntoAutoPosition(), timeout);
+    	
+    	int numtotes = 3;
+    	for (int i = 0; i < numtotes; i++) {
+    	    addSequential(new DriveUntilToteDetectedAuto(), timeout);
+    		addSequential(new AutoYToteCollect(), timeout);
+    		if (i < numtotes - 1) {
+    		    // Re-open tines and anything else that you need to do.
+    		    addParallel(new LiftTotes(), timeout);
+    		    addSequential(new SetTinesPosition(), timeout);
+    		}
+    	}
+    	
+    	addSequential(new DeliverStack(), timeout);
     }
 }
