@@ -17,9 +17,9 @@ import org.usfirst.frc190.FRC2k15.Robot;
 /**
  *
  */
-public class  ResetGyro extends Command {
+public class  RegularDrive extends Command {
 
-    public ResetGyro() {
+    public RegularDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 
@@ -31,16 +31,34 @@ public class  ResetGyro extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drivetrain.resetGyro();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
+    	double xSpeed = Robot.oi.driveJoystick.getX();
+    	double ySpeed = Robot.oi.driveJoystick.getY();
+    	double rSpeed = Robot.oi.driveJoystick.getZ();
+    	double heading = Robot.drivetrain.getHeading();
+    	
+    	if(Robot.drivetrain.isSquaredInputs()){
+    		xSpeed = Math.pow(Math.abs(xSpeed), 2)*Math.signum(xSpeed);
+    		ySpeed = Math.pow(Math.abs(ySpeed), 2)*Math.signum(ySpeed);
+    		rSpeed = Math.pow(Math.abs(rSpeed), 2)*Math.signum(rSpeed);
+    	}
+    	
+    	if(Robot.drivetrain.isFieldOriented()){
+    		Robot.drivetrain.MecanumDrive(xSpeed, ySpeed, rSpeed, heading);
+//    		Robot.drivetrain.MecanumDrive(xSpeed, ySpeed, 0, heading);
+    	} else {
+    		Robot.drivetrain.MecanumDrive(xSpeed, ySpeed, rSpeed, 0);
+//    		Robot.drivetrain.MecanumDrive(xSpeed, ySpeed, 0, 0);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

@@ -8,7 +8,6 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 package org.usfirst.frc190.FRC2k15.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -19,40 +18,42 @@ import org.usfirst.frc190.FRC2k15.RobotMap;
 /**
  *
  */
-public class  DriveUntilToteDetectedAuto extends Command {
-private boolean finished = false;
-    public DriveUntilToteDetectedAuto() {
-        requires(Robot.drivetrain);
-    }
+public class DriveUntilToteDetectedAuto extends Command {
+	private boolean finished = false;
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	public DriveUntilToteDetectedAuto() {
+		requires(Robot.drivetrain);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+	// Called just before this Command runs the first time
+	protected void initialize() {
+	}
+
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
     	if(
-    			RobotMap.drivetrainleftLimit.get() || RobotMap.drivetrainrightLimit.get()
+    			!Robot.drivetrain.getLeftBumper() || !Robot.drivetrain.getRightBumper()
     			){
-    		RobotMap.drivetrainRobotDrive41.mecanumDrive_Cartesian(-0.5, 0, 0, RobotMap.drivetrainChassisGyro.getAngle());
+    		Robot.drivetrain.MecanumDrive(-0.5, 0, 0, Robot.drivetrain.getHeading());
     	}
     	else {
-    	RobotMap.drivetrainRobotDrive41.mecanumDrive_Cartesian(0,0,0, RobotMap.drivetrainChassisGyro.getAngle());
-    	finished = true;
+    		Robot.drivetrain.MecanumDrive(0, 0, 0, Robot.drivetrain.getHeading());
+    		finished = true;
     	}
     }
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return finished;
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return finished;
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		Robot.drivetrain.MecanumDrive(0, 0, 0, 0);
+	}
 }
