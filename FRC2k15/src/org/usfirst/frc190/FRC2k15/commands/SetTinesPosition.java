@@ -37,6 +37,8 @@ public class  SetTinesPosition extends Command {
     //Overloaded constructor with a given position for the tines
     public SetTinesPosition(double givenSetpoint){
     	currentSetpoint = givenSetpoint;
+    	
+    	setTimeout(1);
     }
 
     // Called just before this Command runs the first time
@@ -49,7 +51,7 @@ public class  SetTinesPosition extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true

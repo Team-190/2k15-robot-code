@@ -40,13 +40,15 @@ public class  DriveDistDirection extends Command {
     }
     
     public DriveDistDirection(double inSpeed, double inDist, double inDir){
-    	setTimeout(timeout);
-    	
     	Speed = inSpeed;
     	Dist = inDist;
     	Dir = inDir;
     	
+    	timeout = Dir;
+    	
     	requires(Robot.drivetrain);
+    	
+    	setTimeout(timeout);
     }
 
     // Called just before this Command runs the first time
@@ -55,6 +57,7 @@ public class  DriveDistDirection extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.drivetrain.MecanumDrivePolar(Speed, Dir, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -64,10 +67,12 @@ public class  DriveDistDirection extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.drivetrain.MecanumDrive(0, 0, 0, 0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

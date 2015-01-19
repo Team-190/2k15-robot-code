@@ -70,6 +70,10 @@ public class Drivetrain extends Subsystem {
     	robotDriveObject.mecanumDrive_Cartesian(xSpeed, ySpeed, rSpeed, heading);
     }
     
+    public void MecanumDrivePolar(double speed, double direction, double rotation){
+    	robotDriveObject.mecanumDrive_Polar(speed, direction, rotation);
+    }
+    
     public double getHeading(){
     	return gyro.getAngle();
     }
@@ -91,11 +95,11 @@ public class Drivetrain extends Subsystem {
     
     
     public boolean getLeftBumper(){
-    	return leftLimit.get();
+    	return !leftLimit.get();
     }
     
     public boolean getRightBumper(){
-    	return rightLimit.get();
+    	return !rightLimit.get();
     }
     
     

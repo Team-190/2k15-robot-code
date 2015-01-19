@@ -16,6 +16,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class AutonomousCommand extends CommandGroup {
+	
+	double distanceToAutozone = 6;	//ft
+	double speedToAutozone = 0.5; 	//50% power
+	double headingToAutozone = 0;
+	double autoRotation = 90;		//degrees turned to face autozone
+	double distanceBetweenTotes = 2;//ft
+	
+	double timeout = 5.00;
     
     public  AutonomousCommand() {
         // Add Commands here:
@@ -37,23 +45,29 @@ public class AutonomousCommand extends CommandGroup {
     	
     	
     	// Timeouts on everything to avoid running out of time.
-    	double timeout = 10.00;
+    	
     	addSequential(new GetIntoAutoPosition(), timeout);
     	
     	int numtotes = 3;
     	for (int i = 0; i < numtotes; i++) {
     	    addSequential(new DriveUntilToteDetectedAuto(), timeout);
-    		addSequential(new AutoYToteCollect(), timeout);
+    		addSequential(new SetTinesPosition(/*put tine position number here*/), timeout);
+    		addParallel(new LiftTotes(), timeout);
     		if (i < numtotes - 1) {
     		    // Re-open tines and anything else that you need to do.
-    		    addParallel(new LiftTotes(), timeout);
-    		    addSequential(new SetTinesPosition(), timeout);
+    		    addSequential(new SetTinesPosition(/*put tine position number here*/), timeout);
     		}
     	}
     	
-    	addSequential(new DriveTurn(), timeout);
-    	addSequential(new DriveDistDirection(), timeout);
+    	//Delay to allow Totes to be lifted
+    	//May be replaced with a check function later
+    	addSequential(new Delay(1));
+    	
+    	addSequential(new DriveTurn(autoRotation), timeout);
+    	addSequential(new DriveDistDirection(speedToAutozone, distanceToAutozone, headingToAutozone), timeout);
     	
     	addSequential(new DeliverStack(), timeout);
+    	
+    	addSequential(new DriveDistDirection(-0.5, 0.75, 0), timeout);
     }
 }

@@ -34,5 +34,7 @@ public class LiftTotes extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	
+    	addSequential(new Delay(1.5));
     }
 }
