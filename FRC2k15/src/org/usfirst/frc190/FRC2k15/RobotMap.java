@@ -15,8 +15,6 @@ import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-import java.util.Vector;
-
 import org.usfirst.frc190.FRC2k15.Components.EncodedMotor;
 
 /**
