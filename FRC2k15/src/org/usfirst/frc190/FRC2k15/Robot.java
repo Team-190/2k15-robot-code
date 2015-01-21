@@ -10,8 +10,6 @@
 
 package org.usfirst.frc190.FRC2k15;
 
-package org.usfirst.frc190.FRC2k15;
-
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
