@@ -24,7 +24,6 @@ public class DriveDistDirection extends Command {
 	private double Dist = 0;
 	private double Dir = 0;
 
-
 	public DriveDistDirection() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
