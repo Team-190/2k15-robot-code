@@ -15,12 +15,19 @@ public class VoiceCmds extends I2C {
 	public static final byte s_grabbingRecyclingContainer = 0x07;
 	public static final byte s_liftingRecyclingContainer = 0x08;
 	public static final byte s_loweringTines = 0x09;
+	public static final byte s_gettingIntoAutoPosition = 0x0A;
+	public static final byte s_lookingForTote = 0x0B;
+	public static final byte s_toteFound = 0x0C;
+	public static final byte s_grabbingTote = 0x0D;
+	public static final byte s_turning = 0x0E;
+	public static final byte s_driving = 0x0F;
+	public static final byte s_deliveringStack = 0x10;
 
 	private VoiceCmds(Port port, int deviceAddress) {
 		super(port, deviceAddress);
 	}
 
-	public static synchronized VoiceCmds getinstance() {
+	public static synchronized VoiceCmds getInstance() {
 		if (instance == null) {
 			instance = new VoiceCmds(I2C.Port.kOnboard, address);
 		}

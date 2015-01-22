@@ -10,6 +10,8 @@
 
 package org.usfirst.frc190.FRC2k15.commands;
 
+import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -46,7 +48,6 @@ public class AutonomousCommand extends CommandGroup {
 		// Timeouts on everything to avoid running out of time.
 
 		addSequential(new GetIntoAutoPosition(), timeout);
-
 		int numtotes = 3;
 		for (int i = 0; i < numtotes; i++) {
 			addSequential(new DriveUntilToteDetectedAuto(), timeout);
