@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class GetIntoAutoPosition extends CommandGroup { 
+public class GetIntoAutoPosition extends CommandGroup {
 	public GetIntoAutoPosition() {
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
@@ -36,8 +36,8 @@ public class GetIntoAutoPosition extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		VoiceCmds.getInstance().speak(VoiceCmds.s_gettingIntoAutoPosition); 
-		
+		VoiceCmds.getInstance().speak(VoiceCmds.s_gettingIntoAutoPosition);
+
 		addSequential(new Delay(2));
 	}
 }

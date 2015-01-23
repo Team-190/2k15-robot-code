@@ -56,5 +56,5 @@ public class DriveUntilToteDetectedAuto extends Command {
 	protected void interrupted() {
 		Robot.drivetrain.MecanumDrive(0, 0, 0, 0);
 	}
-	
+
 }
