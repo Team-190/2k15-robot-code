@@ -2,8 +2,9 @@ package org.usfirst.frc190.FRC2k15.Components;
 
 import edu.wpi.first.wpilibj.I2C;
 
-public class VoiceCmds extends I2C {
+public class VoiceCmds{
 	private static VoiceCmds instance = null;
+	private static I2C roboDuino;
 	private static final int address = 2;
 	public static final byte s_disable = 0x00;
 	public static final byte s_enable = 0x01;
@@ -23,20 +24,20 @@ public class VoiceCmds extends I2C {
 	public static final byte s_driving = 0x0F;
 	public static final byte s_deliveringStack = 0x10;
 
-	private VoiceCmds(Port port, int deviceAddress) {
-		super(port, deviceAddress);
+	private VoiceCmds() {
+		roboDuino = new I2C(I2C.Port.kMXP, address);
 	}
 
 	public static synchronized VoiceCmds getInstance() {
 		if (instance == null) {
-			instance = new VoiceCmds(I2C.Port.kOnboard, address);
+			instance = new VoiceCmds();
 		}
 		return instance;
 	}
 
 	public synchronized void speak(byte command) {
 		byte[] data = { command };
-		writeBulk(data);
+		roboDuino.writeBulk(data);
 	}
 
 }

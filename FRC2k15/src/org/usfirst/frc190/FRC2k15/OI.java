@@ -10,10 +10,32 @@
 
 package org.usfirst.frc190.FRC2k15;
 
-import org.usfirst.frc190.FRC2k15.commands.*;
+import org.usfirst.frc190.FRC2k15.commands.AutoYToteCollect;
+import org.usfirst.frc190.FRC2k15.commands.AutonomousCommand;
+import org.usfirst.frc190.FRC2k15.commands.Delay;
+import org.usfirst.frc190.FRC2k15.commands.DeliverStack;
+import org.usfirst.frc190.FRC2k15.commands.DoNothing;
+import org.usfirst.frc190.FRC2k15.commands.DriveDistDirection;
+import org.usfirst.frc190.FRC2k15.commands.DriveTurn;
+import org.usfirst.frc190.FRC2k15.commands.DriveUntilToteDetectedAuto;
+import org.usfirst.frc190.FRC2k15.commands.GetIntoAutoPosition;
+import org.usfirst.frc190.FRC2k15.commands.LiftTotes;
+import org.usfirst.frc190.FRC2k15.commands.RegularDrive;
+import org.usfirst.frc190.FRC2k15.commands.ResetGyro;
+import org.usfirst.frc190.FRC2k15.commands.SetDrivingMode0;
+import org.usfirst.frc190.FRC2k15.commands.SetDrivingMode1;
+import org.usfirst.frc190.FRC2k15.commands.SetDrivingMode2;
+import org.usfirst.frc190.FRC2k15.commands.SetDrivingMode3;
+import org.usfirst.frc190.FRC2k15.commands.SetFieldOriented;
+import org.usfirst.frc190.FRC2k15.commands.SetLinearInputs;
+import org.usfirst.frc190.FRC2k15.commands.SetRobotOriented;
+import org.usfirst.frc190.FRC2k15.commands.SetSquaredInputs;
+import org.usfirst.frc190.FRC2k15.commands.SetTinesPosition;
+import org.usfirst.frc190.FRC2k15.commands.SpeedControlledDrive;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.buttons.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator

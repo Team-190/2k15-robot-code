@@ -10,14 +10,14 @@
 
 package org.usfirst.frc190.FRC2k15.subsystems;
 
-import edu.wpi.first.wpilibj.RobotDrive;
 import org.usfirst.frc190.FRC2k15.RobotMap;
-import org.usfirst.frc190.FRC2k15.Components.EncodedMotor;
-import org.usfirst.frc190.FRC2k15.commands.*;
+import org.usfirst.frc190.FRC2k15.commands.RegularDrive;
 
-import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.CounterBase.EncodingType;
-import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**

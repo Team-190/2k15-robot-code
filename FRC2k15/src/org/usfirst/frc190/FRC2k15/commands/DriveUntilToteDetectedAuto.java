@@ -10,11 +10,10 @@
 
 package org.usfirst.frc190.FRC2k15.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc190.FRC2k15.Robot;
-import org.usfirst.frc190.FRC2k15.RobotMap;
 import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
