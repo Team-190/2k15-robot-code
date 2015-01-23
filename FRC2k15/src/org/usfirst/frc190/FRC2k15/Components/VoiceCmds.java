@@ -11,7 +11,7 @@ public class VoiceCmds{
 	public static final byte s_alignToTote = 0x02;
 	public static final byte s_liftingTote = 0x03;
 	public static final byte s_extendingChainsaw = 0x04;
-	public static final byte s_droppingStack = 0x05;
+	public static final byte s_deliveringStack = 0x05;
 	public static final byte s_retractingChainsaw = 0x06;
 	public static final byte s_grabbingRecyclingContainer = 0x07;
 	public static final byte s_liftingRecyclingContainer = 0x08;
@@ -22,7 +22,8 @@ public class VoiceCmds{
 	public static final byte s_grabbingTote = 0x0D;
 	public static final byte s_turning = 0x0E;
 	public static final byte s_driving = 0x0F;
-	public static final byte s_deliveringStack = 0x10;
+	public static final byte s_autoBeginning = 0x10;
+	public static final byte s_teleOpBeginning = 0x11;
 
 	private VoiceCmds() {
 		roboDuino = new I2C(I2C.Port.kMXP, address);

@@ -70,6 +70,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void disabledInit() {
 		disableDriveTrain();
+		VoiceCmds.speak(VoiceCmds.s_disable);
 	}
 
 	public void disabledPeriodic() {
