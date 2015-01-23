@@ -28,14 +28,13 @@ public class VoiceCmds{
 		roboDuino = new I2C(I2C.Port.kMXP, address);
 	}
 
-	public static synchronized VoiceCmds getInstance() {
+	public static synchronized void init() {
 		if (instance == null) {
 			instance = new VoiceCmds();
 		}
-		return instance;
 	}
 
-	public synchronized void speak(byte command) {
+	public static synchronized void speak(byte command) {
 		byte[] data = { command };
 		roboDuino.writeBulk(data);
 	}

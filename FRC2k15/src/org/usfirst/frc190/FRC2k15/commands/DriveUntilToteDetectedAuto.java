@@ -27,7 +27,7 @@ public class DriveUntilToteDetectedAuto extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		VoiceCmds.getInstance().speak(VoiceCmds.s_lookingForTote);
+		VoiceCmds.speak(VoiceCmds.s_lookingForTote);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

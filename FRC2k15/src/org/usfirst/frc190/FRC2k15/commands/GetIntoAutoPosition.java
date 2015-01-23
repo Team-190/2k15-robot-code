@@ -36,7 +36,7 @@ public class GetIntoAutoPosition extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 
-		VoiceCmds.getInstance().speak(VoiceCmds.s_gettingIntoAutoPosition);
+		VoiceCmds.speak(VoiceCmds.s_gettingIntoAutoPosition);
 
 		addSequential(new Delay(2));
 	}

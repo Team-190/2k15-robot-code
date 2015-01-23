@@ -34,7 +34,7 @@ public class DeliverStack extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		VoiceCmds.getInstance().speak(VoiceCmds.s_droppingStack);
+		VoiceCmds.speak(VoiceCmds.s_droppingStack);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
