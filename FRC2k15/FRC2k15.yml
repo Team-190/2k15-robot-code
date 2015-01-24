@@ -628,12 +628,20 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: Delay
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: SoundCheck
   Properties: {}
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: /Users/brad/workspace,
-    extension: null, folder: true, name: Eclipse Workspace, validators: null, value: ./}
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: /Users/Patrick/workspace,
+    extension: null, folder: true, name: Eclipse Workspace, validators: null, value: ../}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
   Java Package: !!robotbuilder.data.properties.StringProperty {default: org.usfirst.frc0000,
