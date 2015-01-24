@@ -23,7 +23,7 @@ public class VoiceCmds{
 	public static final byte s_driving = 0x0F;
 	public static final byte s_autoBeginning = 0x10;
 	public static final byte s_teleOpBeginning = 0x11;
-
+	public static final byte s_test = (byte) 0xFF;
 	private VoiceCmds() {
 	}
 
