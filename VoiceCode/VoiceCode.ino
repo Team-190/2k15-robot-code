@@ -6,7 +6,6 @@
 SFEMP3Shield MP3player;
 SdFat sd;
 void setup(){
-Serial.begin(9600);
 roboinit();
 mpinit();
 }

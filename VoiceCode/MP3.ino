@@ -12,10 +12,3 @@ void play(byte t){
    MP3player.playMP3(name);
 }
 
-void testplay(byte t){
-    MP3player.stopTrack();
-   char name[] = "track001.mp3";
-   sprintf(name, "track%03d.wav", t);
-   MP3player.playMP3(name);
-  
-}
