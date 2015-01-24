@@ -3,7 +3,6 @@ package org.usfirst.frc190.FRC2k15.Components;
 import edu.wpi.first.wpilibj.I2C;
 
 public class VoiceCmds{
-	private static VoiceCmds instance = null;
 	private static I2C roboDuino;
 	private static final int address = 2;
 	public static final byte s_disable = 0x00;
@@ -26,13 +25,10 @@ public class VoiceCmds{
 	public static final byte s_teleOpBeginning = 0x11;
 
 	private VoiceCmds() {
-		roboDuino = new I2C(I2C.Port.kMXP, address);
 	}
 
 	public static synchronized void init() {
-		if (instance == null) {
-			instance = new VoiceCmds();
-		}
+			roboDuino = new I2C(I2C.Port.kMXP, address);
 	}
 
 	public static synchronized void speak(byte command) {
