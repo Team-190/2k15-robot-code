@@ -1,6 +1,7 @@
 package org.usfirst.frc190.FRC2k15.Components;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
@@ -13,7 +14,7 @@ public class EncodedMotor implements SpeedController {
 	private PIDController cnt;
 	private static final double distperpulse = 0.0001466;
 	public static ArrayList<EncodedMotor> mtrs = new ArrayList<EncodedMotor>();
-	public static boolean closedloop = true;
+	private static boolean closedloop = true;
 
 	public EncodedMotor(double Kp, double Ki, double Kd, double Kf,
 			Encoder source, SpeedController output, double period) {
@@ -33,7 +34,7 @@ public class EncodedMotor implements SpeedController {
 
 	@Override
 	public void pidWrite(double output) {
-		cnt.setSetpoint(output);
+		set(output);
 	}
 
 	@Override
@@ -66,7 +67,21 @@ public class EncodedMotor implements SpeedController {
 	}
 
 	public void enable() {
-		cnt.enable();
+		if (closedloop)
+			cnt.enable();
+	}
+
+	public static void setClosedLoop(boolean closed) {
+		closedloop = closed;
+		Iterator<EncodedMotor> itr = mtrs.iterator();
+		if (closed) {
+			while (itr.hasNext())
+				itr.next().cnt.enable();
+		} else {
+			while (itr.hasNext()) {
+				itr.next().cnt.disable();
+			}
+		}
 	}
 
 }

@@ -130,6 +130,7 @@ public class RobotMap {
 				RobotDrive.MotorType.kFrontLeft, true);
 		drivetrainRobotDriveObject.setInvertedMotor(
 				RobotDrive.MotorType.kRearLeft, true);
+		EncodedMotor.setClosedLoop(false);//when encoders come in change false to true
 
 	}
 }
