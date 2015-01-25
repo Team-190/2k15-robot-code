@@ -15,7 +15,6 @@ public class EncodedMotor implements SpeedController {
 	public static ArrayList<EncodedMotor> mtrs = new ArrayList<EncodedMotor>();
 	public static boolean closedloop = true;
 
-	// Use this one!
 	public EncodedMotor(double Kp, double Ki, double Kd, double Kf,
 			Encoder source, SpeedController output, double period) {
 		cnt = new PIDController(Kp, Ki, Kd, Kf, source, output, period);
