@@ -80,7 +80,7 @@ public class RegularDrive extends Command {
 			rSpeed = Math.pow(Math.abs(rSpeed), 2) * Math.signum(rSpeed);
 		}
 
-		if (Robot.drivetrain.isFieldOriented()) {
+		if (!Robot.drivetrain.isFieldOriented()) {
 			heading = 0;
 		}
 
