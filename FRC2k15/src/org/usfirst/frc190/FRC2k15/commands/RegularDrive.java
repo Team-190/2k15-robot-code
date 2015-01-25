@@ -41,35 +41,26 @@ public class RegularDrive extends Command {
 		double ySpeed;
 		double rSpeed;
 		double heading = Robot.drivetrain.getHeading();
-
+		xSpeed = Robot.oi.driveJoystick.getX();
+		ySpeed = Robot.oi.driveJoystick.getY();
 		switch (Robot.drivetrain.getDrivingMode()) {
 		case 0:
-			xSpeed = Robot.oi.driveJoystick.getX();
-			ySpeed = Robot.oi.driveJoystick.getY();
 			rSpeed = Robot.oi.driveJoystick.getZ();
 			break;
 
 		case 1:
-			xSpeed = Robot.oi.driveJoystick.getX();
-			ySpeed = Robot.oi.driveJoystick.getY();
 			rSpeed = Robot.oi.secondaryJoystick.getX();
 			break;
 
 		case 2:
-			xSpeed = Robot.oi.driveJoystick.getX();
-			ySpeed = Robot.oi.driveJoystick.getY();
 			rSpeed = Robot.oi.secondaryJoystick.getY();
 			break;
 
 		case 3:
-			xSpeed = Robot.oi.driveJoystick.getX();
-			ySpeed = Robot.oi.driveJoystick.getY();
 			rSpeed = Robot.oi.secondaryJoystick.getZ();
 			break;
 
 		default:
-			xSpeed = Robot.oi.driveJoystick.getX();
-			ySpeed = Robot.oi.driveJoystick.getY();
 			rSpeed = Robot.oi.driveJoystick.getZ();
 			break;
 		}
