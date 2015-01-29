@@ -64,6 +64,7 @@ public class EncodedMotor implements SpeedController {
 	public void disable() {
 		cnt.disable();
 		mtr.disable();
+		mtr.set(0);
 	}
 
 	public void enable() {

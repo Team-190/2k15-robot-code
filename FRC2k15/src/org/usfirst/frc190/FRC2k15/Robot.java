@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -114,9 +115,14 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during test mode
 	 */
 	public void testPeriodic() {
-		LiveWindow.run();
+		//LiveWindow.run();
+		drivetrain.displaySensorData();
+		
 	}
-
+public void testInit(){
+	disableDriveTrain();
+	LiveWindow.setEnabled(false);
+}
 	private void disableDriveTrain() {
 		Iterator<EncodedMotor> itr = EncodedMotor.mtrs.iterator();
 		while (itr.hasNext()) {

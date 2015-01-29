@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -120,6 +121,14 @@ public class Drivetrain extends Subsystem {
 
 	public boolean isSquaredInputs() {
 		return isSquaredInputs;
+	}
+	public void displaySensorData(){
+		SmartDashboard.putNumber("Far Left IR", farLeftIR.getVoltage());
+		SmartDashboard.putNumber("Mid Left IR", midLeftIR.getVoltage());
+		SmartDashboard.putNumber("Far right IR", farRightIR.getVoltage());
+		SmartDashboard.putNumber("Mid right IR", midRightIR.getVoltage());
+		SmartDashboard.putBoolean("Left Bumper", leftLimit.get());
+		SmartDashboard.putBoolean("Right bumper", rightLimit.get());
 	}
 
 }
