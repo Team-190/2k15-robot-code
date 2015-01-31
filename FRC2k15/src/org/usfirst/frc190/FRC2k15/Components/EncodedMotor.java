@@ -28,20 +28,23 @@ public class EncodedMotor implements SpeedController {
 	private Encoder enc;
 	public SpeedController mtr;
 	private PIDController cnt;
-	private static final double distperpulse = 0.0175;//inches per pulse
+	private double maxspd;
+	private static final double distperpulse = 0.135;//inches per pulse 
+	//doesn't follow the math but by testing with a wheel this is much closer to proper number
 	public static ArrayList<EncodedMotor> mtrs = new ArrayList<EncodedMotor>();
 	private static boolean closedloop = true;
 	
 
 	public EncodedMotor(double Kp, double Ki, double Kd, double Kf,
-			Encoder source, SpeedController output, double period, double maxspd) {
+			Encoder source, SpeedController output, double period, double mmaxspd) {
 		cnt = new PIDController(Kp, Ki, Kd, Kf, source, output, period);
 		enc = source;
 		mtr = output;
-		init(maxspd);
+		maxspd = mmaxspd;
+		init();
 	}
 
-	private void init(double maxspd) {
+	private void init() {
 		enc.setDistancePerPulse(distperpulse);
 		enc.setPIDSourceParameter(PIDSource.PIDSourceParameter.kRate);
 		cnt.setInputRange(-maxspd, maxspd);
@@ -57,16 +60,24 @@ public class EncodedMotor implements SpeedController {
 	@Override
 	public void set(double speed, byte syncGroup) {
 		if (closedloop)
-			cnt.setSetpoint(speed);
+			cnt.setSetpoint(speed*maxspd);
 		else
 			mtr.set(speed, syncGroup);
 
 	}
-
+	//mostly used during auto for setting a speed in in/s
+public void setSpd(double speed){
+	if(closedloop){
+		cnt.setSetpoint(speed);
+	}
+	else {
+		mtr.set(speed/maxspd);
+	}
+}
 	@Override
 	public void set(double speed) {
 		if (closedloop)
-			cnt.setSetpoint(speed);
+			cnt.setSetpoint(speed*maxspd);
 		else
 			mtr.set(speed);
 
@@ -88,7 +99,7 @@ public class EncodedMotor implements SpeedController {
 		if (closedloop)
 			cnt.enable();
 	}
-
+	
 	public static void setClosedLoop(boolean closed) {
 		closedloop = closed;
 		Iterator<EncodedMotor> itr = mtrs.iterator();
