@@ -25,10 +25,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Drivetrain extends Subsystem {
-	private double maxSpeed;
 	private boolean isFieldOriented = true;
 	private boolean isSquaredInputs = false;
 	private int drivingMode = 0;
+	private double IRRangeLimit = 2; //voltage of the ir when within range (less than this is within range)
 	// 0 = One Joystick
 	// 1 = Two Joysticks, second joystick has X for Rotation
 	// 2 = Two Joysticks, second joystick has Y for Rotation
@@ -125,5 +125,10 @@ public class Drivetrain extends Subsystem {
 		SmartDashboard.putBoolean("Left Bumper", leftLimit.get());
 		SmartDashboard.putBoolean("Right bumper", rightLimit.get());
 	}
-
+	public boolean getLeftIRWithinRange(){
+		return leftIR.getVoltage()<IRRangeLimit;
+	}
+	public boolean getRightIRWithinRange(){
+		return rightIR.getVoltage()<IRRangeLimit;
+	}
 }
