@@ -65,7 +65,7 @@ public class RegularDrive extends Command {
 			rSpeed = Robot.oi.driveJoystick.getZ();
 			break;
 		}
-		rSpeed = OI.deadband(rSpeed);
+		rSpeed = OI.deadband(rSpeed)/2;
 		if (Robot.drivetrain.isSquaredInputs()) {
 			xSpeed = Math.pow(Math.abs(xSpeed), 2) * Math.signum(xSpeed);
 			ySpeed = Math.pow(Math.abs(ySpeed), 2) * Math.signum(ySpeed);
