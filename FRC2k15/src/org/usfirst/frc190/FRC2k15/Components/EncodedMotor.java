@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.SpeedController;
 /*
@@ -27,7 +26,7 @@ shaft is rotating at 5.03/5.40 times the speed of wheel
 public class EncodedMotor implements SpeedController {
 	private Encoder enc;
 	public SpeedController mtr;
-	private PIDController cnt;
+	private WheelPID cnt;
 	private double maxspd;
 	private static final double distperpulse = 0.135;//inches per pulse 
 	//doesn't follow the math but by testing with a wheel this is much closer to proper number
@@ -37,7 +36,7 @@ public class EncodedMotor implements SpeedController {
 
 	public EncodedMotor(double Kp, double Ki, double Kd, double Kf,
 			Encoder source, SpeedController output, double period, double mmaxspd) {
-		cnt = new PIDController(Kp, Ki, Kd, Kf, source, output, period);
+		cnt = new WheelPID(Ki,Kf,source,output);
 		enc = source;
 		mtr = output;
 		maxspd = mmaxspd;
@@ -47,7 +46,7 @@ public class EncodedMotor implements SpeedController {
 	private void init() {
 		enc.setDistancePerPulse(distperpulse);
 		enc.setPIDSourceParameter(PIDSource.PIDSourceParameter.kRate);
-		cnt.setInputRange(-maxspd, maxspd);
+		//cnt.setInputRange(-maxspd, maxspd);
 		mtrs.add(this);
 		cnt.enable();
 	}
@@ -60,7 +59,7 @@ public class EncodedMotor implements SpeedController {
 	@Override
 	public void set(double speed, byte syncGroup) {
 		if (closedloop)
-			cnt.setSetpoint(speed*maxspd);
+			cnt.setSetPoint(speed*maxspd);
 		else
 			mtr.set(speed, syncGroup);
 
@@ -68,7 +67,7 @@ public class EncodedMotor implements SpeedController {
 	//mostly used during auto for setting a speed in in/s
 public void setSpd(double speed){
 	if(closedloop){
-		cnt.setSetpoint(speed);
+		cnt.setSetPoint(speed);
 	}
 	else {
 		mtr.set(speed/maxspd);
@@ -77,7 +76,7 @@ public void setSpd(double speed){
 	@Override
 	public void set(double speed) {
 		if (closedloop)
-			cnt.setSetpoint(speed*maxspd);
+			cnt.setSetPoint(speed*maxspd);
 		else
 			mtr.set(speed);
 

@@ -122,17 +122,13 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 	}
-
 	/**
 	 * This function is called periodically during test mode
 	 */
 	public void testPeriodic() {
-		LiveWindow.run();
-		//drivetrain.displaySensorData();
-		
+		LiveWindow.run();		
 	}
 public void testInit(){
-	disableDriveTrain();
 	LiveWindow.setEnabled(true);
 }
 	private void disableDriveTrain() {

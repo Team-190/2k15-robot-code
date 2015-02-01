@@ -10,6 +10,7 @@
 
 package org.usfirst.frc190.FRC2k15.commands;
 
+import org.usfirst.frc190.FRC2k15.OI;
 import org.usfirst.frc190.FRC2k15.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -41,8 +42,8 @@ public class RegularDrive extends Command {
 		double ySpeed;
 		double rSpeed;
 		double heading = Robot.drivetrain.getHeading();
-		xSpeed = Robot.oi.driveJoystick.getX();
-		ySpeed = Robot.oi.driveJoystick.getY();
+		xSpeed = OI.deadband(Robot.oi.driveJoystick.getX());
+		ySpeed = OI.deadband(Robot.oi.driveJoystick.getY());
 		switch (Robot.drivetrain.getDrivingMode()) {
 		case 0:
 			rSpeed = Robot.oi.driveJoystick.getZ();
@@ -64,7 +65,7 @@ public class RegularDrive extends Command {
 			rSpeed = Robot.oi.driveJoystick.getZ();
 			break;
 		}
-
+		rSpeed = OI.deadband(rSpeed);
 		if (Robot.drivetrain.isSquaredInputs()) {
 			xSpeed = Math.pow(Math.abs(xSpeed), 2) * Math.signum(xSpeed);
 			ySpeed = Math.pow(Math.abs(ySpeed), 2) * Math.signum(ySpeed);
