@@ -99,10 +99,14 @@ Timer controlLoop; //Timer to call functions every period seconds
 		 enabled = false;
 	 }
 	 public static void initCalibTable(){ //initializes the calibration table for IF on SmartDashboard
-		 SmartDashboard.putNumber("Wheel I", ki);
-		 SmartDashboard.putNumber("Wheel F", kf);
+		 SmartDashboard.putNumber(iTableName, ki);
+		 SmartDashboard.putNumber(fTableName, kf);
 	 }
-	 public synchronized void UpdateCalibTable(){
-		 ki = SmartDashboard.getNumber("Wheel I");
+	 public static synchronized void UpdateCalibTable(){
+		 ki = SmartDashboard.getNumber(iTableName);
+		 kf = SmartDashboard.getNumber(fTableName);
+	 }
+	 public synchronized double getSet(){
+		 return setpoint;
 	 }
 }

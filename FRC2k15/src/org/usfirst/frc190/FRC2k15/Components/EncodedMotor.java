@@ -81,7 +81,9 @@ public void setSpd(double speed){
 			mtr.set(speed);
 
 	}
-
+	public double getSet(){
+		return cnt.getSet();
+	}
 	@Override
 	public double get() {
 		return mtr.get();
