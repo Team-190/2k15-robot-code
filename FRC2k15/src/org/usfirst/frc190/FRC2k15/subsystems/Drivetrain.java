@@ -120,7 +120,7 @@ public class Drivetrain extends Subsystem {
 		return isSquaredInputs; //true is squared false is non squared
 	}
 	public void displaySensorData(){ //displays the sensor data to the SmartDashboard
-		SmartDashboard.putNumber("Left IR", leftIR.getVoltage());; 
+		SmartDashboard.putNumber("Left IR", leftIR.getVoltage());
 		SmartDashboard.putNumber("Right IR", rightIR.getVoltage());
 		SmartDashboard.putBoolean("Left Bumper", leftLimit.get());
 		SmartDashboard.putBoolean("Right bumper", rightLimit.get());
@@ -137,17 +137,20 @@ public class Drivetrain extends Subsystem {
 		frontLeftEncoder.reset();
 		frontRightEncoder.reset();
 	}
-	//returns the distance the robot has travelled in inches
+	//returns the distance the robot has traveled in inches
 	//assumes the robot hasn't rotated
 	//only returns a positive number
 	public double getDistance(){
+		
 		double a = frontLeftEncoder.getDistance();
 		double b = frontRightEncoder.getDistance();
 		double c = backLeftEncoder.getDistance();
 		double d = backRightEncoder.getDistance();
 		
-		double dist = (1/4) * (Math.sqrt(Math.pow((a - c), 2) + Math.pow((a + c), 2)) + 
+		double dist = (0.25) * (Math.sqrt(Math.pow((a - c), 2) + Math.pow((a + c), 2)) + 
 					Math.sqrt(Math.pow((b - d), 2) + Math.pow((b + d), 2)));
+		
+		SmartDashboard.putNumber("Current Distance", dist);
 		
 		return dist;
 	}
