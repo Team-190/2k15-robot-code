@@ -28,7 +28,7 @@ public class Drivetrain extends Subsystem {
 	private boolean isFieldOriented = true;
 	private boolean isSquaredInputs = false;
 	private int drivingMode = 0;
-	private double IRRangeLimit = 2; //voltage of the ir when within range (less than this is within range)
+	private double IRRangeLimit = 1.5; //voltage of the ir when within range (greater than this tote in range)
 	// 0 = One Joystick
 	// 1 = Two Joysticks, second joystick has X for Rotation
 	// 2 = Two Joysticks, second joystick has Y for Rotation
@@ -125,10 +125,10 @@ public class Drivetrain extends Subsystem {
 		SmartDashboard.putBoolean("Left Bumper", leftLimit.get());
 		SmartDashboard.putBoolean("Right bumper", rightLimit.get());
 	}
-	public boolean getLeftIRWithinRange(){
+	public boolean getLeftIRWithinRange(){ //returns if the left ir is clear (false means tote within range)
 		return leftIR.getVoltage()<IRRangeLimit;
 	}
-	public boolean getRightIRWithinRange(){
+	public boolean getRightIRWithinRange(){//returns if the right ir is clear (false means tote within range)
 		return rightIR.getVoltage()<IRRangeLimit;
 	}
 }
