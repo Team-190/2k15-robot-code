@@ -24,6 +24,7 @@ import org.usfirst.frc190.FRC2k15.commands.FourBarStoragePosition;
 import org.usfirst.frc190.FRC2k15.commands.GetIntoAutoPosition;
 import org.usfirst.frc190.FRC2k15.commands.LiftTotes;
 import org.usfirst.frc190.FRC2k15.commands.RegularDrive;
+import org.usfirst.frc190.FRC2k15.commands.ResetEncoders;
 import org.usfirst.frc190.FRC2k15.commands.ResetGyro;
 import org.usfirst.frc190.FRC2k15.commands.SetDrivingMode0;
 import org.usfirst.frc190.FRC2k15.commands.SetDrivingMode1;
