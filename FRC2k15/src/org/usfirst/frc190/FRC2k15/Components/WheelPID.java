@@ -8,39 +8,41 @@ import java.util.Timer;
 import java.util.TimerTask;
 //When using this class put in disabledInit() the disable() function and before use ie TeleopInit() the enable() function
 public class WheelPID{
-private static double ki, kf; //Terms for "IF" control
+private double ki, kf; //Terms for "IF" control
 private Encoder inp; //encoder input for system
 private SpeedController mtr; //speed controller output
 private double setpoint = 0.0; //the set speed for the motor
-private static double maxspd = 108.0;//max inches/second of travel
 private static final long period = 10; //frequency of updating speed in milliseconds
 private static final double maxOut = 1.0; //max and min values for speed controllers
 private static final double minOut = -1.0;
-private static final double minInp = -maxspd; //max and min values for setpoint
-private static final double maxInp = maxspd;
+private double minInp; //max and min values for setpoint
+private double maxInp;
 private static boolean enabled = false; //determines if the controllers are active or not
-private double totalError = 0.0;
-private static final String iTableName = "Wheel I";
+private double totalError = 0.0; //the total error used in calculating I 
+private static final String iTableName = "Wheel I"; //table names for tables on smartdashboard for I and F values
 private static final String fTableName = "Wheel F";
+private String WheelName;
 Timer controlLoop; //Timer to call functions every period seconds
-	public WheelPID(double iki, double ikf, Encoder source, SpeedController output){
+	public WheelPID(double iki, double ikf, double mspd, Encoder source, SpeedController output){
 		ki = iki;
 		kf = ikf;
 		inp = source;
 		mtr = output;
+		minInp = -mspd;
+		maxInp = mspd;
 		controlLoop = new java.util.Timer();
 		controlLoop.schedule(new WheelTask(this), 0L, period);//adds the wheeltask to run every period milliseconds
 	}
-	public static synchronized void setIF(double nI, double nF){ //set the IF values for the control loop
+	public synchronized void setIF(double nI, double nF){ //set the IF values for the control loop
 		ki = nI;
 		kf = nF;
 	}
 	 public synchronized void setSetPoint(double spnt){//called to set the setpoint to a new value
 		 if(spnt<minInp){//if setpoint is below min input
-			 setpoint = minInp;
+			 setpoint = minInp; //set setpoint to min input
 		 }
-		 else if(spnt>maxInp){ //if setpoint is above min input
-			 setpoint = maxInp;
+		 else if(spnt>maxInp){ //if setpoint is above max input
+			 setpoint = maxInp; //set setpoint to max input
 		 }
 		 else{ //otherwise setpoint is right value
 		 setpoint = spnt;
@@ -72,11 +74,11 @@ Timer controlLoop; //Timer to call functions every period seconds
                  }
                  else if(tempOut<minOut){
                 	 tempOut = minOut;
-                 }
+                 }//End of things from PIDController class
                  if(Math.signum(tempOut)!=Math.signum(setpoint)){ //tests if output speed is same direction as setpoint if not then stop motor
                 	 tempOut = 0;
                  }
-                 mtr.pidWrite(tempOut);
+                 mtr.pidWrite(tempOut);//Sets motor to calculated speed
 			 }
 		 }
 	 }
@@ -98,15 +100,19 @@ Timer controlLoop; //Timer to call functions every period seconds
 		 mtr.pidWrite(0);//set speed to 0
 		 enabled = false;
 	 }
-	 public static void initCalibTable(){ //initializes the calibration table for IF on SmartDashboard
-		 SmartDashboard.putNumber(iTableName, ki);
-		 SmartDashboard.putNumber(fTableName, kf);
+	 public void initCalibTable(String thisWheelName){ //initializes the calibration table for IF on SmartDashboard
+		 WheelName = thisWheelName;
+		 SmartDashboard.putNumber(iTableName+WheelName, ki);
+		 SmartDashboard.putNumber(fTableName+WheelName, kf);
 	 }
-	 public static synchronized void UpdateCalibTable(){
-		 ki = SmartDashboard.getNumber(iTableName);
-		 kf = SmartDashboard.getNumber(fTableName);
+	 public synchronized void UpdateCalibTable(){ //updates the IF values based on data in the table on SmartDashboard
+		 if(WheelName != null){//Makes sure that init has already been called
+		 ki = SmartDashboard.getNumber(iTableName+WheelName);
+		 kf = SmartDashboard.getNumber(fTableName+WheelName);
+		 }
+		 
 	 }
-	 public synchronized double getSet(){
+	 public synchronized double getSet(){//gets the setpoint for IF system.
 		 return setpoint;
 	 }
 }
