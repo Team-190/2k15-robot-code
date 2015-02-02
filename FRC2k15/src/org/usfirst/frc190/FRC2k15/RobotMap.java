@@ -47,13 +47,15 @@ public class RobotMap {
     public static AnalogInput drivetrainRightIR;
     public static SpeedController tineGrippergripper;
     public static AnalogPotentiometer tineGrippergripperPot;
+    public static DigitalInput tineGripperopen;
+    public static DigitalInput tineGripperclosed;
     public static AnalogPotentiometer tineElevatorelevatorPot;
     public static SpeedController tineElevatorelevator;
     public static DigitalInput tineElevatortopLimit;
     public static DigitalInput tineElevatorlowerLimit;
     public static SpeedController chainsawchainsaw;
-    public static AnalogPotentiometer chainsawchainsawPot;
     public static DigitalInput chainsawhookDetector;
+    public static Encoder chainsawchainsawEncoder;
     public static AnalogPotentiometer chainsaw4BarfourBarPot;
     public static SpeedController chainsaw4BarfourBar;
     public static DigitalInput chainsaw4BarfourBarExtended;
@@ -106,6 +108,12 @@ public class RobotMap {
         tineGrippergripperPot = new AnalogPotentiometer(5, 1.0, 0.0);
         LiveWindow.addSensor("TineGripper", "gripperPot", tineGrippergripperPot);
         
+        tineGripperopen = new DigitalInput(15);
+        LiveWindow.addSensor("TineGripper", "open", tineGripperopen);
+        
+        tineGripperclosed = new DigitalInput(16);
+        LiveWindow.addSensor("TineGripper", "closed", tineGripperclosed);
+        
         tineElevatorelevatorPot = new AnalogPotentiometer(6, 1.0, 0.0);
         LiveWindow.addSensor("TineElevator", "elevatorPot", tineElevatorelevatorPot);
         
@@ -121,12 +129,13 @@ public class RobotMap {
         chainsawchainsaw = new Victor(6);
         LiveWindow.addActuator("Chainsaw", "chainsaw", (Victor) chainsawchainsaw);
         
-        chainsawchainsawPot = new AnalogPotentiometer(7, 1.0, 0.0);
-        LiveWindow.addSensor("Chainsaw", "chainsawPot", chainsawchainsawPot);
-        
         chainsawhookDetector = new DigitalInput(12);
         LiveWindow.addSensor("Chainsaw", "hookDetector", chainsawhookDetector);
         
+        chainsawchainsawEncoder = new Encoder(17, 18, false, EncodingType.k4X);
+        LiveWindow.addSensor("Chainsaw", "chainsawEncoder", chainsawchainsawEncoder);
+        chainsawchainsawEncoder.setDistancePerPulse(1.0);
+        chainsawchainsawEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
         chainsaw4BarfourBarPot = new AnalogPotentiometer(2, 1.0, 0.0);
         LiveWindow.addSensor("Chainsaw4Bar", "fourBarPot", chainsaw4BarfourBarPot);
         
