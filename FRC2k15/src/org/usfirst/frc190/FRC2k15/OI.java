@@ -43,7 +43,6 @@ import org.usfirst.frc190.FRC2k15.commands.TinesNarrowTote;
 import org.usfirst.frc190.FRC2k15.commands.TinesOpen;
 import org.usfirst.frc190.FRC2k15.commands.TinesWideTote;
 import org.usfirst.frc190.FRC2k15.commands.ToteAlign;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
