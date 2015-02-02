@@ -59,7 +59,7 @@ public class DriveDistDirection extends Command {
 		//getDistance gets the distance the robot has traveled since the encoders were last reset
 		//It doesn't matter which direction the robot moves, even backwards, it still reports the
 		//distance as a positive number
-		return Robot.oi.toteAlignInterupt.get() || (Robot.drivetrain.getDistance() >= Dist);
+		return Robot.oi.toteAlignInterupt.get() /*|| (Robot.drivetrain.getDistance() >= Dist)*/;
 	}
 
 	// Called once after isFinished returns true

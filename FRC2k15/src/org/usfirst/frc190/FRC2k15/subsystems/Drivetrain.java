@@ -131,4 +131,10 @@ public class Drivetrain extends Subsystem {
 	public boolean getRightIRWithinRange(){//returns if the right ir is clear (false means tote within range)
 		return rightIR.getVoltage()<IRRangeLimit;
 	}
+	public void resetEncoders(){
+		backLeftEncoder.reset();
+		backRightEncoder.reset();
+		frontLeftEncoder.reset();
+		frontRightEncoder.reset();
+	}
 }
