@@ -4,7 +4,8 @@ import edu.wpi.first.wpilibj.I2C;
 
 public class VoiceCmds{
 	private static I2C roboDuino;
-	private static final int address = 2;
+	private static final int address = 2; //the I2C address of the roboDuino
+	//Each command for the roboDuino has a set value defined in this list
 	public static final byte s_disable = 0x00;
 	public static final byte s_enable = 0x01;
 	public static final byte s_alignToTote = 0x02;
@@ -24,16 +25,16 @@ public class VoiceCmds{
 	public static final byte s_autoBeginning = 0x10;
 	public static final byte s_teleOpBeginning = 0x11;
 	public static final byte s_test = (byte) 0xFF;
-	private VoiceCmds() {
+	private VoiceCmds() {//all methods static so no need to use the constructor 
 	}
 
-	public static synchronized void init() {
-			roboDuino = new I2C(I2C.Port.kMXP, address);
+	public static synchronized void init() {//call this before attempting to use speak()
+			roboDuino = new I2C(I2C.Port.kMXP, address);//initializes the roboDuino I2C object
 	}
 
-	public static synchronized void speak(byte command) {
-		byte[] data = { command };
-		roboDuino.writeBulk(data);
+	public static synchronized void speak(byte command) {//sends a byte indicating a particular file for the roboDuino to play 
+		byte[] data = { command }; //creates an array of size one for the writeBulk function
+		roboDuino.writeBulk(data); //sends the data over I2C to the roboduino
 	}
 
 }

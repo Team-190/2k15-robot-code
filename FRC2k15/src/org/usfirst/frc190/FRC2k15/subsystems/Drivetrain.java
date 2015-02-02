@@ -62,65 +62,65 @@ public class Drivetrain extends Subsystem {
 	}
 
 	public void MecanumDrive(double xSpeed, double ySpeed, double rSpeed,
-			double heading) {
+			double heading) { //field oriented mecanum drive 
 		robotDriveObject
 				.mecanumDrive_Cartesian(xSpeed, ySpeed, rSpeed, heading);
 	}
 
 	public void MecanumDrivePolar(double speed, double direction,
-			double rotation) {
+			double rotation) { //non field oriented mecanum drive
 		robotDriveObject.mecanumDrive_Polar(speed, direction, rotation);
 	}
 
-	public double getHeading() {
+	public double getHeading() { //gets the angle of the gyroscope
 		return gyro.getAngle();
 	}
 
-	public void resetGyro() {
+	public void resetGyro() { //resets the gyroscope angle
 		gyro.reset();
 	}
 
-	public void setDrivingMode(int inDrivingMode) {
+	public void setDrivingMode(int inDrivingMode) { //sets the driving mode for tele operated drive
 		drivingMode = inDrivingMode;
 	}
 
-	public int getDrivingMode() {
+	public int getDrivingMode() { //gets the driving mode for tele operated drive
 		return drivingMode;
 	}
 
-	public boolean getLeftBumper() {
-		return !leftLimit.get();
+	public boolean getLeftBumper() { //returns the left bumper
+		return !leftLimit.get(); //true if pressed false if not
 	}
 
-	public boolean getRightBumper() {
-		return !rightLimit.get();
+	public boolean getRightBumper() { //returns the right bumper
+		return !rightLimit.get(); //true if pressed false if not
 	}
 
-	public void setFieldOriented() {
+	public void setFieldOriented() { //sets the teleoperated drive to field oriented
 		isFieldOriented = true;
 	}
 
-	public void setRobotOriented() {
+	public void setRobotOriented() { //sets the teleoperated drive to robot oriented
 		isFieldOriented = false;
 	}
 
-	public void setFieldOriented(boolean inIsFieldOriented) {
-		isFieldOriented = inIsFieldOriented;
+	public void setFieldOriented(boolean inIsFieldOriented) { //sets the teleoperated drive to inIsFieldOriented
+		isFieldOriented = inIsFieldOriented; //true is field oriented false is not
 	}
 
-	public boolean isFieldOriented() {
-		return isFieldOriented;
+	public boolean isFieldOriented() { //returns the field oriented status of the robot
+		return isFieldOriented;//true is field oriented false is not
 	}
 
-	public void setSquaredInputs(boolean inIsSquredInputs) {
-		isSquaredInputs = inIsSquredInputs;
+	public void setSquaredInputs(boolean inIsSquredInputs) { //sets the teleoperated drive inputs to squared
+		isSquaredInputs = inIsSquredInputs; //true is squared false is non squared
 	}
 
-	public boolean isSquaredInputs() {
-		return isSquaredInputs;
+	public boolean isSquaredInputs() { //returns the squared inputs status
+		return isSquaredInputs; //true is squared false is non squared
 	}
-	public void displaySensorData(){
-		SmartDashboard.putNumber("Left IR", leftIR.getVoltage());;
+	public void displaySensorData(){ //displays the sensor data to the SmartDashboard
+		SmartDashboard.putNumber("Left IR", leftIR.getVoltage());; 
 		SmartDashboard.putNumber("Right IR", rightIR.getVoltage());
 		SmartDashboard.putBoolean("Left Bumper", leftLimit.get());
 		SmartDashboard.putBoolean("Right bumper", rightLimit.get());
