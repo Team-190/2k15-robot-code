@@ -1084,6 +1084,20 @@ Children:
       Setpoint: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Setpoint,
         validators: null, value: 1.0}
     Base: Setpoint Command
+    Name: TinesContainer
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.ComponentSelectionProperty
+        componentName: PID Subsystem
+        default: None
+        name: Requires
+        validators: *id023
+        value: TineGripper
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+      Setpoint: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Setpoint,
+        validators: null, value: 1.0}
+    Base: Setpoint Command
     Name: TinesOpen
   - Children: []
     Properties:
@@ -1113,6 +1127,20 @@ Children:
         validators: null, value: 1.0}
     Base: Setpoint Command
     Name: TineElevatorTop
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.ComponentSelectionProperty
+        componentName: PID Subsystem
+        default: None
+        name: Requires
+        validators: *id023
+        value: TineElevator
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+      Setpoint: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Setpoint,
+        validators: null, value: 0.25}
+    Base: Setpoint Command
+    Name: TineElevatorHumanLoad
   - Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.ComponentSelectionProperty
@@ -1157,20 +1185,6 @@ Children:
     Name: FourBarHumanLoadingPosition
   - Children: []
     Properties:
-      Requires: !!robotbuilder.data.properties.ComponentSelectionProperty
-        componentName: PID Subsystem
-        default: None
-        name: Requires
-        validators: *id023
-        value: TineElevator
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
-      Setpoint: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Setpoint,
-        validators: null, value: 0.25}
-    Base: Setpoint Command
-    Name: TineElevatorHumanLoad
-  - Children: []
-    Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Drivetrain}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
@@ -1203,7 +1217,7 @@ Children:
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: /Users/Patrick/workspace,
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: /Users/tucker3896/workspace,
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: ../}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
