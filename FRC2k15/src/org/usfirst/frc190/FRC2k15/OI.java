@@ -41,7 +41,7 @@ import org.usfirst.frc190.FRC2k15.commands.SpeedControlledDrive;
 import org.usfirst.frc190.FRC2k15.commands.TineElevatorBottom;
 import org.usfirst.frc190.FRC2k15.commands.TineElevatorHumanLoad;
 import org.usfirst.frc190.FRC2k15.commands.TineElevatorTop;
-//import org.usfirst.frc190.FRC2k15.commands.TinesContainer;
+import org.usfirst.frc190.FRC2k15.commands.TinesContainer;
 import org.usfirst.frc190.FRC2k15.commands.TinesNarrowTote;
 import org.usfirst.frc190.FRC2k15.commands.TinesOpen;
 import org.usfirst.frc190.FRC2k15.commands.TinesWideTote;
@@ -184,7 +184,7 @@ public class OI {
 
         SmartDashboard.putData("TinesNarrowTote", new TinesNarrowTote());
 
-        //SmartDashboard.putData("TinesContainer", new TinesContainer());
+        SmartDashboard.putData("TinesContainer", new TinesContainer());
 
         SmartDashboard.putData("TinesOpen", new TinesOpen());
 

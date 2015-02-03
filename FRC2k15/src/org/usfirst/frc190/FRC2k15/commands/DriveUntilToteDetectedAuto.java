@@ -34,7 +34,7 @@ public class DriveUntilToteDetectedAuto extends Command {
 	protected void execute() {
 		if (!Robot.drivetrain.getLeftBumper()
 				|| !Robot.drivetrain.getRightBumper()) {
-			Robot.drivetrain.MecanumDrive(0, 0.3, 0, 0);
+			Robot.drivetrain.MecanumDrive(0, -0.3, 0, 0);
 		} else {
 			Robot.drivetrain.MecanumDrive(0, 0, 0, 0);
 			finished = true;
