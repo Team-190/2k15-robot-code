@@ -75,6 +75,7 @@ public class DriveDistDirection extends Command {
 	protected void interrupted() {
 		end();
 	}
+	
 	private double getRotate(){//gets the rotation angle to correct for drift
 		double curAngle = Robot.drivetrain.getHeading();
 		if(initAngle>curAngle)
