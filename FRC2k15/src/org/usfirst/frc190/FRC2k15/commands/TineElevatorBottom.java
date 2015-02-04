@@ -52,7 +52,13 @@ public class  TineElevatorBottom extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	s
+    	//This if statement checks to see if the PID loop should continue holding the position
+    	//If holdPosition is true and neither limit switch is pressed, then the PID loop continues
+    	//However, is holdPosition is false then PID stops when the command ends
+    	//And if a limit switch is hit (failed loop), then it also stops
+    	if(Robot.tineElevator.getTopLimit() || Robot.tineElevator.getLowerLimit() || !holdPosition){
+    		Robot.tineElevator.disable();
+    	}
     }
 
     // Called when another command which requires one or more of the same
