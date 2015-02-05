@@ -14,6 +14,7 @@ package org.usfirst.frc190.FRC2k15.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc190.FRC2k15.Robot;
 import org.usfirst.frc190.FRC2k15.RobotMap;
 import org.usfirst.frc190.FRC2k15.Components.I2Cgyro;
 
@@ -38,6 +39,7 @@ private I2Cgyro gyro;
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	gyro.update();//update the gyro
+    	SmartDashboard.putNumber("Old gyro", Robot.drivetrain.getHeading());
     	SmartDashboard.putNumber("Rate", gyro.getZRate());//just for testing be deleted after
     	SmartDashboard.putNumber("Angle", gyro.getHeading());
     }

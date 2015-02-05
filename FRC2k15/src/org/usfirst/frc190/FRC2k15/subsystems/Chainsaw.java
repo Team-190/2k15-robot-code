@@ -13,7 +13,6 @@ package org.usfirst.frc190.FRC2k15.subsystems;
 
 import org.usfirst.frc190.FRC2k15.RobotMap;
 
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;

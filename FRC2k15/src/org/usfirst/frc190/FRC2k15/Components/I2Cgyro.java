@@ -1,11 +1,12 @@
 package org.usfirst.frc190.FRC2k15.Components;
 
 import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class I2Cgyro {
 	private I2C gyro;
-	private final byte address = (byte) 0xD0; // address of the gyro
-	private final byte zRateAddress = 33;
+	private final int address = 0x68; // address of the gyro
+	private final byte zRateAddress = 0x21;
 	private final byte initializeAddress = 0x16;
 	private final byte initializeValue = 0x18;
 	private short zRate;
@@ -19,8 +20,7 @@ public class I2Cgyro {
 	private I2Cgyro() {
 		gyro = new I2C(I2C.Port.kOnboard, address); // gyro is on board I2C port
 													// with address
-		gyro.write(initializeAddress, initializeValue);// used to initialize the
-														// gyro
+		gyro.write(initializeAddress, initializeValue);// used to initialize the gyro
 	}
 
 	public static I2Cgyro getInstance() {
@@ -29,12 +29,13 @@ public class I2Cgyro {
 		}
 		return instance;
 	}
-
 	public void update() {// called every period seconds
 		byte buf[] = new byte[2]; // buffer for the data
-		gyro.read(zRateAddress, 2, buf); // read the zaxis high and low bytes
+		SmartDashboard.putBoolean("GettingData?", gyro.read(zRateAddress, 2, buf)); // read the zaxis high and low bytes
+		//SmartDashboard.putNumber("idx", (double) idx++);
 		zRate = (short) ((buf[0] & 0xFF) << 8 | buf[1] & 0xFF); // convert to a
-																// short
+																// short		
+		SmartDashboard.putNumber("Temp Z", zRate);
 		synchronized (this) {
 			ZRotateRate = (double) zRate / sensitivity; // convert to double in
 														// degrees/second
