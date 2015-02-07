@@ -70,12 +70,12 @@ public class OI {
     public JoystickButton fourBarScoringBtn;
     public JoystickButton fourBarStoringBtn;
     public JoystickButton fourBarHumanBtn;
-    public JoystickButton fourBarManualPlusBtn;
-    public JoystickButton fourBarManualMinusBtn;
-    public JoystickButton tinesInManualBtn;
-    public JoystickButton tinesOutManualBtn;
-    public JoystickButton tinesUpManualBtn;
-    public JoystickButton tinesDownManualBtn;
+    public JoystickButton fourBarManualOutBtn;
+    public JoystickButton fourBarManualInBtn;
+    public JoystickButton tinesManualInBtn;
+    public JoystickButton tinesManualOutBtn;
+    public JoystickButton tinesManualUpBtn;
+    public JoystickButton tinesManualDownBtn;
     public JoystickButton toteAlignConsole;
     public Joystick console;
 
@@ -86,30 +86,30 @@ public class OI {
 
         console = new Joystick(2);
         
-        toteAlignConsole = new JoystickButton(console, 1);
+        toteAlignConsole = new JoystickButton(console, 14);
         toteAlignConsole.whenPressed(new ToteAlign());
-        tinesDownManualBtn = new JoystickButton(console, 1);
-        tinesDownManualBtn.whileHeld(new DoNothing());
-        tinesUpManualBtn = new JoystickButton(console, 1);
-        tinesUpManualBtn.whileHeld(new DoNothing());
-        tinesOutManualBtn = new JoystickButton(console, 1);
-        tinesOutManualBtn.whileHeld(new DoNothing());
-        tinesInManualBtn = new JoystickButton(console, 1);
-        tinesInManualBtn.whileHeld(new DoNothing());
-        fourBarManualMinusBtn = new JoystickButton(console, 1);
-        fourBarManualMinusBtn.whileHeld(new DoNothing());
-        fourBarManualPlusBtn = new JoystickButton(console, 1);
-        fourBarManualPlusBtn.whileHeld(new DoNothing());
-        fourBarHumanBtn = new JoystickButton(console, 6);
-        fourBarHumanBtn.whenPressed(new FourBarHumanLoadingPosition());
-        fourBarStoringBtn = new JoystickButton(console, 5);
+        tinesManualDownBtn = new JoystickButton(console, 13);
+        tinesManualDownBtn.whileHeld(new TinesManualDown());
+        tinesManualUpBtn = new JoystickButton(console, 12);
+        tinesManualUpBtn.whileHeld(new TinesManualUp());
+        tinesManualOutBtn = new JoystickButton(console, 11);
+        tinesManualOutBtn.whileHeld(new TinesManualOut());
+        tinesManualInBtn = new JoystickButton(console, 10);
+        tinesManualInBtn.whileHeld(new TinesManualIn());
+        fourBarManualInBtn = new JoystickButton(console, 9);
+        fourBarManualInBtn.whileHeld(new FourBarManualIn());
+        fourBarManualOutBtn = new JoystickButton(console, 8);
+        fourBarManualOutBtn.whileHeld(new FourBarManualOut());
+        fourBarHumanBtn = new JoystickButton(console, 7);
+        fourBarHumanBtn.whenPressed(new FourBarHumanPosition());
+        fourBarStoringBtn = new JoystickButton(console, 6);
         fourBarStoringBtn.whenPressed(new FourBarStoragePosition());
-        fourBarScoringBtn = new JoystickButton(console, 4);
+        fourBarScoringBtn = new JoystickButton(console, 5);
         fourBarScoringBtn.whenPressed(new FourBarScoringPosition());
-        chainsawManualDownBtn = new JoystickButton(console, 1);
-        chainsawManualDownBtn.whileHeld(new DoNothing());
-        chainsawManualUpBtn = new JoystickButton(console, 1);
-        chainsawManualUpBtn.whileHeld(new DoNothing());
+        chainsawManualDownBtn = new JoystickButton(console, 4);
+        chainsawManualDownBtn.whileHeld(new ChainsawManualDown());
+        chainsawManualUpBtn = new JoystickButton(console, 3);
+        chainsawManualUpBtn.whileHeld(new ChainsawManualUp());
         chainsawMinusBtn = new JoystickButton(console, 2);
         chainsawMinusBtn.whenPressed(new DecreaseChainsawPosition());
         chainsawPlusBtn = new JoystickButton(console, 1);
@@ -205,7 +205,7 @@ public class OI {
 
         SmartDashboard.putData("FourBarStoragePosition", new FourBarStoragePosition());
 
-        SmartDashboard.putData("FourBarHumanLoadingPosition", new FourBarHumanLoadingPosition());
+        SmartDashboard.putData("FourBarHumanPosition", new FourBarHumanPosition());
 
         SmartDashboard.putData("ToteAlign", new ToteAlign());
 

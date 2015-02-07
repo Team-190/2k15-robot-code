@@ -921,13 +921,13 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '1'
+          value: '3'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
           type: Command
           validators: *id019
-          value: Do Nothing
+          value: ChainsawManualUp
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id020
           default: whileHeld
@@ -945,13 +945,13 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '1'
+          value: '4'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
           type: Command
           validators: *id019
-          value: Do Nothing
+          value: ChainsawManualDown
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id020
           default: whileHeld
@@ -969,7 +969,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '4'
+          value: '5'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -993,7 +993,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '5'
+          value: '6'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1017,13 +1017,13 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '6'
+          value: '7'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
           type: Command
           validators: *id019
-          value: FourBarHumanLoadingPosition
+          value: FourBarHumanPosition
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id020
           default: whileHeld
@@ -1041,13 +1041,13 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '1'
+          value: '8'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
           type: Command
           validators: *id019
-          value: Do Nothing
+          value: FourBarManualOut
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id020
           default: whileHeld
@@ -1055,7 +1055,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: FourBarManualPlusBtn
+      Name: FourBarManualOutBtn
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1065,13 +1065,13 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '1'
+          value: '9'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
           type: Command
           validators: *id019
-          value: Do Nothing
+          value: FourBarManualIn
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id020
           default: whileHeld
@@ -1079,7 +1079,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: FourBarManualMinusBtn
+      Name: FourBarManualInBtn
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1089,13 +1089,13 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '1'
+          value: '10'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
           type: Command
           validators: *id019
-          value: Do Nothing
+          value: TinesManualIn
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id020
           default: whileHeld
@@ -1103,7 +1103,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: TinesInManualBtn
+      Name: TinesManualInBtn
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1113,13 +1113,13 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '1'
+          value: '11'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
           type: Command
           validators: *id019
-          value: Do Nothing
+          value: TinesManualOut
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id020
           default: whileHeld
@@ -1127,7 +1127,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: TinesOutManualBtn
+      Name: TinesManualOutBtn
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1137,13 +1137,13 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '1'
+          value: '12'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
           type: Command
           validators: *id019
-          value: Do Nothing
+          value: TinesManualUp
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id020
           default: whileHeld
@@ -1151,7 +1151,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: TinesUpManualBtn
+      Name: TinesManualUpBtn
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1161,13 +1161,13 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '1'
+          value: '13'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
           type: Command
           validators: *id019
-          value: Do Nothing
+          value: TinesManualDown
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id020
           default: whileHeld
@@ -1175,7 +1175,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: TinesDownManualBtn
+      Name: TinesManualDownBtn
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1185,7 +1185,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '1'
+          value: '14'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -1520,7 +1520,7 @@ Children:
       Setpoint: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Setpoint,
         validators: null, value: 0.0}
     Base: Setpoint Command
-    Name: FourBarHumanLoadingPosition
+    Name: FourBarHumanPosition
   - Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
@@ -1583,6 +1583,70 @@ Children:
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: SetChainsawPosition
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: TineElevator}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: TinesManualDown
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: TineGripper}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: TinesManualUp
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: TineGripper}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: TinesManualOut
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: TineGripper}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: TinesManualIn
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Chainsaw4Bar}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: FourBarManualIn
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Chainsaw4Bar}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: FourBarManualOut
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Chainsaw}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: ChainsawManualUp
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Chainsaw}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: ChainsawManualDown
   Properties: {}
   Base: Commands
   Name: Commands
