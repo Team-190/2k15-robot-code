@@ -80,7 +80,7 @@ public class ToteAlign extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		SmartDashboard.putNumber("Tote Align State", state);
-		if (Robot.oi.toteAlignInterupt.get()) {// cancels this command
+		if (Robot.oi.interruptBtn.get()) {// cancels this command
 			finished = true;
 		}
 		switch (state) {
