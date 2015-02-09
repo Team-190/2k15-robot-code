@@ -18,6 +18,8 @@ import org.usfirst.frc190.FRC2k15.Robot;
  *
  */
 public class  TinesManualUp extends Command {
+	
+	private final double speed = 0.3; 
 
     public TinesManualUp() {
         // Use requires() here to declare subsystem dependencies
@@ -35,6 +37,9 @@ public class  TinesManualUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if(!Robot.tineElevator.getTopLimit()){
+    		Robot.tineElevator.setSpeed(speed);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -44,10 +49,12 @@ public class  TinesManualUp extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.tineElevator.setSpeed(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

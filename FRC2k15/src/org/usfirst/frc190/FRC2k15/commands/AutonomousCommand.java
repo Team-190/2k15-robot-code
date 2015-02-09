@@ -17,11 +17,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class AutonomousCommand extends CommandGroup {
 
-	double distanceToAutozone = 6; // ft
-	double speedToAutozone = 0.5; // 50% power
+	double distanceToAutozone = 6;		// ft
+	double speedToAutozone = 0.5; 		// 50% power
 	double headingToAutozone = 0;
-	double autoRotation = 90; // degrees turned to face autozone
-	double distanceBetweenTotes = 2;// ft
+	double autoRotation = 90; 			// degrees turned to face autozone
+	double distanceBetweenTotes = 2;	// ft
 
 	double timeout = 5.00;
 
@@ -49,16 +49,12 @@ public class AutonomousCommand extends CommandGroup {
 		int numtotes = 3;
 		for (int i = 0; i < numtotes; i++) {
 			addSequential(new DriveUntilToteDetectedAuto(), timeout);
-			addSequential(
-					new SetTinesPosition(/* put tine position number here */),
-					timeout);
+			
+			addSequential(new TinesNarrowTote(), timeout);
 			addParallel(new LiftTotes(), timeout);
 			if (i < numtotes - 1) {
 				// Re-open tines and anything else that you need to do.
-				addSequential(new SetTinesPosition(/*
-													 * put tine position number
-													 * here
-													 */), timeout);
+				addSequential(new TinesOpen(), timeout);
 			}
 		}
 

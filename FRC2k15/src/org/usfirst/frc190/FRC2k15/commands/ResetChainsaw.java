@@ -18,7 +18,8 @@ import org.usfirst.frc190.FRC2k15.Robot;
  *
  */
 public class  ResetChainsaw extends Command {//resets the chainsaw to 0 position
-private final double speed = 0.2;
+	private final double speed = 0.2;
+	
     public ResetChainsaw() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -49,13 +50,11 @@ private final double speed = 0.2;
     	Robot.chainsaw.setSpeed(0);//stops moving the chainsaw
     	Robot.chainsaw.setHookPosition((byte)0); //sets current hook position to zero
     	Robot.chainsaw.resetEncoder(); //resets the encoder
-    	Robot.chainsaw.enable();//reenable PID
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
     	Robot.chainsaw.setSpeed(0);//just stop the chainsaw
-    	Robot.chainsaw.enable();//reenable PID 
     }
 }

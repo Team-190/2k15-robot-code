@@ -32,7 +32,6 @@ byte position;
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.chainsaw.setHookPosition(position);
-    	Robot.chainsaw.setSetpoint(Robot.chainsaw.getHookSetPoint());
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -51,5 +50,6 @@ byte position;
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.chainsaw.disable();
     }
 }

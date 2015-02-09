@@ -22,8 +22,8 @@ public class DriveDistDirection extends Command {
 	private double Speed = 0;
 	private double Dist = 0;
 	private double Dir = 0;
-	private double initAngle;
-	private final double turnspd = 0.02;
+//	private double initAngle;
+//	private final double turnspd = 0.02;
 
 	public DriveDistDirection() {
 		// Use requires() here to declare subsystem dependencies
@@ -49,12 +49,13 @@ public class DriveDistDirection extends Command {
 	protected void initialize() {
 		// resetEncoders() resets the position of the encoders
 		Robot.drivetrain.resetEncoders();
-		initAngle = Robot.drivetrain.getHeading();
+//		initAngle = Robot.drivetrain.getHeading();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.drivetrain.MecanumDrivePolar(Speed, Dir, getRotate());
+//		Robot.drivetrain.MecanumDrivePolar(Speed, Dir, getRotate());
+		Robot.drivetrain.MecanumDrivePolar(Speed, Dir, 0);
 	}//should correct and rotate opposite the change in angle
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -76,12 +77,12 @@ public class DriveDistDirection extends Command {
 		end();
 	}
 	
-	private double getRotate(){//gets the rotation angle to correct for drift
-		double curAngle = Robot.drivetrain.getHeading();
-		if(initAngle>curAngle)
-			return turnspd;
-		else if (initAngle<curAngle)
-			return -turnspd;
-		else return 0;
-	}
+//	private double getRotate(){//gets the rotation angle to correct for drift
+//		double curAngle = Robot.drivetrain.getHeading();
+//		if(initAngle>curAngle)
+//			return turnspd;
+//		else if (initAngle<curAngle)
+//			return -turnspd;
+//		else return 0;
+//	}
 }
