@@ -31,7 +31,7 @@ public class EncodedMotor implements SpeedController {
 	private static final double distperpulse = 0.135;//inches per pulse 
 	//doesn't follow the math but by testing with a wheel this is much closer to proper number
 	public static ArrayList<EncodedMotor> mtrs = new ArrayList<EncodedMotor>();
-	private static boolean closedloop = true;
+	private static boolean closedloop = false; //true;
 	
 //Constructor for Class to create an instance
 	public EncodedMotor(double Ki, double Kf,
@@ -43,7 +43,7 @@ public class EncodedMotor implements SpeedController {
 		enc.setDistancePerPulse(distperpulse); //calibrates the encoders to get inches as units
 		enc.setPIDSourceParameter(PIDSource.PIDSourceParameter.kRate); //tells the encoder that Rate is the required information for PID
 		mtrs.add(this);//adds this EncodedMotor to the EncodedMotor list (used for enable/disable)
-		cnt.enable(); //enables the IF controller
+		//cnt.enable(); //enables the IF controller
 	}
 
 	@Override
