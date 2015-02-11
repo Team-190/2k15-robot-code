@@ -130,13 +130,18 @@ public class Robot extends IterativeRobot {
 	public void testInit(){
 		LiveWindow.setEnabled(true);
 	}
+	/**
+	 * Disables the drivetrain IF controls
+	 */
 	private void disableDriveTrain() {
 		Iterator<EncodedMotor> itr = EncodedMotor.mtrs.iterator();
 		while (itr.hasNext()) {
 			itr.next().disable();
 		}
 	}
-
+	/**
+	 * Enables the drivetrain IF controls
+	 */
 	private void enableDriveTrain() {
 		Iterator<EncodedMotor> itr = EncodedMotor.mtrs.iterator();
 		while (itr.hasNext()) {

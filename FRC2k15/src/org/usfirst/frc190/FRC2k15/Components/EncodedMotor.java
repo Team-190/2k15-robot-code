@@ -7,31 +7,17 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.SpeedController;
 /*
-1.72 in encoder shaft - 5.40 in cir 
-1.6 in wheel shaft - 5.03 in cir
-6 in wheels - 18.85 in cir 
-
-shaft is rotating at 5.03/5.40 times the speed of wheel
-0.93 times the speed
-9ft/s max
-9ft/s -> 9*12in/1ft = 108 in/s 
-108in/s * 1 revolution/18.85 in = 5.73 rev/s
-5.73rev/s (wheel) * 0.93 speed ratio (unitless) = 5.33 rev/s 
-5.33 rev/s (encoder) *1000pulse / rev
-5330 pulses/second at max speed
-
-18.85 in/rev (wheel) *.93 (wheelspeed/shaftspeed ratio) = 17.5 in/rev (encoder)
-17.5in/rev (encoder) *1rev/1000pulse = 0.0175 in/pulse
+1 to 1 wheel to encoder rotation
+12.57 in/rev (wheel) *1rev/250pulse = .05 in/pulse
  */
 public class EncodedMotor implements SpeedController {
 	private Encoder enc;
 	public SpeedController mtr;
 	private WheelPID cnt;
 	private double maxspd;
-	private static final double distperpulse = 0.135;//inches per pulse 
-	//doesn't follow the math but by testing with a wheel this is much closer to proper number
+	private static final double distperpulse = 0.05;//inches per pulse 
 	public static ArrayList<EncodedMotor> mtrs = new ArrayList<EncodedMotor>();
-	private static boolean closedloop = false; //true;
+	private static boolean closedloop = true; //true;
 	
 //Constructor for Class to create an instance
 	public EncodedMotor(double Ki, double Kf,
@@ -43,7 +29,6 @@ public class EncodedMotor implements SpeedController {
 		enc.setDistancePerPulse(distperpulse); //calibrates the encoders to get inches as units
 		enc.setPIDSourceParameter(PIDSource.PIDSourceParameter.kRate); //tells the encoder that Rate is the required information for PID
 		mtrs.add(this);//adds this EncodedMotor to the EncodedMotor list (used for enable/disable)
-		//cnt.enable(); //enables the IF controller
 	}
 
 	@Override
