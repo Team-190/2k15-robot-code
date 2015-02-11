@@ -13,7 +13,7 @@ package org.usfirst.frc190.FRC2k15.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * Runs the autonomous code by creating a sequence of commands
  */
 public class AutonomousCommand extends CommandGroup {
 
