@@ -12,7 +12,9 @@
 package org.usfirst.frc190.FRC2k15.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc190.FRC2k15.Robot;
+import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 
 /**
  *
@@ -34,6 +36,7 @@ public class  ChainsawManualUp extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.chainsaw.disable();//bypassing the PID system so need to disable
+    	VoiceCmds.speak(VoiceCmds.s_manualRaiseChainsaw);
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -12,7 +12,9 @@
 package org.usfirst.frc190.FRC2k15.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc190.FRC2k15.Robot;
+import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 
 /**
  *
@@ -31,6 +33,7 @@ public class  FourBarManualIn extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	VoiceCmds.speak(VoiceCmds.s_manualFourBarIn);
     }
 
     // Called repeatedly when this Command is scheduled to run

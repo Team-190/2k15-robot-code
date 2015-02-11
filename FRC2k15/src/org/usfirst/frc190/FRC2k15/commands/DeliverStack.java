@@ -36,6 +36,6 @@ public class DeliverStack extends CommandGroup {
         // arm.
     	
     	addSequential(new FourBarScoringPosition());
-//    	addSequential(new )
+    	addSequential(new ChainsawDeliverStackPosition());
     }
 }

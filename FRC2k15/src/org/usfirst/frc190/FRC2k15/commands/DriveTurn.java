@@ -11,6 +11,7 @@
 package org.usfirst.frc190.FRC2k15.commands;
 
 import org.usfirst.frc190.FRC2k15.Robot;
+import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -22,7 +23,7 @@ public class DriveTurn extends Command {
 	private double timeout = 3;
 
 	private double Degrees = 0;
-	private double tolerance = 10;
+	private double tolerance = 2;
 	private double error;
 	private double Kp = 0.05;
 
@@ -49,6 +50,7 @@ public class DriveTurn extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		Robot.drivetrain.resetGyro();
+		VoiceCmds.speak(VoiceCmds.s_turning);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

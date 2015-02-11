@@ -24,6 +24,14 @@ public class VoiceCmds{
 	public static final byte s_driving = 0x0F;
 	public static final byte s_autoBeginning = 0x10;
 	public static final byte s_teleOpBeginning = 0x11;
+	public static final byte s_manualLowerChainsaw = 0x12;
+	public static final byte s_manualRaiseChainsaw = 0x13;
+	public static final byte s_decreaseChainsawPosn = 0x14;
+	public static final byte s_fourBarHuman = 0x15;
+	public static final byte s_manualFourBarIn = 0x16;
+	public static final byte s_manualFourBarOut = 0x17;
+	public static final byte s_fourBarScoring = 0x18;
+	public static final byte s_fourBarStoring = 0x19;
 	public static final byte s_test = (byte) 0xFF;
 	private VoiceCmds() {//all methods static so no need to use the constructor 
 	}
