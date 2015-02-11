@@ -158,10 +158,10 @@ public class RobotMap {
 
         //Robot motors listed below
         
-        final int frontLeftMotorPin = 3;
-        final int backLeftMotorPin = 1;
-        final int frontRightMotorPin = 0;
-        final int backRightMotorPin = 2;
+        final int backRightMotorPin = 3; // right rear 3
+        final int frontRightMotorPin = 1; // front right 1
+        final int backLeftMotorPin = 0; //left rear 0
+        final int frontLeftMotorPin = 2; // left front 2
         
 		drivetrainfrontLeft = new EncodedMotor(ki , kf,
 				drivetrainfrontLeftEncoder, new Victor(frontLeftMotorPin), maxDriveSpeed);
@@ -190,11 +190,11 @@ public class RobotMap {
 		drivetrainRobotDriveObject.setExpiration(driveObjectExpiration);
 		drivetrainRobotDriveObject.setSensitivity(driveObjectSensitivity);
 		drivetrainRobotDriveObject.setMaxOutput(driveObjectMaxOutput);
-		drivetrainRobotDriveObject.setInvertedMotor(
-				RobotDrive.MotorType.kFrontLeft, true);
-		drivetrainRobotDriveObject.setInvertedMotor(
-				RobotDrive.MotorType.kRearLeft, true);
-		EncodedMotor.setClosedLoop(true);//tells encodedMotor that motors are closed loop controlled
+		drivetrainRobotDriveObject.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
+		drivetrainRobotDriveObject.setInvertedMotor(RobotDrive.MotorType.kRearLeft, false);
+		drivetrainRobotDriveObject.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
+
+		EncodedMotor.setClosedLoop(true); //tells encodedMotor that motors are closed loop controlled
 		gyro = I2Cgyro.getInstance();
 	}
 }
