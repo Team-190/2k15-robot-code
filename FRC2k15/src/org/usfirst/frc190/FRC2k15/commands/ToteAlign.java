@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc190.FRC2k15.Robot;
 import org.usfirst.frc190.FRC2k15.RobotMap;
+import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 
 /**
  * Automatically aligns to a tote in preparation for pickup.
@@ -46,6 +47,7 @@ public class ToteAlign extends Command {
 	protected void initialize() {
 		setLimitState();
 		finished = false;
+		VoiceCmds.speak(VoiceCmds.d_alignTote);
 	}
 
 	private void setLimitState() { // sets state based on pressed limit switches

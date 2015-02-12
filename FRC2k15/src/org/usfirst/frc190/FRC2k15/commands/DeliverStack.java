@@ -10,6 +10,8 @@
 
 
 package org.usfirst.frc190.FRC2k15.commands;
+import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -34,7 +36,7 @@ public class DeliverStack extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	
+    	addSequential(new Speak(VoiceCmds.g_deliverStack));
     	addSequential(new FourBarScoringPosition());
     	addSequential(new ChainsawDeliverStackPosition());
     }

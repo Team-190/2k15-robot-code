@@ -27,7 +27,7 @@ public class DriveUntilToteDetectedAuto extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		VoiceCmds.speak(VoiceCmds.s_lookingForTote);
+		VoiceCmds.speak(VoiceCmds.a_d_lookingForTote);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -48,6 +48,7 @@ public class DriveUntilToteDetectedAuto extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		VoiceCmds.speak(VoiceCmds.a_d_toteFound);
 	}
 
 	// Called when another command which requires one or more of the same

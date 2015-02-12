@@ -50,7 +50,7 @@ public class DriveTurn extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		Robot.drivetrain.resetGyro();
-		VoiceCmds.speak(VoiceCmds.s_turning);
+		VoiceCmds.speak(VoiceCmds.a_d_turning);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

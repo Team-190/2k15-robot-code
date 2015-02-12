@@ -36,7 +36,7 @@ public class  ChainsawManualDown extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.chainsaw.disable();//bypassing the PID system so need to disable
-    	VoiceCmds.speak(VoiceCmds.s_manualLowerChainsaw);
+    	VoiceCmds.speak(VoiceCmds.c_m_lowerChainsaw);
     }
 
     // Called repeatedly when this Command is scheduled to run

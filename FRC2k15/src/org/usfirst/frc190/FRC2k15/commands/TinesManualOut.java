@@ -12,7 +12,9 @@
 package org.usfirst.frc190.FRC2k15.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc190.FRC2k15.Robot;
+import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 
 /**
  *
@@ -33,6 +35,8 @@ public class  TinesManualOut extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.tineGripper.disable();
+    	VoiceCmds.speak(VoiceCmds.t_m_out);
     }
 
     // Called repeatedly when this Command is scheduled to run

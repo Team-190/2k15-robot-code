@@ -30,7 +30,7 @@ public class  SoundCheck extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	VoiceCmds.speak(VoiceCmds.s_test);
+    	VoiceCmds.speak(VoiceCmds.r_test);
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -48,7 +48,7 @@ public class DriveDistDirection extends Command {
 	protected void initialize() {
 		// resetEncoders() resets the position of the encoders
 		Robot.drivetrain.resetEncoders();
-		VoiceCmds.speak(VoiceCmds.s_driving);
+		VoiceCmds.speak(VoiceCmds.a_d_driving);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

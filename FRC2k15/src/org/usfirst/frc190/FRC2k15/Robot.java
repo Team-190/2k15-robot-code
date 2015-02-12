@@ -82,7 +82,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void disabledInit() {
 		disableDriveTrain();
-		VoiceCmds.speak(VoiceCmds.s_disable);
+		VoiceCmds.speak(VoiceCmds.r_disable);
 	}
 
 	public void disabledPeriodic() {
@@ -94,7 +94,7 @@ public class Robot extends IterativeRobot {
 		enableDriveTrain();
 		if (autonomousCommand != null)
 			autonomousCommand.start();
-		VoiceCmds.speak(VoiceCmds.s_autoBeginning);
+		VoiceCmds.speak(VoiceCmds.a_r_autoBeginning);
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 		enableDriveTrain();
-		VoiceCmds.speak(VoiceCmds.s_teleOpBeginning);
+		VoiceCmds.speak(VoiceCmds.r_teleopBeginning);
 	}
 
 	/**

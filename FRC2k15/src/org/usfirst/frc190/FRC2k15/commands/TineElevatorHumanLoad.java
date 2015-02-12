@@ -12,7 +12,9 @@
 package org.usfirst.frc190.FRC2k15.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc190.FRC2k15.Robot;
+import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 
 /**
  *
@@ -32,7 +34,7 @@ public class  TineElevatorHumanLoad extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	VoiceCmds.speak(VoiceCmds.e_human);
     	//This bit of code drives the Tine elevator away from the softstops so PID doesn't fail automatically
     	Robot.tineElevator.disable();
         while(Robot.tineElevator.getLowerLimit()){

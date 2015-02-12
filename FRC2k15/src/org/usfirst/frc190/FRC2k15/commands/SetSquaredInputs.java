@@ -11,6 +11,7 @@
 package org.usfirst.frc190.FRC2k15.commands;
 
 import org.usfirst.frc190.FRC2k15.Robot;
+import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -31,6 +32,7 @@ public class SetSquaredInputs extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		Robot.drivetrain.setSquaredInputs(true);
+		VoiceCmds.speak(VoiceCmds.r_squaredInps);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

@@ -11,6 +11,7 @@
 package org.usfirst.frc190.FRC2k15.commands;
 
 import org.usfirst.frc190.FRC2k15.Robot;
+import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -32,6 +33,7 @@ public class SetFieldOriented extends Command {
 	protected void initialize() {
 		Robot.drivetrain.setFieldOriented();
 		Robot.drivetrain.resetGyro();
+		VoiceCmds.speak(VoiceCmds.r_fieldOrient);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

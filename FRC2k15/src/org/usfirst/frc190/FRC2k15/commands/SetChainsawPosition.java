@@ -12,7 +12,9 @@
 package org.usfirst.frc190.FRC2k15.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc190.FRC2k15.Robot;
+import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 
 /**
  *
@@ -32,6 +34,7 @@ byte position;
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.chainsaw.setHookPosition(position);
+    	VoiceCmds.speak(VoiceCmds.c_setPosn);
     }
 
     // Called repeatedly when this Command is scheduled to run

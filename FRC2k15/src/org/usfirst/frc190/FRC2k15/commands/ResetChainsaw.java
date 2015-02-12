@@ -12,7 +12,9 @@
 package org.usfirst.frc190.FRC2k15.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc190.FRC2k15.Robot;
+import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 
 /**
  *
@@ -33,6 +35,7 @@ public class  ResetChainsaw extends Command {//resets the chainsaw to 0 position
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.chainsaw.disable();//bypassing the PID system so need to disable
+    	VoiceCmds.speak(VoiceCmds.c_reset);
     }
 
     // Called repeatedly when this Command is scheduled to run
