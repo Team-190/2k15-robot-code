@@ -66,6 +66,7 @@ public class VoiceCmds{
 	public static final byte r_robotOrient = 0x2D;
 	public static final byte r_linearInps = 0x2E;
 	public static final byte r_squaredInps = 0x2F;
+	public static final byte r_turningOn = (byte) 0xFE;
 	public static final byte r_test = (byte) 0xFF;
 	private VoiceCmds() {//all methods static so no need to use the constructor 
 	}

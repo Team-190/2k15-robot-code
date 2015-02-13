@@ -100,6 +100,8 @@ public class Robot extends IterativeRobot {
         autoChooser.addObject("Drive to Autozone", new AutoDriveForward());
         autoChooser.addObject("Do Nothing", new DoNothing());
         SmartDashboard.putData("Auto Mode", autoChooser);
+        VoiceCmds.speak(VoiceCmds.r_turningOn);
+        SmartDashboard.putData(Scheduler.getInstance());
 	}
 
 	/**
@@ -141,6 +143,7 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 		enableDriveTrain();
+		SmartDashboard.putData("Running Now", Scheduler.getInstance());
 		VoiceCmds.speak(VoiceCmds.r_teleopBeginning);
 	}
 

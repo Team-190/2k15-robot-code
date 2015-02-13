@@ -1524,14 +1524,6 @@ Children:
   - Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: Drivetrain}
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: false}
-    Base: Command
-    Name: TurnAngle
-  - Children: []
-    Properties:
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Chainsaw}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
@@ -1667,7 +1659,7 @@ Children:
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: /Users/tucker3896/workspace,
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: /Users/Patrick/workspace,
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: ../}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}

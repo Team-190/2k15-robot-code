@@ -158,9 +158,9 @@ public class RobotMap {
 
         //Robot motors listed below
         
-        final int backRightMotorPin = 3; // right rear 3
+        final int backRightMotorPin = 9; // right rear 9
         final int frontRightMotorPin = 1; // front right 1
-        final int backLeftMotorPin = 0; //left rear 0
+        final int backLeftMotorPin = 8; //left rear 8
         final int frontLeftMotorPin = 2; // left front 2
         
 		drivetrainfrontLeft = new EncodedMotor(ki , kf,
