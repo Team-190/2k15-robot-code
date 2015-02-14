@@ -37,6 +37,7 @@ public class  TineElevatorBottom extends Command {
     	VoiceCmds.speak(VoiceCmds.e_bottom);
     	//This bit of code drives the Tine elevator away from the softstops so PID doesn't fail automatically
     	Robot.tineElevator.disable();
+    	//TODO: Better Implementation
         while(Robot.tineElevator.getLowerLimit()){
             Robot.tineElevator.setSpeed(0.2);
         }

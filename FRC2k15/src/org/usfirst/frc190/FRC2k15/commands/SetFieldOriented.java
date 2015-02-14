@@ -32,7 +32,6 @@ public class SetFieldOriented extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		Robot.drivetrain.setFieldOriented();
-		Robot.drivetrain.resetGyro();
 		VoiceCmds.speak(VoiceCmds.r_fieldOrient);
 	}
 

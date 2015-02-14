@@ -35,6 +35,7 @@ public class  TineElevatorTop extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	VoiceCmds.speak(VoiceCmds.e_top);
+    	//TODO: Better Implementation
     	//This bit of code drives the Tine elevator away from the softstops so PID doesn't fail automatically
     	Robot.tineElevator.disable();
         while(Robot.tineElevator.getLowerLimit()){

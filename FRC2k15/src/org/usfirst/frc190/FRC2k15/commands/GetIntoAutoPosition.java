@@ -37,7 +37,7 @@ public class GetIntoAutoPosition extends CommandGroup {
 		// arm.
 
 		VoiceCmds.speak(VoiceCmds.a_d_gettingIntoPosn);
-
+		//TODO: Make this
 		addSequential(new Delay(2));
 	}
 }

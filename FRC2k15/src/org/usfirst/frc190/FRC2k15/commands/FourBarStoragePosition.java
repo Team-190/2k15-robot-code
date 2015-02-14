@@ -32,7 +32,7 @@ public class  FourBarStoragePosition extends Command {
 
  // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	//TODO: Better Implementation
     	//This bit of code drives the fourbar away from the softstops so PID doesn't fail automatically
     	Robot.chainsaw4Bar.disable();
         while(Robot.chainsaw4Bar.getExtended()){

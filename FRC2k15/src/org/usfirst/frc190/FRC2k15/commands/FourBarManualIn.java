@@ -20,7 +20,7 @@ import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
  *
  */
 public class  FourBarManualIn extends Command {
-
+//TODO: Implement this
     public FourBarManualIn() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

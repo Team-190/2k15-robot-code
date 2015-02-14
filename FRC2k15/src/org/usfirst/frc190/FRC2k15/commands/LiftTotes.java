@@ -37,6 +37,7 @@ public class LiftTotes extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 		addSequential(new Speak(VoiceCmds.g_liftTote));
+		//TODO: Implement this
 		addSequential(new Delay(1.5));
 	}
 }

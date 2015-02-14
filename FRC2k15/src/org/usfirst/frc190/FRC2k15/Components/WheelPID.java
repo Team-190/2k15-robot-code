@@ -9,10 +9,15 @@ import java.util.TimerTask;
 
 //When using this class put in disabledInit() the disable() function and before use ie TeleopInit() the enable() function
 public class WheelPID {
-	private double ki, kf; // Terms for "IF" control
-	private Encoder inp; // encoder input for system
-	private SpeedController mtr; // speed controller output
-	private double setpoint = 0.0; // the set speed for the motor
+	//TODO: Fix comments
+	// Terms for "IF" control
+	private double ki, kf; 
+	// encoder input for system
+	private Encoder inp; 
+	// speed controller output
+	private SpeedController mtr; 
+	// the set speed for the motor
+	private double setpoint = 0.0; 
 	private static final long period = 10; // frequency of updating speed in
 											// milliseconds
 	private static final double maxOut = 1.0; // max and min values for speed
@@ -30,7 +35,7 @@ public class WheelPID {
 	private static final String fTableName = "Wheel F";
 	private String WheelName;
 	Timer controlLoop; // Timer to call functions every period seconds
-
+	private static final Object lock = new Object();
 	public WheelPID(double iki, double ikf, double mspd, Encoder source,
 			SpeedController output) {
 		ki = iki;
@@ -69,9 +74,11 @@ public class WheelPID {
 	private void calculate() {// calculates IF and sets speedcontroller to speed
 		boolean c_enabled;
 		Double input, err;
-		synchronized (this) {
+		synchronized (lock) {
 			c_enabled = enabled;// create local clones for use outside of
 								// synchronized context
+		}
+		synchronized(this){
 			input = inp.getRate();
 		}
 		if (c_enabled) {// if controller is enabled
@@ -129,21 +136,27 @@ public class WheelPID {
 
 	}
 
-	public synchronized void enable() { // enables the controller should be
+	public void enable() { // enables the controller should be
 										// called before attempting to use ie
 										// TeleOpInit()
+		synchronized(lock){
 		enabled = true;
+		}
 	}
 
-	public synchronized void disable() { // disables the controller should be
+	public void disable() { // disables the controller should be
 											// called in disabled init and any
 											// other time that the IF system is
 											// to be disabled
-		mtr.pidWrite(0);// set speed to 0
+		synchronized(this){
+			mtr.pidWrite(0);// set speed to 0
+		}
+		synchronized(lock){
 		enabled = false;
+		}
 	}
 
-	public void initCalibTable(String thisWheelName) { // initializes the
+	public synchronized void initCalibTable(String thisWheelName) { // initializes the
 														// calibration table for
 														// IF on SmartDashboard
 		WheelName = thisWheelName;
@@ -161,7 +174,7 @@ public class WheelPID {
 
 	}
 
-	public synchronized double getSet() {// gets the setpoint for IF system.
+	public synchronized double getSetpoint() {// gets the setpoint for IF system.
 		return setpoint;
 	}
 }

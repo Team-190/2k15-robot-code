@@ -46,13 +46,13 @@ public class AutoYellowToteStack extends CommandGroup {
 		// Timeouts on everything to avoid running out of time.
 		
 		//Reset Chainsaw so it is zeroed for the match;
-    	addParallel(new ResetChainsaw());
+    		addSequential(new ResetChainsaw());
 
 		addSequential(new GetIntoAutoPosition(), timeout);
 		int numtotes = 3;
 		for (int i = 0; i < numtotes; i++) {
 			addSequential(new DriveUntilToteDetectedAuto(), timeout);
-			
+			//TODO: Test with PID
 			//addSequential(new TinesNarrowTote(), timeout);
 			//addParallel(new LiftTotes(), timeout);
 			if (i < numtotes - 1) {

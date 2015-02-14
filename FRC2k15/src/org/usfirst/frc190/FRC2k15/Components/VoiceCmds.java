@@ -20,17 +20,20 @@ public class VoiceCmds{
 	//will be x_m_ where x is the subsystem used
 	public static final byte r_disable = 0x00;
 	public static final byte r_enable = 0x01;
-	public static final byte a_d_turning = 0x02;//Auto Section
+	//Auto Section
+	public static final byte a_d_turning = 0x02;
 	public static final byte a_d_driving = 0x03;
 	public static final byte a_r_autoBeginning = 0x04;
 	public static final byte a_d_gettingIntoPosn = 0x05;
 	public static final byte a_d_lookingForTote = 0x06;
 	public static final byte a_d_toteFound = 0x07;
-	public static final byte d_alignTote = 0x08;//Drivetrain Section
+	//Drivetrain Section
+	public static final byte d_alignTote = 0x08;
 	public static final byte d_teleDrive = 0x09;
 	public static final byte d_reset = 0x0A;
 	public static final byte d_resetGyro = 0x0B;
-	public static final byte c_liftTote = 0x0C; //Chainsaw Section
+	//Chainsaw Section
+	public static final byte c_liftTote = 0x0C; 
 	public static final byte c_deliverStack = 0x0D;
 	public static final byte c_decreasePosn = 0x0E;
 	public static final byte c_increasePosn = 0x0F;
@@ -38,24 +41,29 @@ public class VoiceCmds{
 	public static final byte c_setPosn = 0x11;
 	public static final byte c_m_lowerChainsaw = 0x12;
 	public static final byte c_m_raiseChainsaw = 0x13;
-	public static final byte f_humanPosn = 0x14;//Fourbar Section
+	//Fourbar Section
+	public static final byte f_humanPosn = 0x14;
 	public static final byte f_scoringPosn = 0x15;
 	public static final byte f_storingPosn = 0x16;
 	public static final byte f_m_in = 0x17;
 	public static final byte f_m_out = 0x18;
-	public static final byte t_rC = 0x19; //Tines Section
+	//Tines Section
+	public static final byte t_rC = 0x19; 
 	public static final byte t_narrowTote = 0x1A;
 	public static final byte t_open = 0x1B;
 	public static final byte t_wideTote = 0x1C;
 	public static final byte t_m_in = 0x1D;
 	public static final byte t_m_out = 0x1E;
-	public static final byte e_bottom = 0x1F; //Tine Elevator Section
+	//Tine Elevator Section
+	public static final byte e_bottom = 0x1F; 
 	public static final byte e_top = 0x20;
 	public static final byte e_human = 0x21;
 	public static final byte e_m_up = 0x22;
 	public static final byte e_m_down = 0x23;
-	public static final byte g_deliverStack = 0x24; //Command Group Section
+	//Command Group Section
+	public static final byte g_deliverStack = 0x24; 
 	public static final byte g_liftTote = 0x25;
+	//Generic Robot Function Section
 	public static final byte r_teleopBeginning = 0x26;
 	public static final byte r_delay = 0x27;
 	public static final byte r_dm0 = 0x28;

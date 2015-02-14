@@ -9,10 +9,6 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Speak extends Command {
 private byte speak_cmd;
-    public Speak() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    }
     public Speak(byte cmd){
     	speak_cmd = cmd;
     }

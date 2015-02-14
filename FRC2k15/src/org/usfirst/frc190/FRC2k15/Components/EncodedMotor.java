@@ -6,90 +6,136 @@ import java.util.Iterator;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.SpeedController;
+
 /*
-1 to 1 wheel to encoder rotation
-12.57 in/rev (wheel) *1rev/250pulse = .05 in/pulse
+ 1 to 1 wheel to encoder rotation
+ 12.57 in/rev (wheel) *1rev/250pulse = .05 in/pulse
  */
 public class EncodedMotor implements SpeedController {
 	private Encoder enc;
 	public SpeedController mtr;
 	private WheelPID cnt;
-	private double maxspd;
-	private static final double distperpulse = 0.05;//inches per pulse 
+	private double maxSpd;
+	// inches per pulse
+	private static final double distPerPulse = 0.05;
 	public static ArrayList<EncodedMotor> mtrs = new ArrayList<EncodedMotor>();
-	private static boolean closedloop = true; //true;
-	
-//Constructor for Class to create an instance
-	public EncodedMotor(double Ki, double Kf,
-			Encoder source, SpeedController output, double mmaxspd) {
-		cnt = new WheelPID(Ki,Kf,mmaxspd,source,output); //creates the IF controller for Closed loop control
-		enc = source;//saves the encoder in a class variable
-		mtr = output;//saves the motor in a class variable
-		maxspd = mmaxspd; //notes the max speed for the object
-		enc.setDistancePerPulse(distperpulse); //calibrates the encoders to get inches as units
-		enc.setPIDSourceParameter(PIDSource.PIDSourceParameter.kRate); //tells the encoder that Rate is the required information for PID
-		mtrs.add(this);//adds this EncodedMotor to the EncodedMotor list (used for enable/disable)
+	private static boolean closedLoop = true; 
+
+	// Constructor for Class to create an instance
+	public EncodedMotor(double Ki, double Kf, Encoder source,
+			SpeedController output, double mmaxspd) {
+		// creates the IF controller for Closed loop control
+		cnt = new WheelPID(Ki, Kf, mmaxspd, source, output);
+		enc = source;
+		mtr = output;
+		// notes the max speed for the object
+		maxSpd = mmaxspd;
+		// calibrates the encoders to get inches as units
+		enc.setDistancePerPulse(distPerPulse);
+		// tells the encoder that Rate is the required information for PID
+		enc.setPIDSourceParameter(PIDSource.PIDSourceParameter.kRate);
+		// adds this EncodedMotor to the EncodedMotor list (used for
+		// enable/disable)
+		mtrs.add(this);
 	}
 
+	// Required function from speed controller implement
 	@Override
-	public void pidWrite(double output) { //Required function from speed controller implement
-		set(output); //not likely to be used but required to have
+	public void pidWrite(double output) {
+		// not likely to be used but required to have
+		set(output);
 	}
 
+	// Required function from speed controller implement
 	@Override
-	public void set(double speed, byte syncGroup) { //Required function from speed controller implement
-		if (closedloop) //if closed loop set 
-			cnt.setSetPoint(speed*maxspd); //set the setpoint to speed * maxspd to get speed in in/s
-		else //if not closed loop
-			mtr.set(speed, syncGroup); //call the function on the motor
+	public void set(double speed, byte syncGroup) {
+		// if closed loop set
+		if (closedLoop)
+			// set the setpoint to speed * maxspd to get speed in in/s
+			cnt.setSetPoint(speed * maxSpd);
+		// if not closed loop
+		else
+			// call the function on the motor
+			mtr.set(speed, syncGroup);
 
 	}
-	//mostly used during auto for setting a speed in in/s
-public void setSpd(double speed){ //sets a speed in in/s
-	if(closedloop){ //if closed loop control is enabled
-		cnt.setSetPoint(speed); //Set the closed loop speed control to the speed in in/s
+
+	// mostly used during auto for setting a speed in in/s
+	// sets a speed in in/s
+	public void setSpd(double speed) {
+		// if closed loop control is enabled
+		if (closedLoop) {
+			// Set the closed loop speed control to the speed in in/s
+			cnt.setSetPoint(speed);
+		}
+		// closed loop control disabled
+		else {
+			// calls the original set function with a properly scaled value
+			mtr.set(speed / maxSpd);
+			// This really should not be done since defeats the purpose of
+			// setSpd()
+		}
 	}
-	else { //closed loop control disabled
-		mtr.set(speed/maxspd); //calls the original set function with a properly scaled value
-	} //This really should not be done since defeats the purpose of setSpd()
-}
+
+	// Called to set the speed of motor
 	@Override
-	public void set(double speed) {//Called to set the speed of motor
-		if (closedloop) //if closed loop control is enabled
-			cnt.setSetPoint(speed*maxspd); //set the Setpoint on controller to speed (-1.0 to 1.0) * maxspeed to get proper units
-		else //No closed loop control
-			mtr.set(speed); //set the motor directly to the speed
+	public void set(double speed) {
+		// if closed loop control is enabled
+		if (closedLoop)
+			// set the Setpoint on controller to speed (-1.0 to 1.0) * maxspeed
+			// to get proper units
+			cnt.setSetPoint(speed * maxSpd);
+		else
+			// No closed loop control
+			// set the motor directly to the speed
+			mtr.set(speed);
 
 	}
-	public double getSet(){ //gets the controllers setpoint
-		return cnt.getSet();
+
+	// gets the controllers setpoint
+	public double getSetpoint() {
+		return cnt.getSetpoint();
 	}
+
+	// gets the speed that the motor is set at
 	@Override
-	public double get() { //gets the speed that the motor is set at
+	public double get() {
 		return mtr.get();
 	}
 
+	// when a motor needs to be disabled this function is called
 	@Override
-	public void disable() { //when a motor needs to be disabled this function is called
-		cnt.disable(); //stops the IF controller 
-		mtr.disable(); //stops the motor
-		mtr.set(0); //sets the motor to speed 0 (not moving)
+	public void disable() {
+		// stops the IF controller
+		cnt.disable();
+		// stops the motor
+		mtr.disable();
+		// sets the motor to speed 0 (not moving)
+		mtr.set(0);
 	}
 
-	public void enable() { //called to reenable the closed loop control of motors
-		if (closedloop) //if closed loop is enabled
-			cnt.enable(); //enable the IF controller
+	// called to reenable the closed loop control of motors
+	public void enable() {
+		// if closed loop is enabled
+		if (closedLoop)
+			// enable the IF controller
+			cnt.enable();
 	}
-	
-	public static void setClosedLoop(boolean closed) { //sets the closed loop control for all EncodedMotors
-		closedloop = closed; //sets the class variable to the input variable
-		Iterator<EncodedMotor> itr = mtrs.iterator(); //gets an iterator containing all EncodedMotors
-		if (closed) { //if closed loop is enabled
-			while (itr.hasNext()) //for all EncodedMotors
-				itr.next().cnt.enable(); //enable the closed loop control
-		} else { //if closed loop is disabled
-			while (itr.hasNext()) { //for all EncodedMotors
-				itr.next().cnt.disable(); //disable the closed loop control
+
+	// sets the closed loop control for all EncodedMotors
+	public static void setClosedLoop(boolean closed) {
+		closedLoop = closed;
+		// if closed loop is enabled
+		if (closed) {
+			// for all EncodedMotors
+			for (EncodedMotor encmtr : mtrs) {
+				encmtr.enable();
+			}
+			// if closed loop is disabled
+		} else {
+			// for all EncodedMotors
+			for (EncodedMotor encmtr : mtrs) {
+				encmtr.disable();
 			}
 		}
 	}

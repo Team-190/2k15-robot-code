@@ -35,6 +35,7 @@ public class  TinesNarrowTote extends Command {
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
 	    	VoiceCmds.speak(VoiceCmds.t_narrowTote);
+	    	//TODO: Better Implementation
 	    	//This bit of code drives the gripper away from the softstops so PID doesn't fail automatically
 	    	Robot.tineGripper.disable();
 	        while(Robot.tineGripper.getOpen()){

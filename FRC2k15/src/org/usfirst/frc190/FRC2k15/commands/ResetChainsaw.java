@@ -51,7 +51,7 @@ public class  ResetChainsaw extends Command {//resets the chainsaw to 0 position
     // Called once after isFinished returns true
     protected void end() {
     	Robot.chainsaw.setSpeed(0);//stops moving the chainsaw
-    	Robot.chainsaw.setHookPosition((byte)0); //sets current hook position to zero
+    	Robot.chainsaw.setHookPosition(0); //sets current hook position to zero
     	Robot.chainsaw.resetEncoder(); //resets the encoder
     }
 
