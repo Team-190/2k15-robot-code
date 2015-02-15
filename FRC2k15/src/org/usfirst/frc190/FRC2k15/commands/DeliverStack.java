@@ -10,6 +10,8 @@
 
 package org.usfirst.frc190.FRC2k15.commands;
 
+import org.usfirst.frc190.FRC2k15.Robot;
+import org.usfirst.frc190.FRC2k15.Components.LimitedPIDSubsystemSetpointCommand;
 import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -21,7 +23,7 @@ public class DeliverStack extends CommandGroup {
 
 	public DeliverStack() {
 		addSequential(new Speak(VoiceCmds.g_deliverStack));
-		addSequential(new FourBarScoringPosition());
+		addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar,Robot.chainsaw4Bar.scoringPosition, true));
 		addSequential(new ChainsawDeliverStackPosition());
 	}
 }
