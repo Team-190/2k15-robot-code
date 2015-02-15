@@ -157,7 +157,7 @@ Children:
           default: '0'
           name: Input Channel (Digital)
           validators: &id008 [DigitalChannel]
-          value: '8'
+          value: '14'
       Base: Limit Switch
       Name: leftLimit
     - Children: []
@@ -167,7 +167,7 @@ Children:
           default: '0'
           name: Input Channel (Digital)
           validators: *id008
-          value: '9'
+          value: '13'
       Base: Limit Switch
       Name: rightLimit
     - Children: []
@@ -520,7 +520,7 @@ Children:
           default: '0'
           name: Input Channel (Digital)
           validators: *id008
-          value: '13'
+          value: '8'
       Base: Limit Switch
       Name: fourBarExtended
     - Children: []
@@ -530,7 +530,7 @@ Children:
           default: '0'
           name: Input Channel (Digital)
           validators: *id008
-          value: '14'
+          value: '9'
       Base: Limit Switch
       Name: fourBarRetracted
     Properties:
@@ -543,7 +543,7 @@ Children:
       F: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: F, validators: null,
         value: 0.0}
       Tolerance: !!robotbuilder.data.properties.DoubleProperty {default: 0.2, name: Tolerance,
-        validators: null, value: 0.2}
+        validators: null, value: 0.005}
       I: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: I, validators: null,
         value: 0.0}
       Minimum Input: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: Minimum Input,
@@ -553,7 +553,7 @@ Children:
       Minimum Output: !!robotbuilder.data.properties.DoubleProperty {default: -1,
         name: Minimum Output, validators: null, value: -1.0}
       P: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: P, validators: null,
-        value: 1.0}
+        value: -10.0}
       Input: !!robotbuilder.data.properties.ChildSelectionProperty
         default: 0
         name: Input

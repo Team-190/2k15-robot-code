@@ -18,23 +18,24 @@ public class WheelPID {
 	private SpeedController mtr; 
 	// the set speed for the motor
 	private double setpoint = 0.0; 
-	private static final long period = 10; // frequency of updating speed in
-											// milliseconds
-	private static final double maxOut = 1.0; // max and min values for speed
-												// controllers
+	// frequency of updating speed in milliseconds
+	private static final long period = 10; 
+	//max and min values for speed controllers
+	private static final double maxOut = 1.0; 
 	private static final double minOut = -1.0;
-	private double minInp; // max and min values for setpoint
+	// max and min values for setpoint
+	private double minInp; 
 	private double maxInp;
-	private static boolean enabled = false; // determines if the controllers are
-											// active or not
-	private double totalError = 0.0; // the total error used in calculating I
-	private static final String iTableName = "Wheel I"; // table names for
-														// tables on
-														// smartdashboard for I
-														// and F values
+	// determines if the controllers are active or not
+	private static boolean enabled = false; 
+	// the total error used in calculating I
+	private double totalError = 0.0; 
+	// table names for tables on smartdashboard for I and F values
+	private static final String iTableName = "Wheel I"; 
 	private static final String fTableName = "Wheel F";
 	private String WheelName;
-	Timer controlLoop; // Timer to call functions every period seconds
+	// Timer to call functions every period seconds
+	Timer controlLoop; 
 	private static final Object lock = new Object();
 	public WheelPID(double iki, double ikf, double mspd, Encoder source,
 			SpeedController output) {
@@ -45,45 +46,48 @@ public class WheelPID {
 		minInp = -mspd;
 		maxInp = mspd;
 		controlLoop = new java.util.Timer();
-		controlLoop.schedule(new WheelTask(this), 0L, period);// adds the
-																// wheeltask to
-																// run every
-																// period
-																// milliseconds
+		// adds the wheeltask to run every period milliseconds
+		controlLoop.schedule(new WheelTask(this), 0L, period);
 	}
-
-	public synchronized void setIF(double nI, double nF) { // set the IF values
-															// for the control
-															// loop
+/**
+ * 
+ * @param nI the I value to set for the IF control
+ * @param nF the F value to set for the IF control
+ */
+	public synchronized void setIF(double nI, double nF) { 
 		ki = nI;
 		kf = nF;
 	}
-
-	public synchronized void setSetPoint(double spnt) {// called to set the
-														// setpoint to a new
-														// value
-		if (spnt < minInp) {// if setpoint is below min input
-			setpoint = minInp; // set setpoint to min input
-		} else if (spnt > maxInp) { // if setpoint is above max input
-			setpoint = maxInp; // set setpoint to max input
-		} else { // otherwise setpoint is right value
+/**
+ * 
+ * @param spnt the new speed in inches per second to set the motor to
+ */
+	public synchronized void setSetPoint(double spnt) {
+		if (spnt < minInp) {
+			setpoint = minInp; 
+		} else if (spnt > maxInp) { 
+			setpoint = maxInp; 
+		} else { 
 			setpoint = spnt;
 		}
 	}
-
-	private void calculate() {// calculates IF and sets speedcontroller to speed
+/**
+ * Calculates the speed to set the speed controller to
+ */
+	private void calculate() {
 		boolean c_enabled;
 		Double input, err;
+		// create local clones for use outside of synchronized context
 		synchronized (lock) {
-			c_enabled = enabled;// create local clones for use outside of
-								// synchronized context
+			c_enabled = enabled;
 		}
 		synchronized(this){
 			input = inp.getRate();
 		}
-		if (c_enabled) {// if controller is enabled
+		if (c_enabled) {
 			err = setpoint - input;
-			synchronized (this) { // from PIDController class
+			synchronized (this) {
+				 // from PIDController class
 				double potentialIGain = (totalError + err) * ki;
 				if (potentialIGain < maxOut) {
 					if (potentialIGain > minOut) {
@@ -100,81 +104,82 @@ public class WheelPID {
 				} else if (tempOut < minOut) {
 					tempOut = minOut;
 				}// End of things from PIDController class
-				if (Math.signum(tempOut) != Math.signum(setpoint)) { // tests if
-																		// output
-																		// speed
-																		// is
-																		// same
-																		// direction
-																		// as
-																		// setpoint
-																		// if
-																		// not
-																		// then
-																		// stop
-																		// motor
+				// tests if output speed is same direction as setpoint if not then stop motor
+				if (Math.signum(tempOut) != Math.signum(setpoint)) { 
 					tempOut = 0;
 				}
 				mtr.pidWrite(tempOut);// Sets motor to calculated speed
 			}
 		}
 	}
-
+/**
+ * Class to run the IF calculations in seperate thread
+ * @author Patrick
+ *
+ */
 	private class WheelTask extends TimerTask {
 		private WheelPID wheel;
-
-		public WheelTask(WheelPID whl) {// initializes a timer with the proper
-										// wheelPID object
+		/**
+		 *  initializes a timer with the proper wheelPID object
+		 * @param whl the WheelPID object to be used with this class
+		 */
+		public WheelTask(WheelPID whl) {
 			wheel = whl;
 		}
 
 		@Override
-		public void run() {// called every period milliseconds to set mtr output
-							// to correct speed
+		public void run() {
 			wheel.calculate();
 		}
 
 	}
-
-	public void enable() { // enables the controller should be
-										// called before attempting to use ie
-										// TeleOpInit()
+/**
+ * Enables the IF controls 
+ * Should be called before attempting to use the controllers
+ */
+	public void enable() { 
 		synchronized(lock){
 		enabled = true;
 		}
 	}
-
-	public void disable() { // disables the controller should be
-											// called in disabled init and any
-											// other time that the IF system is
-											// to be disabled
+/**
+ * Disables the IF controls
+ * Should be called in disabledinit and any other times when IF should be disabled
+ */
+	public void disable() { 
 		synchronized(this){
-			mtr.pidWrite(0);// set speed to 0
+			// set speed to 0
+			mtr.pidWrite(0);
 		}
 		synchronized(lock){
 		enabled = false;
 		}
 	}
-
-	public synchronized void initCalibTable(String thisWheelName) { // initializes the
-														// calibration table for
-														// IF on SmartDashboard
+/**
+ * Initializes the SmartDashboard calibration table
+ * @param thisWheelName The name of the wheel to go on the table ie right front wheel
+ */
+	public synchronized void initCalibTable(String thisWheelName) { 
 		WheelName = thisWheelName;
 		SmartDashboard.putNumber(iTableName + WheelName, ki);
 		SmartDashboard.putNumber(fTableName + WheelName, kf);
 	}
-
-	public synchronized void UpdateCalibTable() { // updates the IF values based
-													// on data in the table on
-													// SmartDashboard
-		if (WheelName != null) {// Makes sure that init has already been called
+/**
+ * Updates the IF values based on the table in the SmartDashboard
+ */
+	public synchronized void UpdateCalibTable() { 
+		// Makes sure that init has already been called
+		if (WheelName != null) {
 			ki = SmartDashboard.getNumber(iTableName + WheelName);
 			kf = SmartDashboard.getNumber(fTableName + WheelName);
 		}
 
 	}
-
-	public synchronized double getSetpoint() {// gets the setpoint for IF system.
+/**
+ * gets the setpoint for IF system.
+ * @return the setpoint
+ */
+	public synchronized double getSetpoint() { 
 		return setpoint;
 	}
 }

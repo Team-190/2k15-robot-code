@@ -95,10 +95,10 @@ public class RobotMap {
         drivetrainGyro = new Gyro(0);
         LiveWindow.addSensor("Drivetrain", "Gyro", drivetrainGyro);
         drivetrainGyro.setSensitivity(0.007);
-        drivetrainleftLimit = new DigitalInput(8);
+        drivetrainleftLimit = new DigitalInput(14);
         LiveWindow.addSensor("Drivetrain", "leftLimit", drivetrainleftLimit);
         
-        drivetrainrightLimit = new DigitalInput(9);
+        drivetrainrightLimit = new DigitalInput(13);
         LiveWindow.addSensor("Drivetrain", "rightLimit", drivetrainrightLimit);
         
         drivetrainLeftIR = new AnalogInput(1);
@@ -147,10 +147,10 @@ public class RobotMap {
         chainsaw4BarfourBar = new Victor(7);
         LiveWindow.addActuator("Chainsaw4Bar", "fourBar", (Victor) chainsaw4BarfourBar);
         
-        chainsaw4BarfourBarExtended = new DigitalInput(13);
+        chainsaw4BarfourBarExtended = new DigitalInput(8);
         LiveWindow.addSensor("Chainsaw4Bar", "fourBarExtended", chainsaw4BarfourBarExtended);
         
-        chainsaw4BarfourBarRetracted = new DigitalInput(14);
+        chainsaw4BarfourBarRetracted = new DigitalInput(9);
         LiveWindow.addSensor("Chainsaw4Bar", "fourBarRetracted", chainsaw4BarfourBarRetracted);
         
 
@@ -191,7 +191,6 @@ public class RobotMap {
 		drivetrainRobotDriveObject.setSensitivity(driveObjectSensitivity);
 		drivetrainRobotDriveObject.setMaxOutput(driveObjectMaxOutput);
 		drivetrainRobotDriveObject.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
-		drivetrainRobotDriveObject.setInvertedMotor(RobotDrive.MotorType.kRearLeft, false);
 		drivetrainRobotDriveObject.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
 
 		EncodedMotor.setClosedLoop(true); //tells encodedMotor that motors are closed loop controlled
