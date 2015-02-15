@@ -143,8 +143,6 @@ public class OI {
 
         SmartDashboard.putData("DriveDistDirection", new DriveDistDirection());
 
-        SmartDashboard.putData("AutoYToteCollect", new AutoYToteCollect());
-
         SmartDashboard.putData("LiftTotes", new LiftTotes());
 
         SmartDashboard.putData("RegularDrive", new RegularDrive());

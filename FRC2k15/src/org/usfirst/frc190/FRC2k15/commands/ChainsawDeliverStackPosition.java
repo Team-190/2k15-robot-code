@@ -17,7 +17,7 @@ import org.usfirst.frc190.FRC2k15.Robot;
 import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 
 /**
- *
+ *Causes chainsaw to drop and deliver stack
  */
 public class  ChainsawDeliverStackPosition extends Command {
 

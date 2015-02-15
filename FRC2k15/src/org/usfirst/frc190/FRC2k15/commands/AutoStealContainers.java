@@ -10,6 +10,9 @@
 
 
 package org.usfirst.frc190.FRC2k15.commands;
+import org.usfirst.frc190.FRC2k15.Robot;
+import org.usfirst.frc190.FRC2k15.Components.LimitedPIDSubsystemSetpointCommand;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -18,35 +21,18 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoStealContainers extends CommandGroup {
     
     public  AutoStealContainers() {
-        // Add Commands here:
-        // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
-        // these will run in order.
-
-        // To run multiple commands at the same time,
-        // use addParallel()
-        // e.g. addParallel(new Command1());
-        //      addSequential(new Command2());
-        // Command1 and Command2 will run in parallel.
-
-        // A command group will require all of the subsystems that each member
-        // would require.
-        // e.g. if Command1 requires chassis, and Command2 requires arm,
-        // a CommandGroup containing them would require both the chassis and the
-        // arm.
-    	
     	//Reset Chainsaw so it is zeroed for the match;
     	addParallel(new ResetChainsaw());
     	//Drive backwards to step
-    	addSequential(new DriveDistDirection(0.5, 54, 180));	//Timeout of 4 seconds
+    	addSequential(new DriveDistDirection(0.5, 54, 180));
     	//Wait for balls to fall in
     	addSequential(new Delay(2));
     	//drive forward into autozone
     	addSequential(new DriveDistDirection(0.5, 96, 0), 8);	//Timeout of 8 seconds
     	//TODO: Test This
     	//Extend Chainsaw 4-Bar to close WOD
-    	//addSequential(new FourBarScoringPosition(), 2);			//Timeout of 2 seconds
+    	//addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar,Robot.chainsaw4Bar.scoringPosition, true), 2);			//Timeout of 2 seconds
     	//Retract Chainsaw
-    	//addSequential(new FourBarStoragePosition(), 2);			//Timeout of 2 seconds
+    	//addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar,Robot.chainsaw4Bar.storagePosition, true), 2);			//Timeout of 2 seconds
     }
 }

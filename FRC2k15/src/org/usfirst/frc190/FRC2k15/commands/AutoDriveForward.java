@@ -13,7 +13,7 @@ package org.usfirst.frc190.FRC2k15.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ *Basic drive forwards auto command group
  */
 public class AutoDriveForward extends CommandGroup {
     
