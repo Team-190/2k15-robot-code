@@ -418,7 +418,7 @@ Children:
           validators: *id002
           value: '8'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
-          name: Distance Per Pulse, validators: null, value: 1.0}
+          name: Distance Per Pulse, validators: null, value: 0.02}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id003
           default: kRate
@@ -443,7 +443,7 @@ Children:
       Name: chainsawEncoder
     Properties:
       Limit Output: !!robotbuilder.data.properties.BooleanProperty {default: false,
-        name: Limit Output, validators: null, value: false}
+        name: Limit Output, validators: null, value: true}
       D: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: D, validators: null,
         value: 0.0}
       Continuous: !!robotbuilder.data.properties.BooleanProperty {default: false,
@@ -459,7 +459,7 @@ Children:
       Limit Input: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Limit Input, validators: null, value: false}
       Minimum Output: !!robotbuilder.data.properties.DoubleProperty {default: -1,
-        name: Minimum Output, validators: null, value: -1.0}
+        name: Minimum Output, validators: null, value: -0.5}
       P: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: P, validators: null,
         value: -1.0}
       Input: !!robotbuilder.data.properties.ChildSelectionProperty
@@ -469,7 +469,7 @@ Children:
         validators: *id016
         value: Chainsaw chainsawEncoder
       Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Maximum Output,
-        validators: null, value: 1.0}
+        validators: null, value: 0.5}
       Output: !!robotbuilder.data.properties.ChildSelectionProperty
         default: 0
         name: Output
@@ -477,7 +477,7 @@ Children:
         validators: *id017
         value: Chainsaw chainsaw
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: AnalogDriveChainsaw}
+        name: Default Command, type: Command, validators: null, value: None}
       Maximum Input: !!robotbuilder.data.properties.DoubleProperty {default: 5, name: Maximum Input,
         validators: null, value: 1.0}
     Base: PID Subsystem
