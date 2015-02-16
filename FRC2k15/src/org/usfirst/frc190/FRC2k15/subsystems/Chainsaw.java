@@ -159,7 +159,7 @@ public class Chainsaw extends PIDSubsystem {
 	 *            The speed of the chainsaw motor
 	 */
 	public void setSpeed(double speed) {
-		chainsaw.set(speed);
+		chainsaw.set(-speed);
 	}
 
 	/**

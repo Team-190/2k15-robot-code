@@ -222,7 +222,7 @@ Children:
           validators: &id012 [AnalogInput]
           value: '5'
         Full Range: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Full Range,
-          validators: null, value: 1.0}
+          validators: null, value: 100.0}
         Offset: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: Offset,
           validators: null, value: 0.0}
       Base: Analog Potentiometer
@@ -298,7 +298,7 @@ Children:
           validators: *id012
           value: '6'
         Full Range: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Full Range,
-          validators: null, value: 1.0}
+          validators: null, value: 100.0}
         Offset: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: Offset,
           validators: null, value: 0.0}
       Base: Analog Potentiometer
@@ -416,7 +416,7 @@ Children:
           default: '0'
           name: Channel A Channel (Digital)
           validators: *id002
-          value: '17'
+          value: '8'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
           name: Distance Per Pulse, validators: null, value: 1.0}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
@@ -438,7 +438,7 @@ Children:
           default: '0'
           name: Channel B Channel (Digital)
           validators: *id006
-          value: '18'
+          value: '9'
       Base: Quadrature Encoder
       Name: chainsawEncoder
     Properties:
@@ -520,7 +520,7 @@ Children:
           default: '0'
           name: Input Channel (Digital)
           validators: *id008
-          value: '8'
+          value: '18'
       Base: Limit Switch
       Name: fourBarExtended
     - Children: []
@@ -530,7 +530,7 @@ Children:
           default: '0'
           name: Input Channel (Digital)
           validators: *id008
-          value: '9'
+          value: '19'
       Base: Limit Switch
       Name: fourBarRetracted
     Properties:

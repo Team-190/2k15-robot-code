@@ -110,7 +110,7 @@ public class RobotMap {
         tineGrippergripper = new Victor(4);
         LiveWindow.addActuator("TineGripper", "gripper", (Victor) tineGrippergripper);
         
-        tineGrippergripperPot = new AnalogPotentiometer(5, 1.0, 0.0);
+        tineGrippergripperPot = new AnalogPotentiometer(5, 100.0, 0.0);
         LiveWindow.addSensor("TineGripper", "gripperPot", tineGrippergripperPot);
         
         tineGripperopen = new DigitalInput(15);
@@ -119,7 +119,7 @@ public class RobotMap {
         tineGripperclosed = new DigitalInput(16);
         LiveWindow.addSensor("TineGripper", "closed", tineGripperclosed);
         
-        tineElevatorelevatorPot = new AnalogPotentiometer(6, 1.0, 0.0);
+        tineElevatorelevatorPot = new AnalogPotentiometer(6, 100.0, 0.0);
         LiveWindow.addSensor("TineElevator", "elevatorPot", tineElevatorelevatorPot);
         
         tineElevatorelevator = new Victor(5);
@@ -137,7 +137,7 @@ public class RobotMap {
         chainsawhookDetector = new DigitalInput(12);
         LiveWindow.addSensor("Chainsaw", "hookDetector", chainsawhookDetector);
         
-        chainsawchainsawEncoder = new Encoder(17, 18, false, EncodingType.k4X);
+        chainsawchainsawEncoder = new Encoder(8, 9, false, EncodingType.k4X);
         LiveWindow.addSensor("Chainsaw", "chainsawEncoder", chainsawchainsawEncoder);
         chainsawchainsawEncoder.setDistancePerPulse(1.0);
         chainsawchainsawEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
@@ -147,10 +147,10 @@ public class RobotMap {
         chainsaw4BarfourBar = new Victor(7);
         LiveWindow.addActuator("Chainsaw4Bar", "fourBar", (Victor) chainsaw4BarfourBar);
         
-        chainsaw4BarfourBarExtended = new DigitalInput(8);
+        chainsaw4BarfourBarExtended = new DigitalInput(18);
         LiveWindow.addSensor("Chainsaw4Bar", "fourBarExtended", chainsaw4BarfourBarExtended);
         
-        chainsaw4BarfourBarRetracted = new DigitalInput(9);
+        chainsaw4BarfourBarRetracted = new DigitalInput(19);
         LiveWindow.addSensor("Chainsaw4Bar", "fourBarRetracted", chainsaw4BarfourBarRetracted);
         
 
