@@ -27,7 +27,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -144,7 +143,9 @@ public class Robot extends IterativeRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("FourBarPot", Robot.chainsaw4Bar.getPotValue());
+		SmartDashboard.putBoolean("HookDetector", chainsaw.atZero());
+		SmartDashboard.putNumber("Chainsaw Encoder", RobotMap.chainsawchainsawEncoder.getDistance());
+		SmartDashboard.putNumber("Chainsaw Error" , chainsaw.getPIDController().getError());
 	}
 	/**
 	 * This function is called periodically during test mode

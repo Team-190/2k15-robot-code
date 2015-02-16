@@ -44,7 +44,6 @@ public class  ChainsawManualDown extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.chainsaw.setSpeed(motorSpeed);
-    	SmartDashboard.putNumber("Chainsaw Encoder", RobotMap.chainsawchainsawEncoder.getDistance());
     }
 
     // Make this return true when this Command no longer needs to run execute()

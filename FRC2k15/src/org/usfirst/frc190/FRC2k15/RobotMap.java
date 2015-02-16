@@ -140,7 +140,7 @@ public class RobotMap {
         chainsawchainsawEncoder = new Encoder(8, 9, false, EncodingType.k4X);
         LiveWindow.addSensor("Chainsaw", "chainsawEncoder", chainsawchainsawEncoder);
         chainsawchainsawEncoder.setDistancePerPulse(1.0);
-        chainsawchainsawEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
+        chainsawchainsawEncoder.setPIDSourceParameter(PIDSourceParameter.kDistance);
         chainsaw4BarfourBarPot = new AnalogPotentiometer(2, 5.0, 0.0);
         LiveWindow.addSensor("Chainsaw4Bar", "fourBarPot", chainsaw4BarfourBarPot);
         
