@@ -98,7 +98,7 @@ public class RobotMap {
         drivetrainleftLimit = new DigitalInput(14);
         LiveWindow.addSensor("Drivetrain", "leftLimit", drivetrainleftLimit);
         
-        drivetrainrightLimit = new DigitalInput(13);
+        drivetrainrightLimit = new DigitalInput(18);
         LiveWindow.addSensor("Drivetrain", "rightLimit", drivetrainrightLimit);
         
         drivetrainLeftIR = new AnalogInput(1);
@@ -122,7 +122,7 @@ public class RobotMap {
         tineElevatorelevatorPot = new AnalogPotentiometer(6, 100.0, 0.0);
         LiveWindow.addSensor("TineElevator", "elevatorPot", tineElevatorelevatorPot);
         
-        tineElevatorelevator = new Victor(5);
+        tineElevatorelevator = new Victor(3);
         LiveWindow.addActuator("TineElevator", "elevator", (Victor) tineElevatorelevator);
         
         tineElevatortopLimit = new DigitalInput(10);
@@ -131,26 +131,26 @@ public class RobotMap {
         tineElevatorlowerLimit = new DigitalInput(11);
         LiveWindow.addSensor("TineElevator", "lowerLimit", tineElevatorlowerLimit);
         
-        chainsawchainsaw = new Victor(6);
+        chainsawchainsaw = new Victor(5);
         LiveWindow.addActuator("Chainsaw", "chainsaw", (Victor) chainsawchainsaw);
         
-        chainsawhookDetector = new DigitalInput(12);
+        chainsawhookDetector = new DigitalInput(19);
         LiveWindow.addSensor("Chainsaw", "hookDetector", chainsawhookDetector);
         
         chainsawchainsawEncoder = new Encoder(8, 9, false, EncodingType.k4X);
         LiveWindow.addSensor("Chainsaw", "chainsawEncoder", chainsawchainsawEncoder);
         chainsawchainsawEncoder.setDistancePerPulse(1.0);
         chainsawchainsawEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
-        chainsaw4BarfourBarPot = new AnalogPotentiometer(2, 1.0, 0.0);
+        chainsaw4BarfourBarPot = new AnalogPotentiometer(2, 5.0, 0.0);
         LiveWindow.addSensor("Chainsaw4Bar", "fourBarPot", chainsaw4BarfourBarPot);
         
-        chainsaw4BarfourBar = new Victor(7);
+        chainsaw4BarfourBar = new Victor(6);
         LiveWindow.addActuator("Chainsaw4Bar", "fourBar", (Victor) chainsaw4BarfourBar);
         
-        chainsaw4BarfourBarExtended = new DigitalInput(18);
+        chainsaw4BarfourBarExtended = new DigitalInput(23);
         LiveWindow.addSensor("Chainsaw4Bar", "fourBarExtended", chainsaw4BarfourBarExtended);
         
-        chainsaw4BarfourBarRetracted = new DigitalInput(19);
+        chainsaw4BarfourBarRetracted = new DigitalInput(22);
         LiveWindow.addSensor("Chainsaw4Bar", "fourBarRetracted", chainsaw4BarfourBarRetracted);
         
 
@@ -159,9 +159,9 @@ public class RobotMap {
         //Robot motors listed below
         
         final int backRightMotorPin = 9; // right rear 9
-        final int frontRightMotorPin = 1; // front right 1
+        final int frontRightMotorPin = 2; // front right 1
         final int backLeftMotorPin = 8; //left rear 8
-        final int frontLeftMotorPin = 2; // left front 2
+        final int frontLeftMotorPin = 7; // left front 2
         
 		drivetrainfrontLeft = new EncodedMotor(ki , kf,
 				drivetrainfrontLeftEncoder, new Victor(frontLeftMotorPin), maxDriveSpeed);

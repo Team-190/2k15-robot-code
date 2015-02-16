@@ -144,6 +144,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("FourBarPot", Robot.chainsaw4Bar.getPotValue());
 	}
 	/**
 	 * This function is called periodically during test mode
