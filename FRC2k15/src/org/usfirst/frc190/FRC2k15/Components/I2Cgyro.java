@@ -3,7 +3,6 @@ package org.usfirst.frc190.FRC2k15.Components;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -19,16 +18,17 @@ public class I2Cgyro {
 	private double period = 0.005;// time in seconds between updates
 	private final double sensitivity = 14.375; // 14.375 in ZRate = 1 degree /
 												// second
-	private long lasttime;
+	private double lasttime;
 	private double deadzone = 1.5;//anything absolute value less than deadzone is ignored
 	private static I2Cgyro instance;
 	private java.util.Timer integratorThread;
+	
 	private I2Cgyro() {
 		gyro = new I2C(I2C.Port.kOnboard, address); // gyro is on board I2C port
 													// with address
 		gyro.write(initializeAddress, initializeValue);// used to initialize the gyro
 		integratorThread = new Timer();
-		lasttime = System.currentTimeMillis();
+		lasttime = edu.wpi.first.wpilibj.Timer.getFPGATimestamp();
 		integratorThread.schedule(new Integrator(), 0L,(long) (period*1000));
 	}
 
@@ -48,9 +48,9 @@ public class I2Cgyro {
 														// degrees/second
 			if(Math.abs(ZRotateRate) < deadzone)//if absolute value is less then deadzone
 				ZRotateRate = 0; //attempt to limit drift when not moving
-			zAngle += ZRotateRate * (System.currentTimeMillis()-lasttime)/1000;// add the rate*dt to angle
+			zAngle += ZRotateRate * (edu.wpi.first.wpilibj.Timer.getFPGATimestamp()-lasttime);// add the rate*dt to angle
 											// (integration)
-			lasttime = System.currentTimeMillis();
+			lasttime = edu.wpi.first.wpilibj.Timer.getFPGATimestamp();
 		}
 	}
 

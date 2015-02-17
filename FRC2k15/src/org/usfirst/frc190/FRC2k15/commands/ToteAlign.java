@@ -29,9 +29,9 @@ public class ToteAlign extends Command {
 	 * within range 4 is left ir within range right not 5 is right ir within
 	 * range left not 6 is both ir in range align complete
 	 */
-	private final double drivespeed = -0.3;
-	private final double rotatespeed = 0.3;
-	private final double strafespeed = 0.4;
+	private final double drivespeed = -0.2;
+	private final double rotatespeed = 0.2;
+	private final double strafespeed = 0.2;
 
 	public ToteAlign() {
 		// Use requires() here to declare subsystem dependencies
