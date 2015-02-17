@@ -33,7 +33,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class RobotMap {
 	public static final double maxDriveSpeed = 108.0;
-	private static final double ki = 0.0;	 //0.001;
+	private static final double ki = 0.00002;
 	private static final double kf = 0.007;
 	
 	private static final double driveObjectExpiration = 0.1;
@@ -95,16 +95,16 @@ public class RobotMap {
         drivetrainGyro = new Gyro(0);
         LiveWindow.addSensor("Drivetrain", "Gyro", drivetrainGyro);
         drivetrainGyro.setSensitivity(0.007);
-        drivetrainleftLimit = new DigitalInput(14);
+        drivetrainleftLimit = new DigitalInput(19);
         LiveWindow.addSensor("Drivetrain", "leftLimit", drivetrainleftLimit);
         
         drivetrainrightLimit = new DigitalInput(18);
         LiveWindow.addSensor("Drivetrain", "rightLimit", drivetrainrightLimit);
         
-        drivetrainLeftIR = new AnalogInput(1);
+        drivetrainLeftIR = new AnalogInput(3);
         LiveWindow.addSensor("Drivetrain", "LeftIR", drivetrainLeftIR);
         
-        drivetrainRightIR = new AnalogInput(3);
+        drivetrainRightIR = new AnalogInput(2);
         LiveWindow.addSensor("Drivetrain", "RightIR", drivetrainRightIR);
         
         tineGrippergripper = new Victor(4);
@@ -116,7 +116,7 @@ public class RobotMap {
         tineGripperopen = new DigitalInput(15);
         LiveWindow.addSensor("TineGripper", "open", tineGripperopen);
         
-        tineGripperclosed = new DigitalInput(16);
+        tineGripperclosed = new DigitalInput(12);
         LiveWindow.addSensor("TineGripper", "closed", tineGripperclosed);
         
         tineElevatorelevatorPot = new AnalogPotentiometer(6, 100.0, 0.0);
@@ -134,23 +134,23 @@ public class RobotMap {
         chainsawchainsaw = new Victor(5);
         LiveWindow.addActuator("Chainsaw", "chainsaw", (Victor) chainsawchainsaw);
         
-        chainsawhookDetector = new DigitalInput(19);
+        chainsawhookDetector = new DigitalInput(17);
         LiveWindow.addSensor("Chainsaw", "hookDetector", chainsawhookDetector);
         
         chainsawchainsawEncoder = new Encoder(8, 9, false, EncodingType.k4X);
         LiveWindow.addSensor("Chainsaw", "chainsawEncoder", chainsawchainsawEncoder);
         chainsawchainsawEncoder.setDistancePerPulse(0.02);
         chainsawchainsawEncoder.setPIDSourceParameter(PIDSourceParameter.kDistance);
-        chainsaw4BarfourBarPot = new AnalogPotentiometer(2, 5.0, 0.0);
+        chainsaw4BarfourBarPot = new AnalogPotentiometer(1, 5.0, 0.0);
         LiveWindow.addSensor("Chainsaw4Bar", "fourBarPot", chainsaw4BarfourBarPot);
         
         chainsaw4BarfourBar = new Victor(6);
         LiveWindow.addActuator("Chainsaw4Bar", "fourBar", (Victor) chainsaw4BarfourBar);
         
-        chainsaw4BarfourBarExtended = new DigitalInput(23);
+        chainsaw4BarfourBarExtended = new DigitalInput(16);
         LiveWindow.addSensor("Chainsaw4Bar", "fourBarExtended", chainsaw4BarfourBarExtended);
         
-        chainsaw4BarfourBarRetracted = new DigitalInput(22);
+        chainsaw4BarfourBarRetracted = new DigitalInput(14);
         LiveWindow.addSensor("Chainsaw4Bar", "fourBarRetracted", chainsaw4BarfourBarRetracted);
         
 

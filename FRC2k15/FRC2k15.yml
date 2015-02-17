@@ -157,7 +157,7 @@ Children:
           default: '0'
           name: Input Channel (Digital)
           validators: &id008 [DigitalChannel]
-          value: '14'
+          value: '19'
       Base: Limit Switch
       Name: leftLimit
     - Children: []
@@ -177,7 +177,7 @@ Children:
           default: '0'
           name: Input Channel (Analog)
           validators: &id010 [AnalogInput]
-          value: '1'
+          value: '3'
       Base: Analog Input
       Name: LeftIR
     - Children: []
@@ -187,7 +187,7 @@ Children:
           default: '0'
           name: Input Channel (Analog)
           validators: *id010
-          value: '3'
+          value: '2'
       Base: Analog Input
       Name: RightIR
     Properties:
@@ -244,7 +244,7 @@ Children:
           default: '0'
           name: Input Channel (Digital)
           validators: *id008
-          value: '16'
+          value: '12'
       Base: Limit Switch
       Name: closed
     Properties:
@@ -406,7 +406,7 @@ Children:
           default: '0'
           name: Input Channel (Digital)
           validators: [DigitalChannel]
-          value: '19'
+          value: '17'
       Base: Digital Input
       Name: hookDetector
     - Children: []
@@ -490,7 +490,7 @@ Children:
           default: '0'
           name: Input Channel (Analog)
           validators: *id012
-          value: '2'
+          value: '1'
         Full Range: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Full Range,
           validators: null, value: 5.0}
         Offset: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: Offset,
@@ -520,7 +520,7 @@ Children:
           default: '0'
           name: Input Channel (Digital)
           validators: *id008
-          value: '23'
+          value: '16'
       Base: Limit Switch
       Name: fourBarExtended
     - Children: []
@@ -530,7 +530,7 @@ Children:
           default: '0'
           name: Input Channel (Digital)
           validators: *id008
-          value: '22'
+          value: '14'
       Base: Limit Switch
       Name: fourBarRetracted
     Properties:
@@ -1257,7 +1257,7 @@ Children:
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: /Users/Patrick/workspace,
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: /Users/tucker3896/workspace,
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: ../}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}

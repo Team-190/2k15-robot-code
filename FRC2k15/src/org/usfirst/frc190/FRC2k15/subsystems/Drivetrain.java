@@ -101,13 +101,13 @@ public class Drivetrain extends Subsystem {
 	// returns the left bumper
 	// true if pressed false if not
 	public boolean getLeftBumper() {
-		return !leftLimit.get();
+		return leftLimit.get();
 	}
 
 	// returns the right bumper
 	// true if pressed false if not
 	public boolean getRightBumper() {
-		return !rightLimit.get();
+		return rightLimit.get();
 	}
 
 	// sets the teleoperated drive to field oriented

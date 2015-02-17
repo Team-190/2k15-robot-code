@@ -20,7 +20,7 @@ import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
  *
  */
 public class  ResetChainsaw extends Command {//resets the chainsaw to 0 position
-	private final double speed = 0.2;
+	private final double speed = 0.8;
 	
     public ResetChainsaw() {
         // Use requires() here to declare subsystem dependencies
