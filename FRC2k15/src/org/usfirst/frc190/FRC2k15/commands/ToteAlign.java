@@ -22,7 +22,6 @@ import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
  */
 public class ToteAlign extends Command {
 	private boolean finished = false; // controls when command is finished
-	private byte state = 0;
 	/*
 	 * 0 is neither switch pressed 1 is left switch pressed right not 2 is right
 	 * switch pressed left not 3 is both pressed check which ir sensors are
@@ -32,7 +31,6 @@ public class ToteAlign extends Command {
 	private final double drivespeed = -0.125;
 	private final double rotatespeed = 0.125;
 	private final double strafespeed = 0.1;
-
 	public ToteAlign() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -45,82 +43,26 @@ public class ToteAlign extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		setLimitState();
 		finished = false;
 		VoiceCmds.speak(VoiceCmds.d_alignTote);
 	}
 
-	private void setLimitState() { // sets state based on pressed limit switches
-		if (Robot.drivetrain.getLeftBumper()) {
-			if (Robot.drivetrain.getRightBumper()) {
-				state = 3;
-			} else
-				state = 1;
-		} else if (Robot.drivetrain.getRightBumper()) {
-			state = 2;
-		} else {
-			state = 0;
-		}
-	}
-
-	private void setIRState() {// sets state based on triggered ir sensors
-		if (Robot.drivetrain.getLeftIRWithinRange()) {
-			if (Robot.drivetrain.getRightIRWithinRange()) {
-				state = 6;
-			} else
-				state = 4;
-		} else if (Robot.drivetrain.getRightIRWithinRange()) {
-			state = 5;
-		} else
-			state = 3; // if this happens kind of an issue
-		// (means bumpers pressed but tote detected by both ir)
-		// might later replace with displaying info to driverstation so drivers
-		// know there is an error
-
-	}
-
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		SmartDashboard.putNumber("Tote Align State", state);
-		if (Robot.oi.interruptBtn.get()) {// cancels this command
-			finished = true;
+		if(Robot.drivetrain.getLeftBumper()&&Robot.drivetrain.getRightBumper()){
+			if(Robot.drivetrain.getLeftIRWithinRange()&&Robot.drivetrain.getRightIRWithinRange())
+				finished = true;//Illogical 
+			else if(Robot.drivetrain.getLeftIRWithinRange())
+				Robot.drivetrain.MecanumDrive(strafespeed, 0, 0, 0);//strafe to left
+			else if(Robot.drivetrain.getRightIRWithinRange())
+				Robot.drivetrain.MecanumDrive(-strafespeed, 0, 0, 0);//strafe to right
 		}
-		switch (state) {
-		case 0:// not on switches drive forwards
-			Robot.drivetrain.MecanumDrive(0.0, drivespeed, 0, 0);
-			setLimitState();
-			break;
-		case 1:// left switch pressed right not
-			Robot.drivetrain.MecanumDrive(0, 0, -rotatespeed,// turn to hit
-																// right switch
-					RobotMap.drivetrainGyro.getAngle());
-			setLimitState();
-			break;
-		case 2:// right switch pressed left not
-			Robot.drivetrain.MecanumDrive(0, 0, rotatespeed, // turn to hit left
-																// switch
-					RobotMap.drivetrainGyro.getAngle());
-			setLimitState();
-			break;
-		case 3: // both switches pressed check IR states
-			Robot.drivetrain.MecanumDrive(0, 0, 0, 0);
-			setIRState();
-			break;
-		case 4: // left ir clear of tote right not move to right
-			Robot.drivetrain.MecanumDrive(strafespeed, 0, 0, 0);
-			setIRState();
-			break;
-		case 5: // right ir clear of tote left not move to left
-			Robot.drivetrain.MecanumDrive(-strafespeed, 0, 0, 0);
-			setIRState();
-			break;
-		case 6: // both ir clear of tote finished
-			finished = true;
-			break;
-		default: // should never occur but just in case end the command
-			finished = true;
-			break;
-		}
+		else if(Robot.drivetrain.getLeftBumper())
+			Robot.drivetrain.MecanumDrive(0, 0, -rotatespeed, 0);//rotate to left
+		else if(Robot.drivetrain.getRightBumper())
+			Robot.drivetrain.MecanumDrive(0, 0, rotatespeed, 0);//rotate to right
+		else 
+			Robot.drivetrain.MecanumDrive(0, drivespeed, 0, 0);//drive forwards
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
