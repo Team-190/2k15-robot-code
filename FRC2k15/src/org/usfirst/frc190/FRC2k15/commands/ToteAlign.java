@@ -51,11 +51,13 @@ public class ToteAlign extends Command {
 	protected void execute() {
 		if(Robot.drivetrain.getLeftBumper()&&Robot.drivetrain.getRightBumper()){
 			if(Robot.drivetrain.getLeftIRWithinRange()&&Robot.drivetrain.getRightIRWithinRange())
-				finished = true;//Illogical 
+				finished = true;//Illogical (This means both IR see tote no way to fix this so just leave)
 			else if(Robot.drivetrain.getLeftIRWithinRange())
 				Robot.drivetrain.MecanumDrive(strafespeed, 0, 0, 0);//strafe to left
 			else if(Robot.drivetrain.getRightIRWithinRange())
 				Robot.drivetrain.MecanumDrive(-strafespeed, 0, 0, 0);//strafe to right
+			else
+				finished = true;//Correct way to end
 		}
 		else if(Robot.drivetrain.getLeftBumper())
 			Robot.drivetrain.MecanumDrive(0, 0, -rotatespeed, 0);//rotate to left
@@ -67,7 +69,7 @@ public class ToteAlign extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return finished;
+		return finished||Robot.oi.interruptBtn.get();
 	}
 
 	// Called once after isFinished returns true
