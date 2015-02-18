@@ -18,9 +18,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class DriveDistTestSequence extends CommandGroup {
     
     public  DriveDistTestSequence() {
-    	addSequential(new DriveDistDirection(0.2, 24, 0));
-    	addSequential(new DriveDistDirection(0.2, 24, 90));
-    	addSequential(new DriveDistDirection(0.2, 24, 180));
-    	addSequential(new DriveDistDirection(0.2, 24, 270));
+    	addSequential(new DriveDistDirection(0.4, 24, 0));
+    	addSequential(new DriveDistDirection(0.4, 24, 90));
+    	addSequential(new DriveDistDirection(0.4, 24, 180));
+    	addSequential(new DriveDistDirection(0.4, 24, 270));
     }
 }

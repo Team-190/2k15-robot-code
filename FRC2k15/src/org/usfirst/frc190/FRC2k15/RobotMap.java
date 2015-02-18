@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -33,7 +34,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class RobotMap {
 	public static final double maxDriveSpeed = 108.0;
-	private static final double ki = 0.00002;
+	private static final double ki = 0.0002; //0.00002;
 	private static final double kf = 0.007;
 	
 	private static final double driveObjectExpiration = 0.1;
@@ -80,11 +81,11 @@ public class RobotMap {
         LiveWindow.addSensor("Drivetrain", "backLeftEncoder", drivetrainbackLeftEncoder);
         drivetrainbackLeftEncoder.setDistancePerPulse(1.0);
         drivetrainbackLeftEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
-        drivetrainfrontLeftEncoder = new Encoder(0, 1, false, EncodingType.k4X);
+        drivetrainfrontLeftEncoder = new Encoder(0, 1, true, EncodingType.k4X);
         LiveWindow.addSensor("Drivetrain", "frontLeftEncoder", drivetrainfrontLeftEncoder);
         drivetrainfrontLeftEncoder.setDistancePerPulse(1.0);
         drivetrainfrontLeftEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
-        drivetrainbackRightEncoder = new Encoder(6, 7, false, EncodingType.k4X);
+        drivetrainbackRightEncoder = new Encoder(6, 7, true, EncodingType.k4X);
         LiveWindow.addSensor("Drivetrain", "backRightEncoder", drivetrainbackRightEncoder);
         drivetrainbackRightEncoder.setDistancePerPulse(1.0);
         drivetrainbackRightEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);

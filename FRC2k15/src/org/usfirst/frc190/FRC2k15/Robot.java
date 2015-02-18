@@ -146,6 +146,19 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("HookDetector", chainsaw.atZero());
 		SmartDashboard.putNumber("Chainsaw Encoder", RobotMap.chainsawchainsawEncoder.getDistance());
 		SmartDashboard.putNumber("Chainsaw Error" , chainsaw.getPIDController().getError());
+		
+		SmartDashboard.putNumber("FL Encoder", RobotMap.drivetrainfrontLeftEncoder.getDistance());
+		SmartDashboard.putNumber("FR Encoder", RobotMap.drivetrainfrontRightEncoder.getDistance());
+		SmartDashboard.putNumber("BL Encoder", RobotMap.drivetrainbackLeftEncoder.getDistance());
+		SmartDashboard.putNumber("BR Encoder", RobotMap.drivetrainbackRightEncoder.getDistance());
+		
+		SmartDashboard.putNumber("FL Encoder Speed", RobotMap.drivetrainfrontLeftEncoder.getRate());
+		SmartDashboard.putNumber("FR Encoder Speed", RobotMap.drivetrainfrontRightEncoder.getRate());
+		SmartDashboard.putNumber("BL Encoder Speed", RobotMap.drivetrainbackLeftEncoder.getRate());
+		SmartDashboard.putNumber("BR Encoder Speed", RobotMap.drivetrainbackRightEncoder.getRate());
+		
+		SmartDashboard.putNumber("Joystick X", Robot.oi.driveJoystick.getX());
+		SmartDashboard.putNumber("Joystick Y", Robot.oi.driveJoystick.getY());
 	}
 	/**
 	 * This function is called periodically during test mode

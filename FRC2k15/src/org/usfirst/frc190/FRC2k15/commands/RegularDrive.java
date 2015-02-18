@@ -78,6 +78,8 @@ public class RegularDrive extends Command {
 		if (!Robot.drivetrain.isFieldOriented()) {
 			heading = 0;
 		}
+		
+		heading = 0;
 
 		Robot.drivetrain.MecanumDrive(xSpeed, ySpeed, rSpeed, heading);
 
