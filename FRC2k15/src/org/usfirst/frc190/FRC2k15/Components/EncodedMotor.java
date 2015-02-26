@@ -19,7 +19,7 @@ public class EncodedMotor implements SpeedController {
 	// inches per pulse
 	private static final double distPerPulse = 0.05;
 	public static ArrayList<EncodedMotor> mtrs = new ArrayList<EncodedMotor>();
-	private static boolean closedLoop = true; 
+	private static boolean closedLoop = false; //true; 
 
 	// Constructor for Class to create an instance
 	public EncodedMotor(double Ki, double Kf, Encoder source,
@@ -138,6 +138,10 @@ public class EncodedMotor implements SpeedController {
 				encmtr.disable();
 			}
 		}
+	}
+	
+	public void reset(){
+		cnt.reset();
 	}
 
 }

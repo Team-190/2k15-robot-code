@@ -182,4 +182,9 @@ public class WheelPID {
 	public synchronized double getSetpoint() { 
 		return setpoint;
 	}
+	
+	public synchronized void reset(){
+		disable();
+		totalError = 0;
+	}
 }

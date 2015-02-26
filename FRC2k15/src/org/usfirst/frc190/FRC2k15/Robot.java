@@ -161,6 +161,12 @@ public class Robot extends IterativeRobot {
 		
 		SmartDashboard.putNumber("Joystick X", Robot.oi.driveJoystick.getX());
 		SmartDashboard.putNumber("Joystick Y", Robot.oi.driveJoystick.getY());
+		
+		SmartDashboard.putBoolean("LeftBumper", Robot.drivetrain.getLeftBumper());
+		SmartDashboard.putBoolean("RightBumper", Robot.drivetrain.getRightBumper());
+		
+		SmartDashboard.putNumber("LeftIR", Robot.drivetrain.getLeftIR());
+		SmartDashboard.putNumber("RightIR", Robot.drivetrain.getRightIR());
 	}
 	/**
 	 * This function is called periodically during test mode

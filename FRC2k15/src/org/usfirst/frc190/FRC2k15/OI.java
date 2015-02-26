@@ -132,6 +132,8 @@ public class OI {
 
 	    
         // SmartDashboard Buttons
+        SmartDashboard.putData("DriveSpeed", new DriveSpeed());
+
         SmartDashboard.putData("AnalogDriveChainsaw", new AnalogDriveChainsaw());
 
         SmartDashboard.putData("Do Nothing", new DoNothing());

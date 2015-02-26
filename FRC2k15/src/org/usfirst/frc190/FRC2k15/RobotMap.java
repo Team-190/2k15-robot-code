@@ -34,7 +34,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class RobotMap {
 	public static final double maxDriveSpeed = 108.0;
-	private static final double ki = 0.0002; //0.00002;
+	private static final double ki = 0.0002; 
 	private static final double kf = 0.007;
 	
 	private static final double driveObjectExpiration = 0.1;
