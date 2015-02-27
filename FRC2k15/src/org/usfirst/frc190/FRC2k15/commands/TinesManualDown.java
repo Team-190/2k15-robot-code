@@ -19,7 +19,7 @@ import org.usfirst.frc190.FRC2k15.Robot;
  */
 public class  TinesManualDown extends Command {
 
-	private final double motorSpeed = -0.8;
+	private final double motorSpeed = -0.4;
 
     public TinesManualDown() {
         // Use requires() here to declare subsystem dependencies

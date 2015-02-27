@@ -38,6 +38,6 @@ public class LiftTotes extends CommandGroup {
 		// arm.
 		addSequential(new Speak(VoiceCmds.g_liftTote));
 		//TODO: Implement this
-		addSequential(new Delay(1.5));
+		addSequential(new IncreaseChainsawPosition());
 	}
 }

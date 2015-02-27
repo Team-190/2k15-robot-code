@@ -10,12 +10,17 @@
 
 
 package org.usfirst.frc190.FRC2k15.commands;
+import org.usfirst.frc190.FRC2k15.Robot;
+import org.usfirst.frc190.FRC2k15.Components.LimitedPIDSubsystemSetpointCommand;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
 public class AutoTotePickup extends CommandGroup {
+	
+	private final double toteOffset = 8.0; 
     
     public  AutoTotePickup() {
         // Add Commands here:
@@ -35,7 +40,13 @@ public class AutoTotePickup extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
+    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.collectPosition, 0.2, -0.2, false));
     	addSequential(new ToteAlign());
-    	//addSequential(new LiftTotes());
+    	addSequential(new DriveSpeed(-0.15, 0.2));
+//    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.collectPosition2, 0.2, -0.2, false));
+//    	addParallel(new setChainsawSetpoint(Robot.chainsaw.getHookSetPoint() + toteOffset));
+    	addParallel(new IncreaseChainsawPosition());
+    	addSequential(new Delay(0.5));
+    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.collectPosition, 0.2, -0.2, false));
     }
 }

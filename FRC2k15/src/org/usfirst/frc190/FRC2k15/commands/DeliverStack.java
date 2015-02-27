@@ -16,14 +16,20 @@ import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
+/**Hi Tuck
  *
  */
 public class DeliverStack extends CommandGroup {
+	
+	private double negOffset = 4.0;
 
 	public DeliverStack() {
 		addSequential(new Speak(VoiceCmds.g_deliverStack));
 		addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar,Robot.chainsaw4Bar.scoringPosition, true));
-		addSequential(new ChainsawDeliverStackPosition());
+		addSequential(new setChainsawSetpoint(Robot.chainsaw.getHookSetPoint() - negOffset));
+		addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar,Robot.chainsaw4Bar.collectPosition, true));
+		addSequential(new ResetChainsaw());
+		
+		//addSequential(new ChainsawDeliverStackPosition());
 	}
 }

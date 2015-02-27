@@ -21,7 +21,7 @@ import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
  */
 public class  Chainsaw4BarManualIn extends Command {
 	
-	private final double motorSpeed = -0.8;
+	private final double motorSpeed = -0.4;
 
     public Chainsaw4BarManualIn() {
         // Use requires() here to declare subsystem dependencies
