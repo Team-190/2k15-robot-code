@@ -167,6 +167,12 @@ public class Robot extends IterativeRobot {
 		
 		SmartDashboard.putNumber("LeftIR", Robot.drivetrain.getLeftIR());
 		SmartDashboard.putNumber("RightIR", Robot.drivetrain.getRightIR());
+		
+//		for(int i = 1; i <= 20; i++){
+//			SmartDashboard.putBoolean("Button "+i,  oi.console.getRawButton(i));
+//		}
+//		
+//		SmartDashboard.putNumber("OI Pot", oi.console.getRawAxis(3));
 	}
 	/**
 	 * This function is called periodically during test mode

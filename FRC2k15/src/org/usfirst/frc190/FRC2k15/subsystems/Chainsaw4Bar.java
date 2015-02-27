@@ -28,7 +28,7 @@ public class Chainsaw4Bar extends PIDSubsystem implements LimitedPIDSubsystem {
 	// TODO: Update These
 	// Note: this is assuming that the pot has a "Range" of 5
 	public final double humanPosition = 0.390;
-	public final double collectPosition = 1.192;	
+	public final double collectPosition = 1.236;	
 	public final double scoringPosition = 1.820;
 	public final double storagePosition = 1.248;//1.192;
 
