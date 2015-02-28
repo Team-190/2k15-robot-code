@@ -44,31 +44,32 @@ public class RegularDrive extends Command {
 		double ySpeed;
 		double rSpeed;
 		double heading = Robot.drivetrain.getHeading();
-		xSpeed = OI.deadband(Robot.oi.driveJoystick.getX());
-		ySpeed = OI.deadband(Robot.oi.driveJoystick.getY());
+		//(double deadbandWidth, double minValue, double value)
+		xSpeed = OI.deadband(0.3, 0.08, Robot.oi.driveJoystick.getX());
+		ySpeed = OI.deadband(0.3, 0.08, Robot.oi.driveJoystick.getY());
 		switch (Robot.drivetrain.getDrivingMode()) {
 		case 0:
-			rSpeed = Robot.oi.driveJoystick.getZ();
+			rSpeed = OI.deadband(0.5, 0.08, Robot.oi.driveJoystick.getZ());
 			break;
 
 		case 1:
-			rSpeed = Robot.oi.secondaryJoystick.getX();
+			rSpeed = OI.deadband(0.3, 0.08, Robot.oi.secondaryJoystick.getX());
 			break;
 
 		case 2:
-			rSpeed = Robot.oi.secondaryJoystick.getY();
+			rSpeed = OI.deadband(0.3, 0.08, Robot.oi.secondaryJoystick.getY());
 			break;
 
 		case 3:
-			rSpeed = Robot.oi.secondaryJoystick.getZ();
+			rSpeed = OI.deadband(0.5, 0.08, Robot.oi.secondaryJoystick.getZ());
 			break;
 
 		default:
-			rSpeed = Robot.oi.driveJoystick.getZ();
+			rSpeed = OI.deadband(0.5, 0.08, Robot.oi.driveJoystick.getZ());
 			break;
 		}
 		//Slow rotation speed
-		rSpeed = OI.deadband(rSpeed)/2;
+		rSpeed = rSpeed/2;
 		if (Robot.drivetrain.isSquaredInputs()) {
 			xSpeed = Math.pow(Math.abs(xSpeed), 2) * Math.signum(xSpeed);
 			ySpeed = Math.pow(Math.abs(ySpeed), 2) * Math.signum(ySpeed);

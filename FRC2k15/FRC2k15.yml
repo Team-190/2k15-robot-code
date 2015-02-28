@@ -459,7 +459,7 @@ Children:
       Limit Input: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Limit Input, validators: null, value: false}
       Minimum Output: !!robotbuilder.data.properties.DoubleProperty {default: -1,
-        name: Minimum Output, validators: null, value: -1.0}
+        name: Minimum Output, validators: null, value: -0.75}
       P: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: P, validators: null,
         value: -1.0}
       Input: !!robotbuilder.data.properties.ChildSelectionProperty
@@ -469,7 +469,7 @@ Children:
         validators: *id016
         value: Chainsaw chainsawEncoder
       Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Maximum Output,
-        validators: null, value: 1.0}
+        validators: null, value: 0.75}
       Output: !!robotbuilder.data.properties.ChildSelectionProperty
         default: 0
         name: Output
@@ -589,7 +589,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '1'
+          value: '5'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -661,7 +661,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '5'
+          value: '11'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
@@ -829,7 +829,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '12'
+          value: '1'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
