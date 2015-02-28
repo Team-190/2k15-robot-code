@@ -16,6 +16,7 @@ import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 import org.usfirst.frc190.FRC2k15.commands.AutoYellowToteStack;
 import org.usfirst.frc190.FRC2k15.commands.AutoStealContainers;
 import org.usfirst.frc190.FRC2k15.commands.AutoDriveForward;
+import org.usfirst.frc190.FRC2k15.commands.AutoDriveBackward;
 import org.usfirst.frc190.FRC2k15.commands.DoNothing;
 import org.usfirst.frc190.FRC2k15.commands.ResetChainsaw;
 import org.usfirst.frc190.FRC2k15.subsystems.Chainsaw;
@@ -91,7 +92,8 @@ public class Robot extends IterativeRobot {
         autoChooser = new SendableChooser();
         autoChooser.addDefault("Yellow Tote Stack", new AutoYellowToteStack());
         autoChooser.addObject("Steal Containers", new AutoStealContainers());
-        autoChooser.addObject("Drive to Autozone", new AutoDriveForward());
+        autoChooser.addObject("Drive Forward 4ft", new AutoDriveForward());
+        autoChooser.addObject("Drive Backward 4ft", new AutoDriveBackward());
         autoChooser.addObject("Do Nothing", new ResetChainsaw());
         SmartDashboard.putData("Auto Mode", autoChooser);
         
