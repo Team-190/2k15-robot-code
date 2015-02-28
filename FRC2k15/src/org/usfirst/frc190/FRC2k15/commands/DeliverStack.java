@@ -25,7 +25,7 @@ public class DeliverStack extends CommandGroup {
 		addSequential(new Speak(VoiceCmds.g_deliverStack));
 		addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar,Robot.chainsaw4Bar.scoringPosition, true));
 		addSequential(new DecreaseChainsawPosition());
-		addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar,Robot.chainsaw4Bar.collectPosition, true));
+		addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar,Robot.chainsaw4Bar.collectPositionNarrow, true));
 		addSequential(new ResetChainsaw());
 		
 		//addSequential(new ChainsawDeliverStackPosition());
