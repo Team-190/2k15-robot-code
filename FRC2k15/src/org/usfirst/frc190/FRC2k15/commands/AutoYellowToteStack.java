@@ -20,47 +20,78 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class AutoYellowToteStack extends CommandGroup {
 
-	double distanceToAutozone = 6; // ft
-	double speedToAutozone = 0.5; // 50% power
-	double headingToAutozone = 0;
-	double autoRotation = 90; // degrees turned to face autozone
-	double distanceBetweenTotes = 2; // ft
-
-	double timeout = 5.00;
-
+//	double distanceToAutozone = 6; // ft
+//	double speedToAutozone = 0.5; // 50% power
+//	double headingToAutozone = 0;
+//	double autoRotation = 90; // degrees turned to face autozone
+//	double distanceBetweenTotes = 2; // ft
+//
+//	double timeout = 5.00;
+//
+//	public AutoYellowToteStack() {
+//		// Timeouts on everything to avoid running out of time.
+//
+//		// Reset Chainsaw so it is zeroed for the match;
+//		addSequential(new ResetChainsaw());
+//
+//		addSequential(new GetIntoAutoPosition(), timeout);
+//		int numtotes = 3;
+//		for (int i = 0; i < numtotes; i++) {
+//			addSequential(new DriveUntilToteDetectedAuto(), timeout);
+//			// TODO: Test with PID
+//			addSequential(new LimitedPIDSubsystemSetpointCommand(
+//					Robot.tineGripper, Robot.tineGripper.narrowTotePosition,
+//					true), timeout);
+//			addParallel(new LiftTotes(), timeout);
+//			if (i < numtotes - 1) {
+//				// Re-open tines and anything else that you need to do.
+//				addSequential(
+//						new LimitedPIDSubsystemSetpointCommand(
+//								Robot.tineGripper,
+//								Robot.tineGripper.openPosition, true), timeout);
+//			}
+//		}
+//
+//		// Delay to allow Totes to be lifted
+//		// May be replaced with a check function later
+//		addSequential(new Delay(1));
+//
+//		// addSequential(new DriveTurn(autoRotation), timeout);
+//		addSequential(new DriveDistDirection(speedToAutozone,
+//				distanceToAutozone, headingToAutozone), timeout);
+//		addSequential(new DeliverStack(), timeout);
+//
+//		addSequential(new DriveDistDirection(-0.5, 0.75, 0), timeout);
+//	}
+	
 	public AutoYellowToteStack() {
-		// Timeouts on everything to avoid running out of time.
-
-		// Reset Chainsaw so it is zeroed for the match;
+		
+		addParallel(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.wideCollectPosition, 0.2, -0.2, false));
 		addSequential(new ResetChainsaw());
+		addSequential(new ToteAlignNoIR());
+		addSequential(new IncreaseChainsawPosition());
+		
+		addParallel(new IncreaseChainsawPosition());
 
-		addSequential(new GetIntoAutoPosition(), timeout);
-		int numtotes = 3;
-		for (int i = 0; i < numtotes; i++) {
-			addSequential(new DriveUntilToteDetectedAuto(), timeout);
-			// TODO: Test with PID
-			addSequential(new LimitedPIDSubsystemSetpointCommand(
-					Robot.tineGripper, Robot.tineGripper.narrowTotePosition,
-					true), timeout);
-			addParallel(new LiftTotes(), timeout);
-			if (i < numtotes - 1) {
-				// Re-open tines and anything else that you need to do.
-				addSequential(
-						new LimitedPIDSubsystemSetpointCommand(
-								Robot.tineGripper,
-								Robot.tineGripper.openPosition, true), timeout);
-			}
-		}
-
-		// Delay to allow Totes to be lifted
-		// May be replaced with a check function later
-		addSequential(new Delay(1));
-
-		// addSequential(new DriveTurn(autoRotation), timeout);
-		addSequential(new DriveDistDirection(speedToAutozone,
-				distanceToAutozone, headingToAutozone), timeout);
-		addSequential(new DeliverStack(), timeout);
-
-		addSequential(new DriveDistDirection(-0.5, 0.75, 0), timeout);
+		addSequential(new DriveDistDirection(0.5, 12, 180));
+		addSequential(new DriveDistDirection(0.5, 80.5, 90));
+		addSequential(new ToteAlignNoIR());
+		addSequential(new IncreaseChainsawPosition());
+		
+		addParallel(new IncreaseChainsawPosition());
+		
+		addSequential(new DriveDistDirection(0.5, 12, 180));
+		addSequential(new DriveDistDirection(0.5, 80.5, 90));
+		addSequential(new ToteAlignNoIR());
+		addSequential(new IncreaseChainsawPosition());
+		
+		addParallel(new IncreaseChainsawPosition());
+		
+		addSequential(new DriveDistDirection(0.5, 60, 180));
+		
+		addSequential(new DecreaseChainsawPosition());
+		addParallel(new DecreaseChainsawPosition());
+		addSequential(new DriveDistDirection(0.2, 12, 180));
 	}
+	
 }

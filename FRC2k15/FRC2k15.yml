@@ -459,7 +459,7 @@ Children:
       Limit Input: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Limit Input, validators: null, value: false}
       Minimum Output: !!robotbuilder.data.properties.DoubleProperty {default: -1,
-        name: Minimum Output, validators: null, value: -0.5}
+        name: Minimum Output, validators: null, value: -1.0}
       P: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: P, validators: null,
         value: -1.0}
       Input: !!robotbuilder.data.properties.ChildSelectionProperty
@@ -469,7 +469,7 @@ Children:
         validators: *id016
         value: Chainsaw chainsawEncoder
       Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Maximum Output,
-        validators: null, value: 0.5}
+        validators: null, value: 1.0}
       Output: !!robotbuilder.data.properties.ChildSelectionProperty
         default: 0
         name: Output
@@ -1671,6 +1671,22 @@ Children:
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: setChainsawSetpoint
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Drivetrain}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: ToteAlignNoIR
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Drivetrain}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: DriveUntilIR
   Properties: {}
   Base: Commands
   Name: Commands
