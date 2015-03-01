@@ -22,6 +22,10 @@ import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 public class  ResetChainsaw extends Command {//resets the chainsaw to 0 position
 	private final double speed = 1.0;
 	
+	private boolean isUpToSpeed = false;
+	private final double minSpeedUpper = 2.0;
+	private final double minSpeedLower = minSpeedUpper - 1.0;
+	
     public ResetChainsaw() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -36,23 +40,33 @@ public class  ResetChainsaw extends Command {//resets the chainsaw to 0 position
     protected void initialize() {
     	Robot.chainsaw.disable();//bypassing the PID system so need to disable
     	VoiceCmds.speak(VoiceCmds.c_reset);
+    	
+    	isUpToSpeed = false;
+    	
+    	Robot.chainsaw.setSpeed(speed);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.chainsaw.setSpeed(speed);
+    	if(Math.abs(Robot.chainsaw.getSpeed()) > minSpeedUpper){
+    		isUpToSpeed = true;
+    	}
+    	
+    	if((Math.abs(Robot.chainsaw.getSpeed()) < minSpeedLower) && isUpToSpeed){
+    		Robot.chainsaw.setBroken();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.chainsaw.atZero();
+        return Robot.chainsaw.atZero() || Robot.chainsaw.isBroken();
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	Robot.chainsaw.setSpeed(0);//stops moving the chainsaw
-    	Robot.chainsaw.resetEncoder(); //resets the encoder
-    	Robot.chainsaw.setHookPosition(0); //sets current hook position to zero
+        Robot.chainsaw.resetEncoder(); //resets the encoder
+        Robot.chainsaw.setHookPosition(0); //sets current hook position to zero
     }
 
     // Called when another command which requires one or more of the same

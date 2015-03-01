@@ -33,7 +33,12 @@ public class  DecreaseChainsawPosition extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+//    	if(Robot.chainsaw.isBroken()){
+//    		Robot.chainsaw.decrementHookPosition();
+//    	}
+    	
     	Robot.chainsaw.decrementHookPosition();
+    	
     	VoiceCmds.speak(VoiceCmds.c_decreasePosn);
     }
 
@@ -43,7 +48,8 @@ public class  DecreaseChainsawPosition extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.chainsaw.onTarget();
+//        return Robot.chainsaw.onTarget() || Robot.chainsaw.isBroken();
+    	return Robot.chainsaw.onTarget();
     }
 
     // Called once after isFinished returns true

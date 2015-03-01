@@ -90,11 +90,11 @@ public class Robot extends IterativeRobot {
         //This code sets up the sendable chooser on the smart dashboard
         //It allows the driver to select which auto mode to run prior to the match
         autoChooser = new SendableChooser();
-        autoChooser.addDefault("Yellow Tote Stack", new AutoYellowToteStack());
+        autoChooser.addObject("Yellow Tote Stack", new AutoYellowToteStack());
         autoChooser.addObject("Steal Containers", new AutoStealContainers());
         autoChooser.addObject("Drive Forward 4ft", new AutoDriveForward());
         autoChooser.addObject("Drive Backward 4ft", new AutoDriveBackward());
-        autoChooser.addObject("Do Nothing", new ResetChainsaw());
+        autoChooser.addDefault("Do Nothing", new ResetChainsaw());
         SmartDashboard.putData("Auto Mode", autoChooser);
         
         VoiceCmds.speak(VoiceCmds.r_turningOn);
@@ -152,28 +152,31 @@ public class Robot extends IterativeRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putBoolean("HookDetector", chainsaw.atZero());
-		SmartDashboard.putNumber("Chainsaw Encoder", RobotMap.chainsawchainsawEncoder.getDistance());
-		SmartDashboard.putNumber("Chainsaw Error" , chainsaw.getPIDController().getError());
+//		SmartDashboard.putBoolean("HookDetector", chainsaw.atZero());
+		SmartDashboard.putNumber("Chainsaw Position", RobotMap.chainsawchainsawEncoder.getDistance());
+		SmartDashboard.putNumber("Chainsaw Speed", RobotMap.chainsawchainsawEncoder.getRate());
+//		SmartDashboard.putNumber("Chainsaw Error" , chainsaw.getPIDController().getError());
 		
-		SmartDashboard.putNumber("FL Encoder", RobotMap.drivetrainfrontLeftEncoder.getDistance());
-		SmartDashboard.putNumber("FR Encoder", RobotMap.drivetrainfrontRightEncoder.getDistance());
-		SmartDashboard.putNumber("BL Encoder", RobotMap.drivetrainbackLeftEncoder.getDistance());
-		SmartDashboard.putNumber("BR Encoder", RobotMap.drivetrainbackRightEncoder.getDistance());
+//		SmartDashboard.putNumber("FL Encoder", RobotMap.drivetrainfrontLeftEncoder.getDistance());
+//		SmartDashboard.putNumber("FR Encoder", RobotMap.drivetrainfrontRightEncoder.getDistance());
+//		SmartDashboard.putNumber("BL Encoder", RobotMap.drivetrainbackLeftEncoder.getDistance());
+//		SmartDashboard.putNumber("BR Encoder", RobotMap.drivetrainbackRightEncoder.getDistance());
+//		
+//		SmartDashboard.putNumber("FL Encoder Speed", RobotMap.drivetrainfrontLeftEncoder.getRate());
+//		SmartDashboard.putNumber("FR Encoder Speed", RobotMap.drivetrainfrontRightEncoder.getRate());
+//		SmartDashboard.putNumber("BL Encoder Speed", RobotMap.drivetrainbackLeftEncoder.getRate());
+//		SmartDashboard.putNumber("BR Encoder Speed", RobotMap.drivetrainbackRightEncoder.getRate());
 		
-		SmartDashboard.putNumber("FL Encoder Speed", RobotMap.drivetrainfrontLeftEncoder.getRate());
-		SmartDashboard.putNumber("FR Encoder Speed", RobotMap.drivetrainfrontRightEncoder.getRate());
-		SmartDashboard.putNumber("BL Encoder Speed", RobotMap.drivetrainbackLeftEncoder.getRate());
-		SmartDashboard.putNumber("BR Encoder Speed", RobotMap.drivetrainbackRightEncoder.getRate());
-		
-		SmartDashboard.putNumber("Joystick X", Robot.oi.driveJoystick.getX());
-		SmartDashboard.putNumber("Joystick Y", Robot.oi.driveJoystick.getY());
+//		SmartDashboard.putNumber("Joystick X", Robot.oi.driveJoystick.getX());
+//		SmartDashboard.putNumber("Joystick Y", Robot.oi.driveJoystick.getY());
 		
 		SmartDashboard.putBoolean("LeftBumper", Robot.drivetrain.getLeftBumper());
 		SmartDashboard.putBoolean("RightBumper", Robot.drivetrain.getRightBumper());
 		
 		SmartDashboard.putNumber("LeftIR", Robot.drivetrain.getLeftIR());
 		SmartDashboard.putNumber("RightIR", Robot.drivetrain.getRightIR());
+		
+		SmartDashboard.putBoolean("Is Chainsaw Broken", Robot.chainsaw.isBroken());
 		
 //		for(int i = 1; i <= 20; i++){
 //			SmartDashboard.putBoolean("Button "+i,  oi.console.getRawButton(i));

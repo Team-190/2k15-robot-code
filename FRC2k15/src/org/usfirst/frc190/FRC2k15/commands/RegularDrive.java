@@ -21,6 +21,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 
 public class RegularDrive extends Command {
+	
+	private final double toteSpeedLimit = 0.5;
 
 	public RegularDrive() {
 		// Use requires() here to declare subsystem dependencies
@@ -78,6 +80,11 @@ public class RegularDrive extends Command {
 
 		if (!Robot.drivetrain.isFieldOriented()) {
 			heading = 0;
+		}
+		
+		if(Robot.chainsaw.getHookPosition() > 0){
+			xSpeed = xSpeed*toteSpeedLimit;
+			ySpeed = ySpeed*toteSpeedLimit;
 		}
 
 		Robot.drivetrain.MecanumDrive(xSpeed, ySpeed, rSpeed, heading);
