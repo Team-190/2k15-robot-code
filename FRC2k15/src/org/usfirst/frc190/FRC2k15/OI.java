@@ -149,7 +149,7 @@ public class OI {
         chainsaw4BarStackPositionBtn = new JoystickButton(console, 17);
         chainsaw4BarStackPositionBtn.whenPressed(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.collectPositionNarrow, 0.2, -0.2, false));
         autoTotePickupBtn = new JoystickButton(console, 10);
-        autoTotePickupBtn.whenPressed(new AutoTotePickup());
+        autoTotePickupBtn.whenPressed(new AutoTotePickupNarrow());
         autoRCCollectDeliverBtn = new JoystickButton(console, 11);
         autoRCCollectDeliverBtn.whenPressed(new RCCollectSequence());
         humanPlayerSequenceMinusBtn = new JoystickButton(console, 12);
@@ -274,7 +274,9 @@ public class OI {
 
         SmartDashboard.putData("RCCollectSequence", new RCCollectSequence());
 
-        SmartDashboard.putData("AutoTotePickup", new AutoTotePickup());
+        SmartDashboard.putData("AutoTotePickupNarrow", new AutoTotePickupNarrow());
+
+        SmartDashboard.putData("AutoTotePickupWide", new AutoTotePickupWide());
 
         SmartDashboard.putData("Chainsaw4BarStackPosition", new Chainsaw4BarStackPosition());
 

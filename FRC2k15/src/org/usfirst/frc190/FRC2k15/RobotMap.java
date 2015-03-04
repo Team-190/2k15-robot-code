@@ -34,7 +34,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class RobotMap {
 	public static final double maxDriveSpeed = 108.0;
-	private static final double ki = 0.0002; 
+	private static final double ki = 0.0; //0.0002; 
 	private static final double kf = 0.007;
 	
 	private static final double driveObjectExpiration = 0.1;
@@ -117,7 +117,7 @@ public class RobotMap {
         tineGripperopen = new DigitalInput(15);
         LiveWindow.addSensor("TineGripper", "open", tineGripperopen);
         
-        tineGripperclosed = new DigitalInput(12);
+        tineGripperclosed = new DigitalInput(11);
         LiveWindow.addSensor("TineGripper", "closed", tineGripperclosed);
         
         tineElevatorelevatorPot = new AnalogPotentiometer(6, 100.0, 0.0);
@@ -129,7 +129,7 @@ public class RobotMap {
         tineElevatortopLimit = new DigitalInput(10);
         LiveWindow.addSensor("TineElevator", "topLimit", tineElevatortopLimit);
         
-        tineElevatorlowerLimit = new DigitalInput(11);
+        tineElevatorlowerLimit = new DigitalInput(12);
         LiveWindow.addSensor("TineElevator", "lowerLimit", tineElevatorlowerLimit);
         
         chainsawchainsaw = new Victor(5);
@@ -159,10 +159,15 @@ public class RobotMap {
 
         //Robot motors listed below
         
-        final int backRightMotorPin = 9; // right rear 9
-        final int frontRightMotorPin = 2; // front right 1
-        final int backLeftMotorPin = 8; //left rear 8
-        final int frontLeftMotorPin = 7; // left front 2
+//        final int backRightMotorPin = 9; // right rear 9
+//        final int frontRightMotorPin = 2; // front right 1
+//        final int backLeftMotorPin = 8; //left rear 8
+//        final int frontLeftMotorPin = 7; // left front 2
+//        
+      final int backRightMotorPin = 0; // right rear 9
+      final int frontRightMotorPin = 2; // front right 1
+      final int backLeftMotorPin = 3; //left rear 8
+      final int frontLeftMotorPin = 1; // left front 2
         
 		drivetrainfrontLeft = new EncodedMotor(ki , kf,
 				drivetrainfrontLeftEncoder, new Victor(frontLeftMotorPin), maxDriveSpeed);
@@ -194,7 +199,7 @@ public class RobotMap {
 		drivetrainRobotDriveObject.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
 		drivetrainRobotDriveObject.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
 
-		EncodedMotor.setClosedLoop(true); //tells encodedMotor that motors are closed loop controlled
+		EncodedMotor.setClosedLoop(false); //tells encodedMotor that motors are closed loop controlled
 		gyro = I2Cgyro.getInstance();
 	}
 }
