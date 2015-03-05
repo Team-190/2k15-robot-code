@@ -107,8 +107,8 @@ public class TineElevator extends PIDSubsystem implements LimitedPIDSubsystem{
 
 	@Override
 	public void setPosition(double setpoint) {
-		enable();
 		setSetpoint(setpoint);
+		enable();
 	}
 
 	@Override

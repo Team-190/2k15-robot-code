@@ -109,6 +109,7 @@ public class TineGripper extends PIDSubsystem implements LimitedPIDSubsystem{
 	@Override
 	public void setPosition(double setpoint) {
 		setSetpoint(setpoint);
+		enable();
 	}
 
 	@Override
