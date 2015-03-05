@@ -26,8 +26,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Drivetrain extends Subsystem {
-	private boolean isFieldOriented = false;
-	private boolean isSquaredInputs = false;
+	private boolean isFieldOriented = true;
+	private boolean isSquaredInputs = true;
 	// 0 = One Joystick
 	// 1 = Two Joysticks, second joystick has X for Rotation
 	// 2 = Two Joysticks, second joystick has Y for Rotation

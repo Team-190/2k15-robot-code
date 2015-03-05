@@ -178,6 +178,9 @@ public class Robot extends IterativeRobot {
 		
 		SmartDashboard.putBoolean("Is Chainsaw Broken", Robot.chainsaw.isBroken());
 		
+		SmartDashboard.putNumber("Tine Elevator Pot", Robot.tineElevator.getPotValue());
+		SmartDashboard.putNumber("Tine Gripper Pot", Robot.tineGripper.getPotValue());
+		
 //		for(int i = 1; i <= 20; i++){
 //			SmartDashboard.putBoolean("Button "+i,  oi.console.getRawButton(i));
 //		}

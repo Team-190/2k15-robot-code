@@ -85,9 +85,17 @@ public class OI {
     public JoystickButton drivingMode1Btn;
     public JoystickButton drivingMode2Btn;
     public JoystickButton drivingMode3Btn;
+    public JoystickButton drivingMode4Btn;
     public JoystickButton toteAlignBtn;
     public JoystickButton interruptBtn;
     public Joystick driveJoystick;
+    public JoystickButton drivingModeBtn0;
+    public JoystickButton drivingModeBtn1;
+    public JoystickButton drivingModeBtn2;
+    public JoystickButton drivingModeBtn3;
+    public JoystickButton drivingModeBtn4;
+    public JoystickButton robotOrientedButton;
+    public JoystickButton fieldOrientedButton;
     public Joystick secondaryJoystick;
     public JoystickButton chainsawPlusBtn;
     public JoystickButton chainsawMinusBtn;
@@ -133,7 +141,7 @@ public class OI {
 		console = new Joystick(2);
         
         stowTinesBtn = new JoystickButton(console, 6);
-        stowTinesBtn.whenPressed(new ResetChainsaw());
+        stowTinesBtn.whenPressed(new StowTines());
         tinesManualDownBtn = new JoystickButton(console, 20);
         tinesManualDownBtn.whileHeld(new TinesManualDown());
         tinesManualUpBtn = new JoystickButton(console, 16);
@@ -148,14 +156,20 @@ public class OI {
         chainsaw4BarScorePositionBtn.whenPressed(new DeliverStack());
         chainsaw4BarStackPositionBtn = new JoystickButton(console, 17);
         chainsaw4BarStackPositionBtn.whenPressed(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.collectPositionNarrow, 0.2, -0.2, false));
+//        autoTotePickupBtn = new JoystickButton(console, 10);
+//        autoTotePickupBtn.whenPressed(new AutoTotePickupNarrow());
         autoTotePickupBtn = new JoystickButton(console, 10);
-        autoTotePickupBtn.whenPressed(new AutoTotePickupNarrow());
+        autoTotePickupBtn.whenPressed(new ResetChainsaw());
         autoRCCollectDeliverBtn = new JoystickButton(console, 11);
         autoRCCollectDeliverBtn.whenPressed(new RCCollectSequence());
+//        humanPlayerSequenceMinusBtn = new JoystickButton(console, 12);
+//        humanPlayerSequenceMinusBtn.whenPressed(new DoNothing());
+//        humanPlayerSequencePlusBtn = new JoystickButton(console, 13);
+//        humanPlayerSequencePlusBtn.whenPressed(new DoNothing());
         humanPlayerSequenceMinusBtn = new JoystickButton(console, 12);
-        humanPlayerSequenceMinusBtn.whenPressed(new DoNothing());
+        humanPlayerSequenceMinusBtn.whenPressed(new AutoTotePickupWide());
         humanPlayerSequencePlusBtn = new JoystickButton(console, 13);
-        humanPlayerSequencePlusBtn.whenPressed(new DoNothing());
+        humanPlayerSequencePlusBtn.whenPressed(new AutoTotePickupNarrow());
         chainsaw4BarManualOutBtn = new JoystickButton(console, 2);
         chainsaw4BarManualOutBtn.whileHeld(new Chainsaw4BarManualOut());
         chainsaw4BarManualInBtn = new JoystickButton(console, 3);
@@ -179,12 +193,28 @@ public class OI {
 
         
         
+        fieldOrientedButton = new JoystickButton(secondaryJoystick, 4);
+        fieldOrientedButton.whenPressed(new SetFieldOriented());
+        robotOrientedButton = new JoystickButton(secondaryJoystick, 3);
+        robotOrientedButton.whenPressed(new SetRobotOriented());
+        drivingModeBtn4 = new JoystickButton(secondaryJoystick, 11);
+        drivingModeBtn4.whenPressed(new SetDrivingMode4());
+        drivingModeBtn3 = new JoystickButton(secondaryJoystick, 10);
+        drivingModeBtn3.whenPressed(new SetDrivingMode3());
+        drivingModeBtn2 = new JoystickButton(secondaryJoystick, 9);
+        drivingModeBtn2.whenPressed(new SetDrivingMode2());
+        drivingModeBtn1 = new JoystickButton(secondaryJoystick, 8);
+        drivingModeBtn1.whenPressed(new SetDrivingMode1());
+        drivingModeBtn0 = new JoystickButton(secondaryJoystick, 7);
+        drivingModeBtn0.whenPressed(new SetDrivingMode0());
         driveJoystick = new Joystick(0);
         
         interruptBtn = new JoystickButton(driveJoystick, 1);
         interruptBtn.whenPressed(new DoNothing());
         toteAlignBtn = new JoystickButton(driveJoystick, 2);
         toteAlignBtn.whenPressed(new ToteAlign());
+        drivingMode4Btn = new JoystickButton(driveJoystick, 11);
+        drivingMode4Btn.whenPressed(new SetDrivingMode4());
         drivingMode3Btn = new JoystickButton(driveJoystick, 10);
         drivingMode3Btn.whenPressed(new SetDrivingMode3());
         drivingMode2Btn = new JoystickButton(driveJoystick, 9);
@@ -239,6 +269,8 @@ public class OI {
         SmartDashboard.putData("SetDrivingMode2", new SetDrivingMode2());
 
         SmartDashboard.putData("SetDrivingMode3", new SetDrivingMode3());
+
+        SmartDashboard.putData("SetDrivingMode4", new SetDrivingMode4());
 
         SmartDashboard.putData("Delay", new Delay());
 
@@ -301,6 +333,8 @@ public class OI {
         SmartDashboard.putData("AutoDriveBackward", new AutoDriveBackward());
 
         SmartDashboard.putData("ResetChainsawBroken", new ResetChainsawBroken());
+
+        SmartDashboard.putData("TestSetpointCommand", new TestSetpointCommand());
 
 
     // END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTORS

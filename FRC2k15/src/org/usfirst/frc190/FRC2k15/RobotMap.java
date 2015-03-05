@@ -114,10 +114,10 @@ public class RobotMap {
         tineGrippergripperPot = new AnalogPotentiometer(5, 100.0, 0.0);
         LiveWindow.addSensor("TineGripper", "gripperPot", tineGrippergripperPot);
         
-        tineGripperopen = new DigitalInput(15);
+        tineGripperopen = new DigitalInput(11);
         LiveWindow.addSensor("TineGripper", "open", tineGripperopen);
         
-        tineGripperclosed = new DigitalInput(11);
+        tineGripperclosed = new DigitalInput(15);
         LiveWindow.addSensor("TineGripper", "closed", tineGripperclosed);
         
         tineElevatorelevatorPot = new AnalogPotentiometer(6, 100.0, 0.0);
@@ -159,15 +159,15 @@ public class RobotMap {
 
         //Robot motors listed below
         
-//        final int backRightMotorPin = 9; // right rear 9
-//        final int frontRightMotorPin = 2; // front right 1
-//        final int backLeftMotorPin = 8; //left rear 8
-//        final int frontLeftMotorPin = 7; // left front 2
+        final int backRightMotorPin = 9; // right rear 9
+        final int frontRightMotorPin = 2; // front right 1
+        final int backLeftMotorPin = 8; //left rear 8
+        final int frontLeftMotorPin = 7; // left front 2
 //        
-      final int backRightMotorPin = 0; // right rear 9
-      final int frontRightMotorPin = 2; // front right 1
-      final int backLeftMotorPin = 3; //left rear 8
-      final int frontLeftMotorPin = 1; // left front 2
+//      final int backRightMotorPin = 0; // right rear 9
+//      final int frontRightMotorPin = 2; // front right 1
+//      final int backLeftMotorPin = 3; //left rear 8
+//      final int frontLeftMotorPin = 1; // left front 2
         
 		drivetrainfrontLeft = new EncodedMotor(ki , kf,
 				drivetrainfrontLeftEncoder, new Victor(frontLeftMotorPin), maxDriveSpeed);
@@ -199,7 +199,7 @@ public class RobotMap {
 		drivetrainRobotDriveObject.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
 		drivetrainRobotDriveObject.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
 
-		EncodedMotor.setClosedLoop(false); //tells encodedMotor that motors are closed loop controlled
+		EncodedMotor.setClosedLoop(true); //tells encodedMotor that motors are closed loop controlled
 		gyro = I2Cgyro.getInstance();
 	}
 }

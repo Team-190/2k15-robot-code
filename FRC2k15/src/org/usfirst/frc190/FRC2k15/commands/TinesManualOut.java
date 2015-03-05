@@ -41,14 +41,14 @@ public class  TinesManualOut extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(!Robot.tineGripper.getClosed()){
+    	if(!Robot.tineGripper.getOpen()){
     		Robot.tineGripper.setSpeed(motorSpeed);
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.tineGripper.getClosed();
+        return Robot.tineGripper.getOpen();
     }
 
     // Called once after isFinished returns true

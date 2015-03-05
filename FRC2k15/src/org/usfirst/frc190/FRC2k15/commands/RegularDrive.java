@@ -65,13 +65,21 @@ public class RegularDrive extends Command {
 		case 3:
 			rSpeed = OI.deadband(0.5, 0.08, Robot.oi.secondaryJoystick.getZ());
 			break;
+			
+		case 4:
+			xSpeed = OI.deadband(0.3, 0.08, Robot.oi.secondaryJoystick.getX());
+			ySpeed = OI.deadband(0.3, 0.08, Robot.oi.secondaryJoystick.getY());
+			rSpeed = OI.deadband(0.5, 0.08, Robot.oi.secondaryJoystick.getZ());
+			break;
 
 		default:
 			rSpeed = OI.deadband(0.5, 0.08, Robot.oi.driveJoystick.getZ());
 			break;
 		}
+		
 		//Slow rotation speed
 		rSpeed = rSpeed/2;
+		
 		if (Robot.drivetrain.isSquaredInputs()) {
 			xSpeed = Math.pow(Math.abs(xSpeed), 2) * Math.signum(xSpeed);
 			ySpeed = Math.pow(Math.abs(ySpeed), 2) * Math.signum(ySpeed);
