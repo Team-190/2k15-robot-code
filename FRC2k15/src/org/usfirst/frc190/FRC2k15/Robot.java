@@ -15,6 +15,8 @@ import org.usfirst.frc190.FRC2k15.Components.EncodedMotor;
 import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 import org.usfirst.frc190.FRC2k15.commands.AutoDriveBackward;
 import org.usfirst.frc190.FRC2k15.commands.AutoDriveForward;
+import org.usfirst.frc190.FRC2k15.commands.AutoStackLandfill;
+import org.usfirst.frc190.FRC2k15.commands.Auto2TotesLandfill;
 import org.usfirst.frc190.FRC2k15.commands.AutoStealContainers;
 import org.usfirst.frc190.FRC2k15.commands.AutoYellowToteStack;
 import org.usfirst.frc190.FRC2k15.commands.DoNothing;
@@ -94,7 +96,10 @@ public class Robot extends IterativeRobot {
         autoChooser.addObject("Steal Containers", new AutoStealContainers());
         autoChooser.addObject("Drive Forward 4ft", new AutoDriveForward());
         autoChooser.addObject("Drive Backward 4ft", new AutoDriveBackward());
-        autoChooser.addDefault("Do Nothing", new ResetChainsaw());
+        autoChooser.addObject("2 Totes Drop Landfill", new AutoStackLandfill());
+        autoChooser.addObject("2 Totes Landfill", new Auto2TotesLandfill());
+//        autoChooser.addDefault("Do Nothing", new ResetChainsaw());
+        autoChooser.addDefault("Do Nothing", new DoNothing());
         SmartDashboard.putData("Auto Mode", autoChooser);
         
         VoiceCmds.speak(VoiceCmds.r_turningOn);
@@ -180,6 +185,7 @@ public class Robot extends IterativeRobot {
 		
 		SmartDashboard.putNumber("Tine Elevator Pot", Robot.tineElevator.getPotValue());
 		SmartDashboard.putNumber("Tine Gripper Pot", Robot.tineGripper.getPotValue());
+		SmartDashboard.putNumber("4 Bar Pot", Robot.chainsaw4Bar.getPotValue());
 		
 //		for(int i = 1; i <= 20; i++){
 //			SmartDashboard.putBoolean("Button "+i,  oi.console.getRawButton(i));

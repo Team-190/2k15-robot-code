@@ -18,9 +18,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoTotePickupWide extends CommandGroup {
+public class TinesStorePosition extends CommandGroup {
     
-    public  AutoTotePickupWide() {
+    public  TinesStorePosition() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -36,16 +36,8 @@ public class AutoTotePickupWide extends CommandGroup {
         // would require.
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
-        // arm.
+        // arm. 
     	
-//    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.alignPosition, 0.2, -0.2, false));
-    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.toteAlignPosition, 0.2, -0.2, false));
-    	addSequential(new ToteAlignNoIR());
-//    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.collectPositionWide, 0.2, -0.2, false));
-    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.totePickupPosition, 0.2, -0.2, false));
-    	addParallel(new DriveSpeed(-0.05, 1.0));
-    	addSequential(new IncreaseChainsawPosition());
-//    	addSequential(new Delay(0.5));
-    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.toteAlignPosition, 0.2, -0.2, false));
+    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineElevator, Robot.tineElevator.storePosition, 0.8, -0.8, false));
     }
 }

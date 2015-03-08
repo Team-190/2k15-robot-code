@@ -32,11 +32,19 @@ public class Chainsaw extends PIDSubsystem {
     
     private boolean isBroken = false;
     
+    private double encoderOffset = 0.0;
+    
 	// Keeps track of PID setpoints for different hook levels
-	public double hookSetPoint[] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-	private double initialOffset = 5.5;
-	private double toteOffset = 7.0;
-	private double toteHookDistance = 18.47; 
+	public double hookSetPoint[] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+	private double initialOffset = 8.885; //5.5;
+	private double toteOffset = 9.03;  //7.0;
+	private double toteHookDistance = 19.74; //19.85; //18.47; 
+	private double finalPosition = 94.245;
+	
+	private double storedPosition = 184.93;
+	//17.915
+	//37.88
+	
 	//37.080
 	//55.94
 	private int currentHookPosition = 0;
@@ -60,6 +68,10 @@ public class Chainsaw extends PIDSubsystem {
         	hookSetPoint[i*2+1] = initialOffset + toteOffset + i*toteHookDistance;
         	hookSetPoint[i*2] = initialOffset + i*toteHookDistance;
         }
+        
+        hookSetPoint[hookSetPoint.length - 1] = finalPosition;
+        
+        encoderOffset = hookSetPoint[0];
 	}
 
 	public void initDefaultCommand() {
@@ -158,7 +170,7 @@ public class Chainsaw extends PIDSubsystem {
 	 * Apply the currentHookPosition as a setpoint for the chainsaw
 	 */
 	private void applySetpoint() {
-		setSetpoint(hookSetPoint[currentHookPosition]);
+		setSetpoint(hookSetPoint[currentHookPosition] + encoderOffset);
 		enable();
 	}
 	
@@ -197,6 +209,7 @@ public class Chainsaw extends PIDSubsystem {
 	 */
 	public void resetEncoder() {
 		chainsawEncoder.reset();
+		encoderOffset = 0.0;
 	}
 	
 	public double getSpeed(){

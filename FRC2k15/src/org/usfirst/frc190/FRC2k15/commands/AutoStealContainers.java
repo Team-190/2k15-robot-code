@@ -22,7 +22,7 @@ public class AutoStealContainers extends CommandGroup {
     
     public  AutoStealContainers() {
     	//Reset Chainsaw so it is zeroed for the match;
-    	addParallel(new ResetChainsaw());
+//    	addParallel(new ResetChainsaw());
     	//Drive backwards to step
     	addSequential(new DriveDistDirection(0.5, 54, 180));
     	//Wait for balls to fall in

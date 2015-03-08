@@ -20,11 +20,11 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 
-public class RegularDrive extends Command {
+public class RegularDriveToLimit extends Command {
 	
 	private final double toteSpeedLimit = 0.5;
 
-	public RegularDrive() {
+	public RegularDriveToLimit() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 
@@ -102,7 +102,7 @@ public class RegularDrive extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return false;
+		return Robot.drivetrain.getLeftBumper() || Robot.drivetrain.getRightBumper();
 	}
 
 	// Called once after isFinished returns true

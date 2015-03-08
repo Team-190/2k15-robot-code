@@ -36,7 +36,7 @@ public class AutoDriveForward extends CommandGroup {
         // arm.
     	
     	//Reset Chainsaw so it is zeroed for the match;
-    	addParallel(new ResetChainsaw());
+//    	addParallel(new ResetChainsaw());
     	//Drive into auto zone
     	addSequential(new DriveDistDirection(0.75, 48, 0), 7);	//Timeout of 7 seconds
     }

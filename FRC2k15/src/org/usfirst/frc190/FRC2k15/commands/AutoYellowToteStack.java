@@ -66,32 +66,35 @@ public class AutoYellowToteStack extends CommandGroup {
 	
 	public AutoYellowToteStack() {
 		
-		addParallel(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.wideCollectPosition, 0.2, -0.2, false));
-		addSequential(new ResetChainsaw());
-		addSequential(new ToteAlignNoIR());
-		addSequential(new IncreaseChainsawPosition());
+//		addParallel(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.collectPositionWide, 0.2, -0.2, false));
+//		addSequential(new ResetChainsaw());
+//		addSequential(new ToteAlignNoIR());
+//		addSequential(new IncreaseChainsawPosition());
+//		
+		addSequential(new AutoTotePickupWide());
+		addSequential(new DriveDistDirection(0.3, 78, 180));
 		
-		addParallel(new IncreaseChainsawPosition());
-
-		addSequential(new DriveDistDirection(0.5, 12, 180));
-		addSequential(new DriveDistDirection(0.5, 80.5, 90));
-		addSequential(new ToteAlignNoIR());
-		addSequential(new IncreaseChainsawPosition());
-		
-		addParallel(new IncreaseChainsawPosition());
-		
-		addSequential(new DriveDistDirection(0.5, 12, 180));
-		addSequential(new DriveDistDirection(0.5, 80.5, 90));
-		addSequential(new ToteAlignNoIR());
-		addSequential(new IncreaseChainsawPosition());
-		
-		addParallel(new IncreaseChainsawPosition());
-		
-		addSequential(new DriveDistDirection(0.5, 60, 180));
-		
-		addSequential(new DecreaseChainsawPosition());
-		addParallel(new DecreaseChainsawPosition());
-		addSequential(new DriveDistDirection(0.2, 12, 180));
+//		addParallel(new IncreaseChainsawPosition());
+//
+//		addSequential(new DriveDistDirection(0.5, 12, 180));
+//		addSequential(new DriveDistDirection(0.5, 80.5, 90));
+//		addSequential(new ToteAlignNoIR());
+//		addSequential(new IncreaseChainsawPosition());
+//		
+//		addParallel(new IncreaseChainsawPosition());
+//		
+//		addSequential(new DriveDistDirection(0.5, 12, 180));
+//		addSequential(new DriveDistDirection(0.5, 80.5, 90));
+//		addSequential(new ToteAlignNoIR());
+//		addSequential(new IncreaseChainsawPosition());
+//		
+//		addParallel(new IncreaseChainsawPosition());
+//		
+//		addSequential(new DriveDistDirection(0.5, 60, 180));
+//		
+//		addSequential(new DecreaseChainsawPosition());
+//		addParallel(new DecreaseChainsawPosition());
+//		addSequential(new DriveDistDirection(0.2, 12, 180));
 	}
 	
 }

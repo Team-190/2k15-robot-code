@@ -26,13 +26,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Drivetrain extends Subsystem {
-	private boolean isFieldOriented = true;
+	private boolean isFieldOriented = false;
 	private boolean isSquaredInputs = true;
 	// 0 = One Joystick
 	// 1 = Two Joysticks, second joystick has X for Rotation
 	// 2 = Two Joysticks, second joystick has Y for Rotation
 	// 3 = Two Joysticks, second joystick has Z for Rotation
-	private int drivingMode = 0;
+	private int drivingMode = 3;
 
 	// voltage of the ir when within range (greater than this tote in range)
 	private double IRRangeLimit = 1.0;

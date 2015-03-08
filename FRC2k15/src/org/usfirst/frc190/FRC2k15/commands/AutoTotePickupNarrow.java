@@ -42,7 +42,7 @@ public class AutoTotePickupNarrow extends CommandGroup {
     	
     	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.collectPositionNarrow, 0.2, -0.2, false));
     	addSequential(new ToteAlign());
-    	addSequential(new DriveSpeed(-0.15, 0.2));
+//    	addSequential(new DriveSpeed(-0.15, 0.2));
     	addParallel(new IncreaseChainsawPosition());
     	addSequential(new Delay(0.5));
 //    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.collectPositionNarrow, 0.2, -0.2, false));

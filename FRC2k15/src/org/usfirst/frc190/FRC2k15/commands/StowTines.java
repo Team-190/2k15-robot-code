@@ -38,10 +38,10 @@ public class StowTines extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineGripper, Robot.tineGripper.almostClosedPosition, false));
-//    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineGripper, Robot.tineGripper.almostClosedPosition, 0.6, -0.6, false));
-//    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineElevator, Robot.tineElevator.aboveStorePosition, 0.8, -0.8, false));
-//    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineGripper, Robot.tineGripper.fullyClosedPosition, 0.6, -0.6, false));
-//    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineElevator, Robot.tineElevator.storePosition, 0.8, -0.8, false));
+//    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineGripper, Robot.tineGripper.almostClosedPosition, false));
+    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineGripper, Robot.tineGripper.almostClosedPosition, -0.6, 0.6, false));
+    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineElevator, Robot.tineElevator.aboveStorePosition, 0.8, -0.8, false));
+    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineGripper, Robot.tineGripper.fullyClosedPosition, -0.6, 0.6, false));
+    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineElevator, Robot.tineElevator.storePosition, 0.8, -0.8, false));
     }
 }

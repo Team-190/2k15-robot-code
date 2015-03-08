@@ -10,6 +10,9 @@
 
 
 package org.usfirst.frc190.FRC2k15.commands;
+import org.usfirst.frc190.FRC2k15.Robot;
+import org.usfirst.frc190.FRC2k15.Components.LimitedPIDSubsystemSetpointCommand;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -40,5 +43,14 @@ public class RCCollectSequence extends CommandGroup {
     	//Drive until container hits limit switches
     	//close tines - setpoints
     	//bring elevator to pot position
+    	
+    	addParallel(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.RCCollectPosition, 0.2, -0.2, false));
+    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineGripper, Robot.tineGripper.containerPosition, -0.6, 0.6, false));
+    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineElevator, Robot.tineElevator.bottomPosition, 0.8, -0.8, false));
+    	addSequential(new RegularDriveToLimit());
+    	addParallel(new RegularDrive());
+    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineGripper, Robot.tineGripper.almostClosedPosition, -0.6, 0.6, false));
+    	addParallel(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.storagePosition, 0.2, -0.2, false));
+    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineElevator, Robot.tineElevator.midPosition, 0.8, -0.8, false));
     }
 }

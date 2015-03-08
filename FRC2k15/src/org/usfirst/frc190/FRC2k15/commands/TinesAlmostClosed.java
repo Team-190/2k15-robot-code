@@ -18,9 +18,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoTotePickupWide extends CommandGroup {
+public class TinesAlmostClosed extends CommandGroup {
     
-    public  AutoTotePickupWide() {
+    public  TinesAlmostClosed() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -38,14 +38,6 @@ public class AutoTotePickupWide extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-//    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.alignPosition, 0.2, -0.2, false));
-    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.toteAlignPosition, 0.2, -0.2, false));
-    	addSequential(new ToteAlignNoIR());
-//    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.collectPositionWide, 0.2, -0.2, false));
-    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.totePickupPosition, 0.2, -0.2, false));
-    	addParallel(new DriveSpeed(-0.05, 1.0));
-    	addSequential(new IncreaseChainsawPosition());
-//    	addSequential(new Delay(0.5));
-    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.toteAlignPosition, 0.2, -0.2, false));
+    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineGripper, Robot.tineGripper.almostClosedPosition, -0.6, 0.6, false));
     }
 }
