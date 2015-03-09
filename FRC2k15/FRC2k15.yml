@@ -234,7 +234,7 @@ Children:
           default: '0'
           name: Input Channel (Digital)
           validators: *id008
-          value: '11'
+          value: '13'
       Base: Limit Switch
       Name: open
     - Children: []
@@ -1971,6 +1971,12 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
     Name: Auto2TotesLandfill
+  - Children: []
+    Properties:
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command Group
+    Name: Auto1RC
   Properties: {}
   Base: Commands
   Name: Commands

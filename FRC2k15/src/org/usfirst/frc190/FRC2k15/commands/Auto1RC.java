@@ -10,14 +10,17 @@
 
 
 package org.usfirst.frc190.FRC2k15.commands;
+import org.usfirst.frc190.FRC2k15.Robot;
+import org.usfirst.frc190.FRC2k15.Components.LimitedPIDSubsystemSetpointCommand;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class Auto2TotesLandfill extends CommandGroup {
+public class Auto1RC extends CommandGroup {
     
-    public  Auto2TotesLandfill() {
+    public  Auto1RC() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -35,13 +38,9 @@ public class Auto2TotesLandfill extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new ResetChainsaw());
+    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.tineElevator, Robot.tineElevator.midPosition, 0.8, -0.8, false));
+    	addSequential(new DriveDistDirection(0.3, 72, 270));
     	
-    	addSequential(new AutoTotePickupWide(), 5.0);
-    	addSequential(new IncreaseChainsawPosition());
-    	addSequential(new AutoTotePickupWide(), 5.0);
-    	addSequential(new IncreaseChainsawPosition());
-    	addSequential(new DriveDistDirection(0.35, 36, 180));
-    	addSequential(new DriveDistDirection(0.35, 46, 270));
+    	
     }
 }

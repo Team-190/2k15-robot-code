@@ -114,7 +114,7 @@ public class RobotMap {
         tineGrippergripperPot = new AnalogPotentiometer(5, 100.0, 0.0);
         LiveWindow.addSensor("TineGripper", "gripperPot", tineGrippergripperPot);
         
-        tineGripperopen = new DigitalInput(11);
+        tineGripperopen = new DigitalInput(13);
         LiveWindow.addSensor("TineGripper", "open", tineGripperopen);
         
         tineGripperclosed = new DigitalInput(15);
