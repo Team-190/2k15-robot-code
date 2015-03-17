@@ -33,6 +33,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * floating around.
  */
 public class RobotMap {
+	//These are the constants for the Closed Loop Speed Control
+	//To enable/dissable closed loop control either:
+		//Chnage the I constant to 0.00
+		//Or scroll to the botton of the file and update the boolean in "setClosedLoop()"
 	public static final double maxDriveSpeed = 108.0;
 	private static final double ki = 0.0002; 
 	private static final double kf = 0.007;
@@ -163,7 +167,8 @@ public class RobotMap {
         final int frontRightMotorPin = 2; // front right 1
         final int backLeftMotorPin = 8; //left rear 8
         final int frontLeftMotorPin = 7; // left front 2
-//        
+
+//		//These were the motor pins for 2k05 with Brad's Roborio        
 //      final int backRightMotorPin = 0; // right rear 9
 //      final int frontRightMotorPin = 2; // front right 1
 //      final int backLeftMotorPin = 3; //left rear 8

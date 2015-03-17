@@ -96,14 +96,12 @@ public class TineGripper extends PIDSubsystem implements LimitedPIDSubsystem{
 
 	@Override
 	public boolean atmax() {
-		return !open.get();
-//		return false;
+		return getOpen();
 	}
 
 	@Override
 	public boolean atmin() {
-		return closed.get();
-//		return false;
+		return getClosed();
 	}
 
 	@Override

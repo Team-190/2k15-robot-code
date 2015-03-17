@@ -96,14 +96,12 @@ public class TineElevator extends PIDSubsystem implements LimitedPIDSubsystem{
 
 	@Override
 	public boolean atmax() {
-		return topLimit.get();
-//		return false;
+		return getTopLimit();
 	}
 
 	@Override
 	public boolean atmin() {
-		return lowerLimit.get();
-//		return false;
+		return getLowerLimit();
 	}
 
 	@Override
