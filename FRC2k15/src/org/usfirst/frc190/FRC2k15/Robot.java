@@ -19,6 +19,7 @@ import org.usfirst.frc190.FRC2k15.commands.AutoDriveForward;
 import org.usfirst.frc190.FRC2k15.commands.AutoStackLandfill;
 import org.usfirst.frc190.FRC2k15.commands.Auto2TotesLandfill;
 import org.usfirst.frc190.FRC2k15.commands.AutoStealContainers;
+import org.usfirst.frc190.FRC2k15.commands.AutoWingsOfDoom;
 import org.usfirst.frc190.FRC2k15.commands.AutoYellowToteStack;
 import org.usfirst.frc190.FRC2k15.commands.DoNothing;
 import org.usfirst.frc190.FRC2k15.commands.ResetChainsaw;
@@ -100,6 +101,7 @@ public class Robot extends IterativeRobot {
         autoChooser.addObject("2 Totes Drop Landfill", new AutoStackLandfill());
         autoChooser.addObject("2 Totes Landfill", new Auto2TotesLandfill());
         autoChooser.addObject("1 RC Pickup", new Auto1RC());
+        autoChooser.addObject("Steal Containers", new AutoWingsOfDoom());
 //        autoChooser.addDefault("Do Nothing", new ResetChainsaw());
         autoChooser.addDefault("Do Nothing", new DoNothing());
         SmartDashboard.putData("Auto Mode", autoChooser);

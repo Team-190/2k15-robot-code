@@ -25,6 +25,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.Relay;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -55,6 +56,7 @@ public class RobotMap {
     public static DigitalInput drivetrainrightLimit;
     public static AnalogInput drivetrainLeftIR;
     public static AnalogInput drivetrainRightIR;
+    public static Relay drivetrainWings;
     public static SpeedController tineGrippergripper;
     public static AnalogPotentiometer tineGrippergripperPot;
     public static DigitalInput tineGripperopen;
@@ -111,6 +113,9 @@ public class RobotMap {
         
         drivetrainRightIR = new AnalogInput(2);
         LiveWindow.addSensor("Drivetrain", "RightIR", drivetrainRightIR);
+        
+        drivetrainWings = new Relay(0);
+        LiveWindow.addActuator("Drivetrain", "Wings", drivetrainWings);
         
         tineGrippergripper = new Victor(4);
         LiveWindow.addActuator("TineGripper", "gripper", (Victor) tineGrippergripper);

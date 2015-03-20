@@ -18,30 +18,22 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoStackLandfill extends CommandGroup {
     
     public  AutoStackLandfill() {
-        // Add Commands here:
-        // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
-        // these will run in order.
 
-        // To run multiple commands at the same time,
-        // use addParallel()
-        // e.g. addParallel(new Command1());
-        //      addSequential(new Command2());
-        // Command1 and Command2 will run in parallel.
-
-        // A command group will require all of the subsystems that each member
-        // would require.
-        // e.g. if Command1 requires chassis, and Command2 requires arm,
-        // a CommandGroup containing them would require both the chassis and the
-        // arm.
+    	
+    	
     	
     	addSequential(new ResetChainsaw());
-    	
+// Wide tote pickup   	
     	addSequential(new AutoTotePickupWide());
+// Increases the chainsaw position by one setpoint
     	addSequential(new IncreaseChainsawPosition());
+// Aligns to wide tote but does not pickup
     	addSequential(new ToteAlignNoIR());
+// Brings chainsaw down to drop first tote on top of the tote in front.    	
     	addSequential(new DecreaseChainsawPosition());
+// Robot drives backwards
     	addSequential(new DriveDistDirection(0.2, 6, 180));
+// Chainsaw comes down 
     	addSequential(new DecreaseChainsawPosition());
     	addSequential(new AutoTotePickupWide());
     	
