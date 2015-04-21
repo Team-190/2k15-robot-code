@@ -34,6 +34,7 @@ public class  IncreaseChainsawPosition extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
 //    	if(Robot.chainsaw.isBroken()){
+    		setTimeout(3);
     		Robot.chainsaw.incrementHookPosition();
 //    	}
     	
@@ -46,11 +47,14 @@ public class  IncreaseChainsawPosition extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.chainsaw.onTarget(); // || Robot.chainsaw.isBroken();
+        return Robot.chainsaw.onTarget() ; //|| isTimedOut(); // || Robot.chainsaw.isBroken();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+//    	if (isTimedOut()) {
+//    		Robot.chainsaw.disable();
+//    	}
     }
 
     // Called when another command which requires one or more of the same

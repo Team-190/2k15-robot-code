@@ -15,6 +15,7 @@ import org.usfirst.frc190.FRC2k15.Robot;
 import org.usfirst.frc190.FRC2k15.Components.VoiceCmds;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -96,6 +97,7 @@ public class RegularDrive extends Command {
 			ySpeed = ySpeed*toteSpeedLimit;
 		}
 
+		SmartDashboard.putNumber("Robot Heading", heading);
 		Robot.drivetrain.MecanumDrive(xSpeed, ySpeed, rSpeed, heading);
 
 	}

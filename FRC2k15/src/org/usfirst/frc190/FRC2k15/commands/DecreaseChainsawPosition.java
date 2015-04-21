@@ -37,6 +37,7 @@ public class  DecreaseChainsawPosition extends Command {
 //    		Robot.chainsaw.decrementHookPosition();
 //    	}
     	
+    	setTimeout(3);
     	Robot.chainsaw.decrementHookPosition();
     	
     	VoiceCmds.speak(VoiceCmds.c_decreasePosn);
@@ -49,11 +50,14 @@ public class  DecreaseChainsawPosition extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
 //        return Robot.chainsaw.onTarget() || Robot.chainsaw.isBroken();
-    	return Robot.chainsaw.onTarget();
+    	return Robot.chainsaw.onTarget(); // || isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+//    	if (isTimedOut()) {
+//    		Robot.chainsaw.disable();
+//    	}
     }
 
     // Called when another command which requires one or more of the same

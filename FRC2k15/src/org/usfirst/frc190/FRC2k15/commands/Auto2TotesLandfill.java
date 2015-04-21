@@ -29,12 +29,15 @@ public class Auto2TotesLandfill extends CommandGroup {
 // Chainsaw goes up to next level (next set-point)
     	
     	addSequential(new IncreaseChainsawPosition());
+    	
+//    	New Command to increase speed of auto 
+    	addSequential(new DriveDistDirection(0.2, 10, 0),1);
     	addSequential(new AutoTotePickupWide(), 5.0);
     	addSequential(new IncreaseChainsawPosition());
     	
 // Robot drives backwards (first command) and then drives left towards the second
 // set of wide totes
-    	addSequential(new DriveDistDirection(0.5, 36, 180));
-    	addSequential(new DriveDistDirection(0.5, 61, 270));
+    	addSequential(new DriveDistDirection(0.6, 36, 180));
+    	addSequential(new DriveDistDirection(0.5, 85, 270));
     }
 }
