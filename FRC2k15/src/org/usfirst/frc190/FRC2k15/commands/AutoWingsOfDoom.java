@@ -31,10 +31,13 @@ public class AutoWingsOfDoom extends CommandGroup {
 	public AutoWingsOfDoom() {
 
 		addParallel(new FireWingsSequence());
+		
 		// addParallel(new ResetChainsaw());
-		// addSequential(new Delay(1));
+		
+		addSequential(new Delay(1));
 		addSequential(new DriveDistDirection(1.0, 24, 0));
 		addSequential(new DriveDistDirection(0.4, 24, 0));
+		
 
 		// Tote align position is best angle. this brings wings up
 		// addSequential(new Delay(1.5));
@@ -50,11 +53,6 @@ public class AutoWingsOfDoom extends CommandGroup {
 		addSequential(new LimitedPIDSubsystemSetpointCommand(
 				Robot.chainsaw4Bar, Robot.chainsaw4Bar.collectPositionWide,
 				0.4, -0.4, false));
-
-		// Rest of the commands are for driving over and picking up two totes
-		// addSequential(new DriveDistDirection(.8, 53, 90));
-		// addSequential(new DriveTurn(180));
-		// addSequential(new AutoTotePickupWide());
 
 	}
 }
