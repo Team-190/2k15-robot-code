@@ -51,12 +51,12 @@ public class RobotMap {
     public static Encoder drivetrainfrontLeftEncoder;
     public static Encoder drivetrainbackRightEncoder;
     public static Encoder drivetrainfrontRightEncoder;
-    public static Gyro drivetrainGyro;
     public static DigitalInput drivetrainleftLimit;
     public static DigitalInput drivetrainrightLimit;
     public static AnalogInput drivetrainLeftIR;
     public static AnalogInput drivetrainRightIR;
     public static Relay drivetrainWings;
+    public static Gyro drivetrainGyro;
     public static SpeedController tineGrippergripper;
     public static AnalogPotentiometer tineGrippergripperPot;
     public static DigitalInput tineGripperopen;
@@ -99,9 +99,6 @@ public class RobotMap {
         LiveWindow.addSensor("Drivetrain", "frontRightEncoder", drivetrainfrontRightEncoder);
         drivetrainfrontRightEncoder.setDistancePerPulse(1.0);
         drivetrainfrontRightEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
-        drivetrainGyro = new Gyro(0);
-        LiveWindow.addSensor("Drivetrain", "Gyro", drivetrainGyro);
-        drivetrainGyro.setSensitivity(0.007);
         drivetrainleftLimit = new DigitalInput(19);
         LiveWindow.addSensor("Drivetrain", "leftLimit", drivetrainleftLimit);
         
@@ -117,6 +114,9 @@ public class RobotMap {
         drivetrainWings = new Relay(0);
         LiveWindow.addActuator("Drivetrain", "Wings", drivetrainWings);
         
+        drivetrainGyro = new Gyro(0);
+        LiveWindow.addSensor("Drivetrain", "Gyro", drivetrainGyro);
+        drivetrainGyro.setSensitivity(0.007);
         tineGrippergripper = new Victor(4);
         LiveWindow.addActuator("TineGripper", "gripper", (Victor) tineGrippergripper);
         

@@ -35,7 +35,7 @@ public class AutoWingsOfDoom extends CommandGroup {
 		// addParallel(new ResetChainsaw());
 		
 		addSequential(new Delay(1));
-		addSequential(new DriveDistDirection(1.0, 24, 0));
+		addSequential(new DriveDistDirection(0.4, 24, 0));
 		addSequential(new DriveDistDirection(0.4, 24, 0));
 		
 
