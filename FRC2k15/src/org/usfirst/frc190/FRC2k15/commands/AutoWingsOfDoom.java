@@ -36,7 +36,7 @@ public class AutoWingsOfDoom extends CommandGroup {
 		
 		addSequential(new Delay(1));
 		addSequential(new DriveDistDirection(0.4, 24, 0));
-		addSequential(new DriveDistDirection(0.4, 24, 0));
+		addSequential(new DriveDistDirection(0.4, 48, 0));
 		
 
 		// Tote align position is best angle. this brings wings up

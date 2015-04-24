@@ -194,6 +194,9 @@ public class OI {
 		SmartDashboard.putData("FourBarHumanPosition", new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar,Robot.chainsaw4Bar.humanPosition, false));
 		SmartDashboard.putData("FourBarCollectNarrow", new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar,Robot.chainsaw4Bar.collectPositionNarrow, false));
 		SmartDashboard.putData("FourBarCollectWide", new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar,Robot.chainsaw4Bar.collectPositionWide, false));
+		
+		SmartDashboard.putData("Test Drive Forward Steady 5ft", new DriveDistDirectionSteady(0.4, 60, 0));
+		SmartDashboard.putData("Test Drive Forward Steady 3ft", new DriveDistDirectionSteady(0.4, 36, 0));
         
 		
 		//TODO: Delete robot-builder generated below from: console ... to secondaryJoystick.
@@ -246,31 +249,13 @@ public class OI {
 
 	    
         // SmartDashboard Buttons
-        SmartDashboard.putData("AnalogDriveChainsaw", new AnalogDriveChainsaw());
-
-        SmartDashboard.putData("Do Nothing", new DoNothing());
-
-        SmartDashboard.putData("DriveTurn", new DriveTurn());
-
         SmartDashboard.putData("ResetGyro", new ResetGyro());
-
-        SmartDashboard.putData("GetIntoAutoPosition", new GetIntoAutoPosition());
-
-        SmartDashboard.putData("DriveUntilToteDetectedAuto", new DriveUntilToteDetectedAuto());
-
-        SmartDashboard.putData("DriveDistDirection", new DriveDistDirection());
-
-        SmartDashboard.putData("LiftTotes", new LiftTotes());
 
         SmartDashboard.putData("RegularDrive", new RegularDrive());
 
         SmartDashboard.putData("SetFieldOriented", new SetFieldOriented());
 
         SmartDashboard.putData("SetRobotOriented", new SetRobotOriented());
-
-        SmartDashboard.putData("SetSquaredInputs", new SetSquaredInputs());
-
-        SmartDashboard.putData("SetLinearInputs", new SetLinearInputs());
 
         SmartDashboard.putData("SetDrivingMode0", new SetDrivingMode0());
 
@@ -282,15 +267,7 @@ public class OI {
 
         SmartDashboard.putData("SetDrivingMode4", new SetDrivingMode4());
 
-        SmartDashboard.putData("Delay", new Delay());
-
         SmartDashboard.putData("SoundCheck", new SoundCheck());
-
-        SmartDashboard.putData("ToteAlign", new ToteAlign());
-
-        SmartDashboard.putData("ResetEncoders", new ResetEncoders());
-
-        SmartDashboard.putData("DriveDistTestSequence", new DriveDistTestSequence());
 
         SmartDashboard.putData("ResetChainsaw", new ResetChainsaw());
 
@@ -298,23 +275,9 @@ public class OI {
 
         SmartDashboard.putData("DecreaseChainsawPosition", new DecreaseChainsawPosition());
 
-        SmartDashboard.putData("DeliverStack", new DeliverStack());
-
         SmartDashboard.putData("ChainsawDeliverStackPosition", new ChainsawDeliverStackPosition());
 
-        SmartDashboard.putData("AutoYellowToteStack", new AutoYellowToteStack());
-
         SmartDashboard.putData("AutoDriveForward", new AutoDriveForward());
-
-        SmartDashboard.putData("AutoStealContainers", new AutoStealContainers());
-
-        SmartDashboard.putData("HumanPlayerLoading", new HumanPlayerLoading());
-
-        SmartDashboard.putData("Chainsaw4BarManualIn", new Chainsaw4BarManualIn());
-
-        SmartDashboard.putData("Chainsaw4BarManualOut", new Chainsaw4BarManualOut());
-
-        SmartDashboard.putData("RCCollectSequence", new RCCollectSequence());
 
         SmartDashboard.putData("AutoTotePickupNarrow", new AutoTotePickupNarrow());
 
@@ -326,25 +289,13 @@ public class OI {
 
         SmartDashboard.putData("Chainsaw4BarStorePosition", new Chainsaw4BarStorePosition());
 
-        SmartDashboard.putData("TinesManualIn", new TinesManualIn());
-
-        SmartDashboard.putData("TinesManualOut", new TinesManualOut());
-
-        SmartDashboard.putData("TinesManualUp", new TinesManualUp());
-
-        SmartDashboard.putData("TinesManualDown", new TinesManualDown());
-
         SmartDashboard.putData("StowTines", new StowTines());
 
         SmartDashboard.putData("ToteAlignNoIR", new ToteAlignNoIR());
 
-        SmartDashboard.putData("DriveUntilIR", new DriveUntilIR());
-
         SmartDashboard.putData("AutoDriveBackward", new AutoDriveBackward());
 
         SmartDashboard.putData("ResetChainsawBroken", new ResetChainsawBroken());
-
-        SmartDashboard.putData("TestSetpointCommand", new TestSetpointCommand());
 
         SmartDashboard.putData("Tines Store Position", new TinesStorePosition());
 
@@ -358,11 +309,7 @@ public class OI {
 
         SmartDashboard.putData("AutoStackLandfill", new AutoStackLandfill());
 
-        SmartDashboard.putData("Regular Drive To Limit", new RegularDriveToLimit());
-
         SmartDashboard.putData("Auto2TotesLandfill", new Auto2TotesLandfill());
-
-        SmartDashboard.putData("Auto1RC", new Auto1RC());
 
         SmartDashboard.putData("FireWings", new FireWings());
 
