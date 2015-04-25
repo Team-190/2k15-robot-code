@@ -18,12 +18,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoTotePickupWide extends CommandGroup {
+public class AutoTotePickupWideDriving extends CommandGroup {
     
-    public  AutoTotePickupWide() {
-    	
+    public  AutoTotePickupWideDriving() {
 //    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.alignPosition, 0.2, -0.2, false));
     	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.toteAlignPosition, 0.2, -0.2, false));
+    	addSequential(new RegularDriveToLimit());
     	addSequential(new ToteAlignNoIR());
 //    	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.collectPositionWide, 0.2, -0.2, false));
     	addSequential(new LimitedPIDSubsystemSetpointCommand(Robot.chainsaw4Bar, Robot.chainsaw4Bar.totePickupPosition, 0.2, -0.2, false));

@@ -584,6 +584,38 @@ Children:
         validators: null, value: 1.0}
     Base: PID Subsystem
     Name: Chainsaw4Bar
+  - Children:
+    - Children: []
+      Properties:
+        Type: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id013
+          default: Talon
+          name: Type
+          validators: null
+          value: Talon
+        Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id014
+          default: '0'
+          name: Output Channel (PWM)
+          validators: *id015
+          value: '1'
+      Base: Speed Controller
+      Name: Motor
+    - Children: []
+      Properties:
+        Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id007
+          default: '0'
+          name: Input Channel (Digital)
+          validators: *id008
+          value: '11'
+      Base: Limit Switch
+      Name: Limit Switch
+    Properties:
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+    Base: Subsystem
+    Name: Winch
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -2023,6 +2055,20 @@ Children:
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: DriveDistDirectionSteady
+  - Children: []
+    Properties:
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command Group
+    Name: AutoTotePickupWideDriving
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Winch}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: RetractStands
   Properties: {}
   Base: Commands
   Name: Commands
