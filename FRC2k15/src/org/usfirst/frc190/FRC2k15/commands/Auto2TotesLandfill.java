@@ -39,5 +39,16 @@ public class Auto2TotesLandfill extends CommandGroup {
 		// set of wide totes
 		addSequential(new DriveDistDirection(0.6, 36, 180));
 		addSequential(new DriveDistDirection(0.5, 85, 270));
+		
+//		This makes the robot drive forward and do the second set of tote pick ups in auto
+		
+		addSequential(new DriveDistDirection(0.4, 24, 0),2);
+		addSequential(new AutoTotePickupWide(), 5.0);
+		addSequential(new IncreaseChainsawPosition());
+		addSequential(new DriveDistDirection(0.2, 10, 0), 1);
+		addSequential(new AutoTotePickupWide(), 3.0);
+		addSequential(new IncreaseChainsawPosition());
+		
+		
 	}
 }

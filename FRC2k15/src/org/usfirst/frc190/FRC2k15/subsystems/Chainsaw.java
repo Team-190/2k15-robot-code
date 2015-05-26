@@ -44,7 +44,7 @@ public class Chainsaw extends PIDSubsystem {
 	//This is the encoder reading when the first tote is 2-4 inches above the ground
 	private double toteOffset = 17.915;
 	//This is the difference in encoder values from one hook position to another
-	private double toteHookDistance = 19.74;
+	private double toteHookDistance = 18.5; //19.74;
 	//This is the final highest position for the chainsaw with 5 totes
 	//It is different because the hooks can't travel all the way up with the top hook engaged
 	private double finalPosition = 94.245;
